@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "count": 2,
+  "ingredient": {
+    "item": "riverbed:river_stones"
+  },
+  "result": "riverbed:chiseled_river_stone"
+}
