@@ -29,6 +29,12 @@ public class RiverbedCreativeTabs {
                         pOutput.accept(RiverbedBlocks.RIVER_STONE_BRICK_SLAB.get());
                         pOutput.accept(RiverbedBlocks.RIVER_STONE_BRICK_WALL.get());
 
+                        pOutput.accept(RiverbedBlocks.ALGAE_BLOCK.get());
+
+
+                        pOutput.accept(RiverbedBlocks.ALGAE.get());
+
+
 
                         pOutput.accept(RiverbedItems.COPPER_PAN.get());
 

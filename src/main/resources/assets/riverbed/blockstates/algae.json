@@ -1,0 +1,58 @@
+{
+  "variants": {
+    "level=1,waterlogged=false": [
+      {
+        "model": "riverbed:block/small_algae"
+      },
+      {
+        "model": "riverbed:block/small_algae",
+        "y": 90
+      },
+      {
+        "model": "riverbed:block/small_algae",
+        "y": 180
+      },
+      {
+        "model": "riverbed:block/small_algae",
+        "y": 270
+      }
+    ],
+    "level=1,waterlogged=true": [
+      {
+        "model": "riverbed:block/small_algae"
+      },
+      {
+        "model": "riverbed:block/small_algae",
+        "y": 90
+      },
+      {
+        "model": "riverbed:block/small_algae",
+        "y": 180
+      },
+      {
+        "model": "riverbed:block/small_algae",
+        "y": 270
+      }
+    ],
+    "level=2,waterlogged=false": [
+           {
+        "model": "riverbed:block/medium_algae"
+      }
+    ],
+    "level=2,waterlogged=true": [
+      {
+        "model": "riverbed:block/medium_algae"
+      }
+    ],
+    "level=3,waterlogged=false": [
+      {
+        "model": "riverbed:block/full_algae"
+      }
+    ],
+    "level=3,waterlogged=true": [
+      {
+        "model": "riverbed:block/full_algae"
+      }
+    ]
+  }
+}

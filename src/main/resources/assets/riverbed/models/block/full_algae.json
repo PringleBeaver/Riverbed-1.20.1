@@ -1,0 +1,23 @@
+{
+	"credit": "Made with Blockbench",
+	"ambientocclusion": false,
+	"render_type": "cutout",
+	"textures": {
+		"0": "riverbed:block/full_algae",
+		"2": "riverbed:block/full_algae_side",
+		"particle": "riverbed:block/full_algae"
+	},
+	"elements": [
+		{
+			"from": [-0.01, -5, -0.01],
+			"to": [16.01, 1, 16.01],
+			"faces": {
+				"north": {"uv": [0, 0, 16, 6], "texture": "#2"},
+				"east": {"uv": [0, 0, 16, 6], "texture": "#2"},
+				"south": {"uv": [0, 0, 16, 6], "texture": "#2"},
+				"west": {"uv": [0, 0, 16, 6], "texture": "#2"},
+				"up": {"uv": [0, 0, 16, 16], "texture": "#0"}
+			}
+		}
+	]
+}

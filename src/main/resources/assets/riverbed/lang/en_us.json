@@ -8,9 +8,7 @@
 	"block.riverbed.chiseled_river_stone": "Chiseled River Stone",
 	"block.riverbed.river_stone_brick_stairs": "River Stone Brick Stairs",
 	"block.riverbed.river_stone_brick_slab": "River Stone Brick Slab",
-	"block.riverbed.river_stone_brick_wall": "River Stone Brick Wall"
-
-
-
-
+	"block.riverbed.river_stone_brick_wall": "River Stone Brick Wall",
+	"block.riverbed.algae": "Algae",
+	"block.riverbed.algae_block": "Algae Block"
 }

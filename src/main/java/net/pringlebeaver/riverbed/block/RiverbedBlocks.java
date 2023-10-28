@@ -9,6 +9,7 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.pringlebeaver.riverbed.RiverbedMain;
+import net.pringlebeaver.riverbed.block.custom.AlgaeBlock;
 import net.pringlebeaver.riverbed.item.RiverbedItems;
 
 import java.security.PublicKey;
@@ -50,8 +51,12 @@ public class RiverbedBlocks {
     public static final RegistryObject<Block> RIVER_STONE_BRICK_WALL = registerBlock("river_stone_brick_wall",
             () -> new WallBlock(BlockBehaviour.Properties.copy(Blocks.STONE_BRICKS).sound(SoundType.NETHER_BRICKS)));
 
+    // Algae
+    public static final RegistryObject<Block> ALGAE = registerBlock("algae",
+            () -> new AlgaeBlock(BlockBehaviour.Properties.copy(Blocks.SEAGRASS).sound(SoundType.WET_GRASS).strength(0.8F)));
 
-
+    public static final RegistryObject<Block> ALGAE_BLOCK = registerBlock("algae_block",
+            () -> new Block(BlockBehaviour.Properties.copy(Blocks.SPONGE).sound(SoundType.WET_GRASS)));
 
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block) {
         RegistryObject<T> toReturn = BLOCKS.register(name, block);
