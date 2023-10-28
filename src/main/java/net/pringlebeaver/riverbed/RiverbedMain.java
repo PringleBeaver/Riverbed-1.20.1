@@ -12,6 +12,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.pringlebeaver.riverbed.block.RiverbedBlocks;
 import net.pringlebeaver.riverbed.item.RiverbedCreativeTabs;
 import net.pringlebeaver.riverbed.item.RiverbedItems;
 import org.slf4j.Logger;
@@ -29,6 +30,8 @@ public class RiverbedMain
         // Register Stuff
 
         RiverbedItems.register(modEventBus);
+
+        RiverbedBlocks.register(modEventBus);
 
         RiverbedCreativeTabs.register(modEventBus);
 

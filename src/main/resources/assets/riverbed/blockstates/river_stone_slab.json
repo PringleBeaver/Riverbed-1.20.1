@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "riverbed:block/river_stone_slab"
+    },
+    "type=double": {
+      "model": "riverbed:block/river_stones"
+    },
+    "type=top": {
+      "model": "riverbed:block/river_stone_slab_top"
+    }
+  }
+}

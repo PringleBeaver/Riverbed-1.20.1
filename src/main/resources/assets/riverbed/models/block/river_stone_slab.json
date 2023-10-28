@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab",
+  "textures": {
+    "bottom": "riverbed:block/river_stones",
+    "side": "riverbed:block/river_stones",
+    "top": "riverbed:block/river_stones"
+  }
+}

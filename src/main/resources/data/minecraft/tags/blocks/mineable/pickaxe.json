@@ -1,0 +1,11 @@
+{
+  "values": [
+    "riverbed:river_stones",
+    "riverbed:chiseled_river_stone",
+    "riverbed:river_stone_slab",
+    "riverbed:river_stone_stairs",
+    "riverbed:river_stone_bricks",
+    "riverbed:river_stone_brick_stairs",
+    "riverbed:river_stone_brick_slab"
+  ]
+}

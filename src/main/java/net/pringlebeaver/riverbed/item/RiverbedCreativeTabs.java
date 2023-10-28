@@ -8,6 +8,7 @@ import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.RegistryObject;
 import net.pringlebeaver.riverbed.RiverbedMain;
+import net.pringlebeaver.riverbed.block.RiverbedBlocks;
 
 public class RiverbedCreativeTabs {
     public static final DeferredRegister<CreativeModeTab> CREATIVE_MOD_TABS =
@@ -17,8 +18,19 @@ public class RiverbedCreativeTabs {
             () -> CreativeModeTab.builder().icon(() -> new ItemStack(RiverbedItems.COPPER_PAN.get()))
                     .title(Component.translatable("creativetab.riverbed_tab"))
                     .displayItems((pParameters, pOutput) -> {
-                        pOutput.accept(RiverbedItems.COPPER_PAN.get());
 
+                        pOutput.accept(RiverbedBlocks.RIVER_STONES.get());
+                        pOutput.accept(RiverbedBlocks.RIVER_STONE_STAIRS.get());
+                        pOutput.accept(RiverbedBlocks.RIVER_STONE_SLAB.get());
+
+                        pOutput.accept(RiverbedBlocks.CHISELED_RIVER_STONE.get());
+                        pOutput.accept(RiverbedBlocks.RIVER_STONE_BRICKS.get());
+                        pOutput.accept(RiverbedBlocks.RIVER_STONE_BRICK_STAIRS.get());
+                        pOutput.accept(RiverbedBlocks.RIVER_STONE_BRICK_SLAB.get());
+                        pOutput.accept(RiverbedBlocks.RIVER_STONE_BRICK_WALL.get());
+
+
+                        pOutput.accept(RiverbedItems.COPPER_PAN.get());
 
                     })
                     .build());
