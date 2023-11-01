@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/inner_stairs",
+  "textures": {
+    "bottom": "riverbed:block/algal_river_stone_bricks",
+    "side": "riverbed:block/algal_river_stone_bricks",
+    "top": "riverbed:block/algal_river_stone_bricks"
+  }
+}

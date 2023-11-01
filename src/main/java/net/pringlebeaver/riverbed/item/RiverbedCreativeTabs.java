@@ -15,7 +15,7 @@ public class RiverbedCreativeTabs {
             DeferredRegister.create(Registries.CREATIVE_MODE_TAB, RiverbedMain.MOD_ID);
 
     public static final RegistryObject<CreativeModeTab> RIVERBED_TAB = CREATIVE_MOD_TABS.register("riverbed_tab",
-            () -> CreativeModeTab.builder().icon(() -> new ItemStack(RiverbedItems.COPPER_PAN.get()))
+            () -> CreativeModeTab.builder().icon(() -> new ItemStack(RiverbedBlocks.ALGAE.get()))
                     .title(Component.translatable("creativetab.riverbed_tab"))
                     .displayItems((pParameters, pOutput) -> {
 
@@ -28,15 +28,24 @@ public class RiverbedCreativeTabs {
                         pOutput.accept(RiverbedBlocks.RIVER_STONE_BRICK_STAIRS.get());
                         pOutput.accept(RiverbedBlocks.RIVER_STONE_BRICK_SLAB.get());
                         pOutput.accept(RiverbedBlocks.RIVER_STONE_BRICK_WALL.get());
+                        pOutput.accept(RiverbedBlocks.ALGAL_RIVER_STONE_BRICKS.get());
+                        pOutput.accept(RiverbedBlocks.ALGAL_RIVER_STONE_BRICK_STAIRS.get());
+                        pOutput.accept(RiverbedBlocks.ALGAL_RIVER_STONE_BRICK_SLAB.get());
+                        pOutput.accept(RiverbedBlocks.ALGAL_RIVER_STONE_BRICK_WALL.get());
 
                         pOutput.accept(RiverbedBlocks.ALGAE_BLOCK.get());
 
 
                         pOutput.accept(RiverbedBlocks.ALGAE.get());
 
+                        pOutput.accept(RiverbedBlocks.RIVER_GRASS.get());
 
+                        pOutput.accept(RiverbedItems.MUSIC_DISC_DELTA.get());
 
                         pOutput.accept(RiverbedItems.COPPER_PAN.get());
+
+
+
 
                     })
                     .build());

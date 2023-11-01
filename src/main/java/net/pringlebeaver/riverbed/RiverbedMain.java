@@ -14,6 +14,7 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.pringlebeaver.riverbed.block.RiverbedBlocks;
 import net.pringlebeaver.riverbed.item.RiverbedCreativeTabs;
 import net.pringlebeaver.riverbed.item.RiverbedItems;
+import net.pringlebeaver.riverbed.sound.RiverbedSounds;
 import org.slf4j.Logger;
 
 // The value here should match an entry in the META-INF/mods.toml file
@@ -33,6 +34,9 @@ public class RiverbedMain
         RiverbedBlocks.register(modEventBus);
 
         RiverbedCreativeTabs.register(modEventBus);
+
+        RiverbedSounds.register(modEventBus);
+
 
 
 

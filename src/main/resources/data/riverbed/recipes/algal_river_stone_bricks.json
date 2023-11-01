@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "riverbed:algae"
+    },
+        {
+      "item": "riverbed:river_stone_bricks"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "item": "riverbed:algal_river_stone_bricks"
+  }
+}

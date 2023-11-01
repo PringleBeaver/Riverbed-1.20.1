@@ -1,14 +1,26 @@
 {
 	"creativetab.riverbed_tab": "Riverbed",
 	"item.riverbed.copper_pan": "Copper Pan",
+	
+	"item.riverbed.music_disc_delta": "Music Disc",
+	"item.riverbed.music_disc_delta.desc": "PringleBeaver - Delta",
+
+
 	"block.riverbed.river_stones": "River Stones",
+	"block.riverbed.chiseled_river_stone": "Chiseled River Stone",
 	"block.riverbed.river_stone_stairs": "River Stone Stairs",
 	"block.riverbed.river_stone_slab": "River Stone Slab",
+
 	"block.riverbed.river_stone_bricks": "River Stone Bricks",
-	"block.riverbed.chiseled_river_stone": "Chiseled River Stone",
 	"block.riverbed.river_stone_brick_stairs": "River Stone Brick Stairs",
 	"block.riverbed.river_stone_brick_slab": "River Stone Brick Slab",
 	"block.riverbed.river_stone_brick_wall": "River Stone Brick Wall",
+
+	"block.riverbed.algal_river_stone_bricks": "Algal River Stone Bricks",
+	"block.riverbed.algal_river_stone_brick_stairs": "Algal River Stone Brick Stairs",
+	"block.riverbed.algal_river_stone_brick_slab": "Algal River Stone Brick Slab",
+	"block.riverbed.algal_river_stone_brick_wall": "Algal River Stone Brick Wall",
+	"block.riverbed.river_grass": "River Grass",
 	"block.riverbed.algae": "Algae",
 	"block.riverbed.algae_block": "Algae Block"
 }

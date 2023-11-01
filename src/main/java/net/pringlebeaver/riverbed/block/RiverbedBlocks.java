@@ -10,6 +10,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.pringlebeaver.riverbed.RiverbedMain;
 import net.pringlebeaver.riverbed.block.custom.AlgaeBlock;
+import net.pringlebeaver.riverbed.block.custom.RivergrassBlock;
 import net.pringlebeaver.riverbed.item.RiverbedItems;
 
 import java.security.PublicKey;
@@ -51,12 +52,30 @@ public class RiverbedBlocks {
     public static final RegistryObject<Block> RIVER_STONE_BRICK_WALL = registerBlock("river_stone_brick_wall",
             () -> new WallBlock(BlockBehaviour.Properties.copy(Blocks.STONE_BRICKS).sound(SoundType.NETHER_BRICKS)));
 
+
+    public static final RegistryObject<Block> ALGAL_RIVER_STONE_BRICKS = registerBlock("algal_river_stone_bricks",
+            () -> new Block(BlockBehaviour.Properties.copy(Blocks.STONE_BRICKS).sound(SoundType.NETHER_BRICKS)));
+
+    public static final RegistryObject<Block> ALGAL_RIVER_STONE_BRICK_SLAB = registerBlock("algal_river_stone_brick_slab",
+            () -> new SlabBlock(BlockBehaviour.Properties.copy(Blocks.STONE_BRICKS).sound(SoundType.NETHER_BRICKS)));
+
+    public static final RegistryObject<Block> ALGAL_RIVER_STONE_BRICK_STAIRS = registerBlock("algal_river_stone_brick_stairs",
+            () -> new StairBlock(() -> RiverbedBlocks.RIVER_STONE_BRICKS.get().defaultBlockState(), BlockBehaviour.Properties.copy(Blocks.STONE_BRICKS).sound(SoundType.NETHER_BRICKS)));
+
+    public static final RegistryObject<Block> ALGAL_RIVER_STONE_BRICK_WALL = registerBlock("algal_river_stone_brick_wall",
+            () -> new WallBlock(BlockBehaviour.Properties.copy(Blocks.STONE_BRICKS).sound(SoundType.NETHER_BRICKS)));
+
     // Algae
     public static final RegistryObject<Block> ALGAE = registerBlock("algae",
             () -> new AlgaeBlock(BlockBehaviour.Properties.copy(Blocks.SEAGRASS).sound(SoundType.WET_GRASS).strength(0.8F)));
 
     public static final RegistryObject<Block> ALGAE_BLOCK = registerBlock("algae_block",
             () -> new Block(BlockBehaviour.Properties.copy(Blocks.SPONGE).sound(SoundType.WET_GRASS)));
+
+    // River Grass
+
+    public static final RegistryObject<Block> RIVER_GRASS = registerBlock("river_grass",
+            () -> new RivergrassBlock(BlockBehaviour.Properties.copy(Blocks.SMALL_DRIPLEAF).sound(SoundType.WET_GRASS)));
 
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block) {
         RegistryObject<T> toReturn = BLOCKS.register(name, block);

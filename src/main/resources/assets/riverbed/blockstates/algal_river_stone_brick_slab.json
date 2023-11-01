@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "riverbed:block/algal_river_stone_brick_slab"
+    },
+    "type=double": {
+      "model": "riverbed:block/algal_river_stone_bricks"
+    },
+    "type=top": {
+      "model": "riverbed:block/algal_river_stone_brick_slab_top"
+    }
+  }
+}
