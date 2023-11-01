@@ -1,0 +1,27 @@
+{
+  "feature": "riverbed:patch_river_grass",
+  "placement": [
+    {
+      "type": "minecraft:in_square"
+    },
+    {
+      "type": "minecraft:count",
+      "count": 7
+    },
+    {
+      "type": "minecraft:heightmap",
+      "heightmap": "OCEAN_FLOOR_WG"
+    },
+    {
+      "type": "minecraft:block_predicate_filter",
+      "predicate": {
+        "type": "minecraft:matching_fluids",
+        "fluids": "minecraft:water"
+      }
+    },
+    {
+      "type": "minecraft:surface_water_depth_filter",
+      "max_water_depth": 1
+    }
+  ]
+}

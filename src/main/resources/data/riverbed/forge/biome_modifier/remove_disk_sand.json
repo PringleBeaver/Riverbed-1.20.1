@@ -1,0 +1,5 @@
+{
+  "type": "forge:remove_features",
+  "features": "minecraft:disk_sand",
+  "biomes": "#riverbed:has_river_grass"
+}

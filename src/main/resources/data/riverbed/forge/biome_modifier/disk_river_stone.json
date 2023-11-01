@@ -1,0 +1,6 @@
+{
+  "type": "forge:add_features",
+  "features": "riverbed:disk_river_stone",
+  "biomes": "#riverbed:has_river_grass",
+  "step": "lakes"
+}
