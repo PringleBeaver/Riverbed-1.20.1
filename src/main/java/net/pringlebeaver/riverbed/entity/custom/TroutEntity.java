@@ -23,6 +23,6 @@ public class TroutEntity extends AbstractSchoolingFish {
 
     @Override
     public ItemStack getBucketItemStack() {
-        return new ItemStack(RiverbedItems.COPPER_PAN.get());
+        return new ItemStack(RiverbedItems.TROUT_BUCKET.get());
     }
 }

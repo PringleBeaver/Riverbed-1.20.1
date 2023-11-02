@@ -32,7 +32,11 @@ public class RiverbedMain
 
         // Register Stuff
 
+
+
         RiverbedItems.register(modEventBus);
+
+        RiverbedEntities.register(modEventBus);
 
         RiverbedBlocks.register(modEventBus);
 
@@ -40,7 +44,7 @@ public class RiverbedMain
 
         RiverbedSounds.register(modEventBus);
 
-        RiverbedEntities.register(modEventBus);
+
 
 
 

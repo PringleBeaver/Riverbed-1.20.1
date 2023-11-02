@@ -40,6 +40,10 @@ public class RiverbedCreativeTabs {
 
                         pOutput.accept(RiverbedBlocks.RIVER_GRASS.get());
 
+                        pOutput.accept(RiverbedItems.TROUT.get());
+                        pOutput.accept(RiverbedItems.COOKED_TROUT.get());
+                        pOutput.accept(RiverbedItems.TROUT_BUCKET.get());
+
                         pOutput.accept(RiverbedItems.MUSIC_DISC_DELTA.get());
 
                         pOutput.accept(RiverbedItems.COPPER_PAN.get());
