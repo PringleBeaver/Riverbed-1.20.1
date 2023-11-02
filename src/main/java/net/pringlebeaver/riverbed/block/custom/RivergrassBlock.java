@@ -19,6 +19,7 @@ import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.pringlebeaver.riverbed.block.RiverbedBlocks;
+import net.pringlebeaver.riverbed.util.RiverbedTags;
 
 import javax.annotation.Nullable;
 
@@ -39,7 +40,7 @@ public class RivergrassBlock extends DoublePlantBlock implements SimpleWaterlogg
     }
 
     protected boolean mayPlaceOn(BlockState blockState, BlockGetter blockGetter, BlockPos blockPos) {
-        return (blockState.isFaceSturdy(blockGetter, blockPos, Direction.UP) && blockGetter.getFluidState(blockPos.above()).isSourceOfType(Fluids.WATER) || (super.mayPlaceOn(blockState, blockGetter, blockPos) || blockState.is(BlockTags.SAND) || blockState.is(Blocks.CLAY) || blockState.is(RiverbedBlocks.RIVER_STONES.get()) || blockState.is(RiverbedBlocks.ALGAE_BLOCK.get()))) && !blockGetter.getFluidState(blockPos.above().above()).isSourceOfType(Fluids.WATER);
+        return (blockState.isFaceSturdy(blockGetter, blockPos, Direction.UP) && blockGetter.getFluidState(blockPos.above()).isSourceOfType(Fluids.WATER) || blockState.is(RiverbedTags.Blocks.RIVER_GRASS_PLACEABLE) ) && !blockGetter.getFluidState(blockPos.above().above()).isSourceOfType(Fluids.WATER);
     }
 
     @Nullable

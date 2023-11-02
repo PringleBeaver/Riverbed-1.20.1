@@ -15,7 +15,7 @@ public class RiverbedCreativeTabs {
             DeferredRegister.create(Registries.CREATIVE_MODE_TAB, RiverbedMain.MOD_ID);
 
     public static final RegistryObject<CreativeModeTab> RIVERBED_TAB = CREATIVE_MOD_TABS.register("riverbed_tab",
-            () -> CreativeModeTab.builder().icon(() -> new ItemStack(RiverbedBlocks.ALGAE.get()))
+            () -> CreativeModeTab.builder().icon(() -> new ItemStack(RiverbedItems.TROUT.get()))
                     .title(Component.translatable("creativetab.riverbed_tab"))
                     .displayItems((pParameters, pOutput) -> {
 
@@ -42,11 +42,11 @@ public class RiverbedCreativeTabs {
 
                         pOutput.accept(RiverbedItems.TROUT.get());
                         pOutput.accept(RiverbedItems.COOKED_TROUT.get());
+                        pOutput.accept(RiverbedItems.FISH_CHOWDER.get());
+
                         pOutput.accept(RiverbedItems.TROUT_BUCKET.get());
 
                         pOutput.accept(RiverbedItems.MUSIC_DISC_DELTA.get());
-
-                        pOutput.accept(RiverbedItems.COPPER_PAN.get());
 
 
 

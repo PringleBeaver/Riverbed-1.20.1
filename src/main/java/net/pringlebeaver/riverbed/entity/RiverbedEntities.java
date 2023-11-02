@@ -15,7 +15,7 @@ public class RiverbedEntities {
 
 
     public static final RegistryObject<EntityType<TroutEntity>> TROUT =
-            ENTITY_TYPES.register("trout", () -> EntityType.Builder.of(TroutEntity::new, MobCategory.WATER_AMBIENT).sized(0.5f, 0.5f).build("trout"));
+            ENTITY_TYPES.register("trout", () -> EntityType.Builder.of(TroutEntity::new, MobCategory.WATER_AMBIENT).sized(0.6f, 0.4f).build("trout"));
 
     public static void register(IEventBus eventBus) {
         ENTITY_TYPES.register(eventBus);
