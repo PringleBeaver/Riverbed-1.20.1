@@ -1,6 +1,7 @@
 package net.pringlebeaver.riverbed;
 
 import com.mojang.logging.LogUtils;
+import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
@@ -12,6 +13,8 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.pringlebeaver.riverbed.block.RiverbedBlocks;
+import net.pringlebeaver.riverbed.entity.RiverbedEntities;
+import net.pringlebeaver.riverbed.entity.client.TroutRenderer;
 import net.pringlebeaver.riverbed.item.RiverbedCreativeTabs;
 import net.pringlebeaver.riverbed.item.RiverbedItems;
 import net.pringlebeaver.riverbed.sound.RiverbedSounds;
@@ -36,6 +39,8 @@ public class RiverbedMain
         RiverbedCreativeTabs.register(modEventBus);
 
         RiverbedSounds.register(modEventBus);
+
+        RiverbedEntities.register(modEventBus);
 
 
 
@@ -72,7 +77,7 @@ public class RiverbedMain
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event)
         {
-
+            EntityRenderers.register(RiverbedEntities.TROUT.get(), TroutRenderer::new);
         }
     }
 }
