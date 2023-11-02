@@ -13,6 +13,7 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.pringlebeaver.riverbed.block.RiverbedBlocks;
+import net.pringlebeaver.riverbed.effect.RiverbedEffects;
 import net.pringlebeaver.riverbed.entity.RiverbedEntities;
 import net.pringlebeaver.riverbed.entity.client.TroutRenderer;
 import net.pringlebeaver.riverbed.item.RiverbedCreativeTabs;
@@ -35,14 +36,15 @@ public class RiverbedMain
 
 
         RiverbedItems.register(modEventBus);
+        RiverbedBlocks.register(modEventBus);
 
         RiverbedEntities.register(modEventBus);
-
-        RiverbedBlocks.register(modEventBus);
+        RiverbedSounds.register(modEventBus);
+        RiverbedEffects.register(modEventBus);
 
         RiverbedCreativeTabs.register(modEventBus);
 
-        RiverbedSounds.register(modEventBus);
+
 
 
 

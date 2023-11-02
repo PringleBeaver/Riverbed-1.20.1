@@ -29,5 +29,7 @@
 	"block.riverbed.algae": "Algae",
 	"block.riverbed.algae_block": "Algae Block",
 
-	"entity.riverbed.trout": "Trout"
+	"entity.riverbed.trout": "Trout",
+
+	"effect.riverbed.fishy": "Fishy"
 }
