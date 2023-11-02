@@ -73,32 +73,33 @@ public class AlgaeBlock extends BushBlock implements SimpleWaterloggedBlock, IFo
     public boolean isRandomlyTicking(BlockState pState) {
         return pState.getValue(WATERLOGGED);
     }
-    @Override
-    public void randomTick(BlockState pState, ServerLevel pLevel, BlockPos pPos, RandomSource pRandom) {
 
-        int i = this.getAlgaeLevel(pState);
-        if (pLevel.random.nextInt(16) == 0 && pLevel.isAreaLoaded(pPos, 4)) {
-            if (pState.getValue(LEVEL) == 1 && pState.getValue(WATERLOGGED)) {
-                pLevel.setBlock(pPos, this.getStateForLevel(i + 1), 2);
-            }
-            if (pLevel.random.nextInt(4) == 0 && pState.getValue(LEVEL) == 2 && pState.getValue(WATERLOGGED)) {
-                pLevel.setBlock(pPos, this.getStateForLevel(i + 1), 2);
-            }
-        }
+  //  @Override
+   // public void randomTick(BlockState pState, ServerLevel pLevel, BlockPos pPos, RandomSource pRandom) {
 
-            if (pState.getValue(LEVEL) > 1 && pState.getValue(WATERLOGGED)) {
-                BlockState blockstate = this.defaultBlockState();
+      //  int i = this.getAlgaeLevel(pState);
+      // if (pLevel.random.nextInt(16) == 0 && pLevel.isAreaLoaded(pPos, 4)) {
+      //      if (pState.getValue(LEVEL) == 1 && pState.getValue(WATERLOGGED)) {
+           //     pLevel.setBlock(pPos, this.getStateForLevel(i + 1), 2);
+       //     }
+      //      if (pLevel.random.nextInt(4) == 0 && pState.getValue(LEVEL) == 2 && pState.getValue(WATERLOGGED)) {
+     //           pLevel.setBlock(pPos, this.getStateForLevel(i + 1), 2);
+      //      }
+      //  }
 
-                for(int t = 0; t < 4; ++t) {
-                    BlockPos blockpos = pPos.offset(pRandom.nextInt(3) - 1, pRandom.nextInt(5) - 3, pRandom.nextInt(3) - 1);
-                    if (pLevel.getBlockState(blockpos).is(Blocks.WATER) && pLevel.getFluidState(blockpos).isSource() && mayPlaceOn(pLevel.getBlockState(blockpos.below()), pLevel, pPos)) {
-                        pLevel.setBlockAndUpdate(blockpos, blockstate.setValue(LEVEL, 1));
-                    }
-                }
+      //      if (pState.getValue(LEVEL) > 1 && pState.getValue(WATERLOGGED)) {
+    //            BlockState blockstate = this.defaultBlockState();
 
-        }
-        super.randomTick(pState, pLevel, pPos, pRandom);
-    }
+      //          for(int t = 0; t < 4; ++t) {
+     //               BlockPos blockpos = pPos.offset(pRandom.nextInt(3) - 1, pRandom.nextInt(5) - 3, pRandom.nextInt(3) - 1);
+     //               if (pLevel.getBlockState(blockpos).is(Blocks.WATER) && pLevel.getFluidState(blockpos).isSource() && mayPlaceOn(pLevel.getBlockState(blockpos.below()), pLevel, pPos)) {
+     //                   pLevel.setBlockAndUpdate(blockpos, blockstate.setValue(LEVEL, 1));
+    //                }
+    //            }
+
+    //    }
+   //     super.randomTick(pState, pLevel, pPos, pRandom);
+  //  }
 
     protected boolean mayPlaceOn(BlockState pState, BlockGetter pLevel, BlockPos pPos) {
 

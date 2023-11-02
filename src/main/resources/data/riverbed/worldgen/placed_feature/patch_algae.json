@@ -1,9 +1,9 @@
 {
-  "feature": "riverbed:patch_river_grass",
+  "feature": "riverbed:patch_algae",
   "placement": [
     {
       "type": "minecraft:count",
-      "count": 4
+      "count": 3
     },
     {
       "type": "minecraft:in_square"

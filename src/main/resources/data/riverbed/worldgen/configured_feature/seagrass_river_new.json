@@ -1,7 +1,7 @@
 {
   "type": "minecraft:random_patch",
   "config": {
-    "tries": 96,
+    "tries": 16,
     "xz_spread": 3,
     "y_spread": 3,
     "feature": {
@@ -11,21 +11,38 @@
           "to_place": {
             "type": "minecraft:simple_state_provider",
             "state": {
-              "Name": "riverbed:river_grass",
-              "Properties": {
-                "half": "lower"
-              }
+              "Name": "minecraft:seagrass"
             }
           }
         }
       },
       "placement": [
         {
+          "type": "minecraft:rarity_filter",
+          "chance": 5
+        },
+        {
+          "type": "minecraft:random_offset",
+          "xz_spread": {
+            "type": "minecraft:uniform",
+            "value": {
+              "min_inclusive": 0,
+              "max_inclusive": 8
+            }
+          },
+          "y_spread": {
+            "type": "minecraft:uniform",
+            "value": {
+              "min_inclusive": 0,
+              "max_inclusive": 8
+            }
+          }
+        },
+        {
           "type": "minecraft:block_predicate_filter",
           "predicate": {
             "type": "minecraft:matching_blocks",
             "blocks": [
-              "minecraft:air",
               "minecraft:water"
             ]
           }

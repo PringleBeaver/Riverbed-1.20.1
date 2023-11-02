@@ -5,8 +5,8 @@
     "radius": {
       "type": "minecraft:uniform",
       "value": {
-        "max_inclusive": 5,
-        "min_inclusive": 3
+        "max_inclusive": 6,
+        "min_inclusive": 4
       }
     },
     "state_provider": {
@@ -22,7 +22,7 @@
       "type": "minecraft:matching_blocks",
       "blocks": [
         "minecraft:dirt",
-        "minecraft:grass_block"
+        "minecraft:gravel"
       ]
     }
   }

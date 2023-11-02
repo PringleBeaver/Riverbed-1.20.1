@@ -4,6 +4,7 @@ import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.material.MapColor;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -67,7 +68,7 @@ public class RiverbedBlocks {
 
     // Algae
     public static final RegistryObject<Block> ALGAE = registerBlock("algae",
-            () -> new AlgaeBlock(BlockBehaviour.Properties.copy(Blocks.SEAGRASS).sound(SoundType.WET_GRASS).strength(0.8F)));
+            () -> new AlgaeBlock(BlockBehaviour.Properties.copy(Blocks.LILY_PAD).sound(SoundType.WET_GRASS).strength(0.8F)));
 
     public static final RegistryObject<Block> ALGAE_BLOCK = registerBlock("algae_block",
             () -> new Block(BlockBehaviour.Properties.copy(Blocks.SPONGE).sound(SoundType.WET_GRASS)));
@@ -76,6 +77,8 @@ public class RiverbedBlocks {
 
     public static final RegistryObject<Block> RIVER_GRASS = registerBlock("river_grass",
             () -> new RivergrassBlock(BlockBehaviour.Properties.copy(Blocks.SMALL_DRIPLEAF).sound(SoundType.WET_GRASS)));
+
+
 
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block) {
         RegistryObject<T> toReturn = BLOCKS.register(name, block);
