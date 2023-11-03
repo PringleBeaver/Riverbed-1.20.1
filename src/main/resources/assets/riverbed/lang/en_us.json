@@ -1,5 +1,5 @@
 {
-	"creativetab.riverbed_tab": "Riverbed",
+	"creativetab.riverbed_tab": "Riverbed Expansion",
 	"item.riverbed.copper_pan": "Copper Pan",
 	
 	"item.riverbed.music_disc_delta": "Music Disc",
@@ -31,5 +31,5 @@
 
 	"entity.riverbed.trout": "Trout",
 
-	"effect.riverbed.fishy": "Fishy"
+	"effect.riverbed.angling": "Angling"
 }

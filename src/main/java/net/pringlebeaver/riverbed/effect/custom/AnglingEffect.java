@@ -4,9 +4,9 @@ import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.entity.LivingEntity;
 
-public class FishyEffect extends MobEffect {
+public class AnglingEffect extends MobEffect {
 
-    public FishyEffect(MobEffectCategory pCategory, int pColor) {
+    public AnglingEffect(MobEffectCategory pCategory, int pColor) {
         super(pCategory, pColor);
     }
 

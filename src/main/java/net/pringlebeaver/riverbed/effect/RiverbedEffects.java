@@ -7,13 +7,13 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.pringlebeaver.riverbed.RiverbedMain;
-import net.pringlebeaver.riverbed.effect.custom.FishyEffect;
+import net.pringlebeaver.riverbed.effect.custom.AnglingEffect;
 
 public class RiverbedEffects {
     public static final DeferredRegister<MobEffect> MOB_EFFECTS =
             DeferredRegister.create(ForgeRegistries.MOB_EFFECTS, RiverbedMain.MOD_ID);
 
-    public static final RegistryObject<MobEffect> FISHY = MOB_EFFECTS.register("fishy", () -> new FishyEffect(MobEffectCategory.BENEFICIAL, 8167749));
+    public static final RegistryObject<MobEffect> ANLGING = MOB_EFFECTS.register("angling", () -> new AnglingEffect(MobEffectCategory.BENEFICIAL, 4294509));
 
 
     public static void register(IEventBus eventBus) {

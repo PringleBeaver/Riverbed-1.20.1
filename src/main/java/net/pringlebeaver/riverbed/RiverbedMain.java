@@ -42,6 +42,7 @@ public class RiverbedMain
         RiverbedSounds.register(modEventBus);
         RiverbedEffects.register(modEventBus);
 
+
         RiverbedCreativeTabs.register(modEventBus);
 
 
