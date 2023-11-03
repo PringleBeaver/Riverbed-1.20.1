@@ -4,7 +4,7 @@
     "features": [
       {
         "feature": {
-          "type": "minecraft:block_column",
+          "type": "riverbed:river_log",
           "config": {
             "direction": "north",
             "allowed_placement": {
@@ -16,8 +16,8 @@
                 "height": {
                   "type": "minecraft:uniform",
                   "value": {
-                    "min_inclusive": 2,
-                    "max_inclusive": 3
+                    "min_inclusive": 3,
+                    "max_inclusive": 4
                   }
                 },
                 "provider": {
@@ -42,7 +42,7 @@
       },
       {
         "feature": {
-          "type": "minecraft:block_column",
+          "type": "riverbed:river_log",
           "config": {
             "direction": "east",
             "allowed_placement": {
@@ -54,8 +54,8 @@
                 "height": {
                   "type": "minecraft:uniform",
                   "value": {
-                    "min_inclusive": 2,
-                    "max_inclusive": 3
+                    "min_inclusive": 3,
+                    "max_inclusive": 4
                   }
                 },
                 "provider": {

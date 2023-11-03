@@ -13,6 +13,7 @@ import net.pringlebeaver.riverbed.RiverbedMain;
 import net.pringlebeaver.riverbed.block.custom.AlgaeBlock;
 import net.pringlebeaver.riverbed.block.custom.RivergrassBlock;
 import net.pringlebeaver.riverbed.item.RiverbedItems;
+import net.pringlebeaver.riverbed.item.custom.FuelBlockItem;
 
 import java.security.PublicKey;
 import java.util.function.Supplier;
@@ -86,7 +87,11 @@ public class RiverbedBlocks {
         return toReturn;
     }
     private static <T extends Block> RegistryObject<Item> registerBlockItem(String name, RegistryObject<T> block){
-    return RiverbedItems.ITEMS.register(name, () -> new BlockItem(block.get(), new Item.Properties()));
+        if (name == "algae_block") {
+            return RiverbedItems.ITEMS.register(name, () -> new FuelBlockItem(block.get(), new Item.Properties(), 200));
+
+        }
+        return RiverbedItems.ITEMS.register(name, () -> new BlockItem(block.get(), new Item.Properties()));
     }
 
     public static void register(IEventBus eventBus) {

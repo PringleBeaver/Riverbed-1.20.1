@@ -18,7 +18,9 @@ import net.pringlebeaver.riverbed.entity.RiverbedEntities;
 import net.pringlebeaver.riverbed.entity.client.TroutRenderer;
 import net.pringlebeaver.riverbed.item.RiverbedCreativeTabs;
 import net.pringlebeaver.riverbed.item.RiverbedItems;
+import net.pringlebeaver.riverbed.loot.RiverbedLootModifiers;
 import net.pringlebeaver.riverbed.sound.RiverbedSounds;
+import net.pringlebeaver.riverbed.world.RiverbedFeatures;
 import org.slf4j.Logger;
 
 // The value here should match an entry in the META-INF/mods.toml file
@@ -44,6 +46,11 @@ public class RiverbedMain
 
 
         RiverbedCreativeTabs.register(modEventBus);
+
+        RiverbedLootModifiers.register(modEventBus);
+
+        RiverbedFeatures.register(modEventBus);
+
 
 
 

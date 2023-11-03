@@ -46,6 +46,9 @@ public class AlgaeBlock extends BushBlock implements SimpleWaterloggedBlock, IFo
     public VoxelShape getShape(BlockState pState, BlockGetter pLevel, BlockPos pPos, CollisionContext pContext) {
         return SHAPE;
     }
+
+
+
     @Nullable
     public BlockState getStateForPlacement(BlockPlaceContext pContext) {
         BlockState blockstate = pContext.getLevel().getBlockState(pContext.getClickedPos());
