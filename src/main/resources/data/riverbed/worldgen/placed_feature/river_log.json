@@ -2,6 +2,10 @@
   "feature": "riverbed:river_log",
   "placement": [
     {
+      "type": "minecraft:rarity_filter",
+      "chance": 1.5
+    },
+    {
       "type": "minecraft:count",
       "count": 1
     },
@@ -16,7 +20,9 @@
       "type": "minecraft:block_predicate_filter",
       "predicate": {
         "type": "minecraft:matching_fluids",
-        "fluids": "minecraft:water"
+        "fluids": [
+          "minecraft:water"
+        ]
       }
     },
     {

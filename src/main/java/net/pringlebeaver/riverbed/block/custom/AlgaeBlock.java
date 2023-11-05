@@ -2,8 +2,6 @@ package net.pringlebeaver.riverbed.block.custom;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.RandomSource;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.LevelAccessor;
@@ -17,10 +15,8 @@ import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
-import net.minecraft.world.level.material.EmptyFluid;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
-import net.minecraft.world.level.material.WaterFluid;
 import net.minecraft.world.level.pathfinder.PathComputationType;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
@@ -30,8 +26,8 @@ import javax.annotation.Nullable;
 
 public class AlgaeBlock extends BushBlock implements SimpleWaterloggedBlock, IForgeShearable {
 
-    public static final int MAX_LEVEL = 3;
-    public static final IntegerProperty LEVEL = BlockStateProperties.LEVEL;
+    public static final int MAX_ALGAE = 3;
+    public static final IntegerProperty ALGAE = IntegerProperty.create("algae", 1, 3);
     public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
 
     protected static final VoxelShape SHAPE = Block.box(0.0D, 0.0D, 0.0D, 16.0D, 1.0D, 16.0D);
@@ -39,7 +35,7 @@ public class AlgaeBlock extends BushBlock implements SimpleWaterloggedBlock, IFo
 
     public AlgaeBlock(Properties pProperties) {
         super(pProperties);
-        this.registerDefaultState(this.stateDefinition.any().setValue(LEVEL, Integer.valueOf(1)).setValue(WATERLOGGED, Boolean.valueOf(true)));
+        this.registerDefaultState(this.stateDefinition.any().setValue(ALGAE, Integer.valueOf(1)).setValue(WATERLOGGED, Boolean.valueOf(true)));
 
     }
 
@@ -53,7 +49,7 @@ public class AlgaeBlock extends BushBlock implements SimpleWaterloggedBlock, IFo
     public BlockState getStateForPlacement(BlockPlaceContext pContext) {
         BlockState blockstate = pContext.getLevel().getBlockState(pContext.getClickedPos());
         if (blockstate.is(this)) {
-            return blockstate.setValue(LEVEL, Integer.valueOf(Math.min(4, blockstate.getValue(LEVEL) + 1)));
+            return blockstate.setValue(ALGAE, Integer.valueOf(Math.min(4, blockstate.getValue(ALGAE) + 1)));
         } else {
             FluidState fluidstate = pContext.getLevel().getFluidState(pContext.getClickedPos());
             boolean flag = fluidstate.getType() == Fluids.WATER;
@@ -62,7 +58,7 @@ public class AlgaeBlock extends BushBlock implements SimpleWaterloggedBlock, IFo
     }
 
     protected IntegerProperty getLevelProperty() {
-        return LEVEL;
+        return ALGAE;
     }
 
     public BlockState getStateForLevel(int pAge) {
@@ -127,7 +123,7 @@ public class AlgaeBlock extends BushBlock implements SimpleWaterloggedBlock, IFo
     }
 
     public boolean canBeReplaced(BlockState pState, BlockPlaceContext pUseContext) {
-        return !pUseContext.isSecondaryUseActive() && pUseContext.getItemInHand().is(this.asItem()) && pState.getValue(LEVEL) < MAX_LEVEL ? true : super.canBeReplaced(pState, pUseContext);
+        return !pUseContext.isSecondaryUseActive() && pUseContext.getItemInHand().is(this.asItem()) && pState.getValue(ALGAE) < MAX_ALGAE ? true : super.canBeReplaced(pState, pUseContext);
     }
 
 
@@ -136,7 +132,7 @@ public class AlgaeBlock extends BushBlock implements SimpleWaterloggedBlock, IFo
     }
 
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> pBuilder) {
-        pBuilder.add(LEVEL, WATERLOGGED);
+        pBuilder.add(ALGAE, WATERLOGGED);
     }
 
     public boolean isPathfindable(BlockState pState, BlockGetter pLevel, BlockPos pPos, PathComputationType pType) {

@@ -2,5 +2,5 @@
   "type": "forge:add_features",
   "features": "riverbed:river_log",
   "biomes": "#riverbed:has_basic_river",
-  "step": "surface_structures"
+  "step": "top_layer_modification"
 }

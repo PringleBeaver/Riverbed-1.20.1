@@ -48,6 +48,8 @@ public class RiverbedCreativeTabs {
 
                         pOutput.accept(RiverbedItems.MUSIC_DISC_DELTA.get());
 
+                        pOutput.accept(RiverbedItems.TROUT_SPAWN_EGG.get());
+
 
 
 

@@ -36,11 +36,9 @@ public class RiverbedMain
         // Register Stuff
 
 
-
+        RiverbedEntities.register(modEventBus);
         RiverbedItems.register(modEventBus);
         RiverbedBlocks.register(modEventBus);
-
-        RiverbedEntities.register(modEventBus);
         RiverbedSounds.register(modEventBus);
         RiverbedEffects.register(modEventBus);
 
