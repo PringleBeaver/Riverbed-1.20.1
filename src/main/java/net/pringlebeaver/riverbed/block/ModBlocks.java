@@ -82,6 +82,9 @@ public class ModBlocks {
     public static final RegistryObject<Block> WATER_HYACINTH = registerBlock("water_hyacinth",
             () -> new WaterHyacinthBlock(BlockBehaviour.Properties.copy(Blocks.DANDELION).sound(SoundType.WET_GRASS)));
 
+    public static final RegistryObject<Block> POTTED_HYACINTH = BLOCKS.register("potted_hyacinth",
+            () -> new FlowerPotBlock((() -> (FlowerPotBlock) Blocks.FLOWER_POT), WATER_HYACINTH ,BlockBehaviour.Properties.copy(Blocks.POTTED_DANDELION)));
+
 
 
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block) {

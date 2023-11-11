@@ -2,6 +2,9 @@ package net.pringlebeaver.riverbed;
 
 import com.mojang.logging.LogUtils;
 import net.minecraft.client.renderer.entity.EntityRenderers;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.ComposterBlock;
+import net.minecraft.world.level.block.FlowerPotBlock;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
@@ -67,7 +70,18 @@ public class RiverbedMain
 
     private void commonSetup(final FMLCommonSetupEvent event)
     {
+        event.enqueueWork(() -> {
+            // Compostable
+            ComposterBlock.COMPOSTABLES.put(ModBlocks.RIVER_GRASS.get().asItem(), 0.3f);
+            ComposterBlock.COMPOSTABLES.put(ModBlocks.WATER_HYACINTH.get().asItem(), 0.65f);
+            ComposterBlock.COMPOSTABLES.put(ModBlocks.ALGAE.get().asItem(), 0.5f);
+            ComposterBlock.COMPOSTABLES.put(ModBlocks.ALGAE_BLOCK.get().asItem(), 0.75f);
 
+
+
+            // Flower Pots
+            ((FlowerPotBlock) Blocks.FLOWER_POT).addPlant(ModBlocks.WATER_HYACINTH.getId(),ModBlocks.POTTED_HYACINTH);
+        });
     }
 
     private void addCreative(BuildCreativeModeTabContentsEvent event)
