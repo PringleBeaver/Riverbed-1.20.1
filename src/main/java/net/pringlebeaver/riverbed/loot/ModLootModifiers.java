@@ -8,7 +8,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.pringlebeaver.riverbed.RiverbedMain;
 
-public class RiverbedLootModifiers {
+public class ModLootModifiers {
     public static final DeferredRegister<Codec<? extends IGlobalLootModifier>> LOOT_MODIFIER_SERIALIZERS =
             DeferredRegister.create(ForgeRegistries.Keys.GLOBAL_LOOT_MODIFIER_SERIALIZERS, RiverbedMain.MOD_ID);
 

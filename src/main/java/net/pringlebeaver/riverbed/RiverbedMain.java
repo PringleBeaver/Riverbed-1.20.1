@@ -12,15 +12,15 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import net.pringlebeaver.riverbed.block.RiverbedBlocks;
-import net.pringlebeaver.riverbed.effect.RiverbedEffects;
-import net.pringlebeaver.riverbed.entity.RiverbedEntities;
+import net.pringlebeaver.riverbed.block.ModBlocks;
+import net.pringlebeaver.riverbed.effect.ModEffects;
+import net.pringlebeaver.riverbed.entity.ModEntities;
 import net.pringlebeaver.riverbed.entity.client.TroutRenderer;
-import net.pringlebeaver.riverbed.item.RiverbedCreativeTabs;
-import net.pringlebeaver.riverbed.item.RiverbedItems;
-import net.pringlebeaver.riverbed.loot.RiverbedLootModifiers;
-import net.pringlebeaver.riverbed.sound.RiverbedSounds;
-import net.pringlebeaver.riverbed.world.RiverbedFeatures;
+import net.pringlebeaver.riverbed.item.ModItems;
+import net.pringlebeaver.riverbed.item.ModCreativeTabs;
+import net.pringlebeaver.riverbed.loot.ModLootModifiers;
+import net.pringlebeaver.riverbed.sound.ModSounds;
+import net.pringlebeaver.riverbed.world.ModFeatures;
 import org.slf4j.Logger;
 
 // The value here should match an entry in the META-INF/mods.toml file
@@ -36,18 +36,18 @@ public class RiverbedMain
         // Register Stuff
 
 
-        RiverbedEntities.register(modEventBus);
-        RiverbedItems.register(modEventBus);
-        RiverbedBlocks.register(modEventBus);
-        RiverbedSounds.register(modEventBus);
-        RiverbedEffects.register(modEventBus);
+        ModEntities.register(modEventBus);
+        ModItems.register(modEventBus);
+        ModBlocks.register(modEventBus);
+        ModSounds.register(modEventBus);
+        ModEffects.register(modEventBus);
 
 
-        RiverbedCreativeTabs.register(modEventBus);
+        ModCreativeTabs.register(modEventBus);
 
-        RiverbedLootModifiers.register(modEventBus);
+        ModLootModifiers.register(modEventBus);
 
-        RiverbedFeatures.register(modEventBus);
+        ModFeatures.register(modEventBus);
 
 
 
@@ -89,7 +89,7 @@ public class RiverbedMain
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event)
         {
-            EntityRenderers.register(RiverbedEntities.TROUT.get(), TroutRenderer::new);
+            EntityRenderers.register(ModEntities.TROUT.get(), TroutRenderer::new);
         }
     }
 }

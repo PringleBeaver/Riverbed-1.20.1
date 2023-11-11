@@ -2,13 +2,10 @@ package net.pringlebeaver.riverbed.entity.client;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
-import net.minecraft.client.model.CodModel;
-import net.minecraft.client.model.geom.ModelLayers;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
-import net.minecraft.world.entity.animal.Cod;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.pringlebeaver.riverbed.RiverbedMain;
@@ -19,7 +16,7 @@ public class TroutRenderer extends MobRenderer<TroutEntity, TroutModel<TroutEnti
     private static final ResourceLocation TROUT_LOCATION = new ResourceLocation(RiverbedMain.MOD_ID, "textures/entity/rainbow_trout.png");
 
     public TroutRenderer(EntityRendererProvider.Context context) {
-        super(context, new TroutModel<TroutEntity>(context.bakeLayer(RiverbedModelLayers.TROUT_LAYER)), 0.3F);
+        super(context, new TroutModel<TroutEntity>(context.bakeLayer(ModModelLayers.TROUT_LAYER)), 0.3F);
     }
 
     public ResourceLocation getTextureLocation(TroutEntity pEntity) {

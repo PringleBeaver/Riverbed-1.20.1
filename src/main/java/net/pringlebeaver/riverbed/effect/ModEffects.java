@@ -9,7 +9,7 @@ import net.minecraftforge.registries.RegistryObject;
 import net.pringlebeaver.riverbed.RiverbedMain;
 import net.pringlebeaver.riverbed.effect.custom.AnglingEffect;
 
-public class RiverbedEffects {
+public class ModEffects {
     public static final DeferredRegister<MobEffect> MOB_EFFECTS =
             DeferredRegister.create(ForgeRegistries.MOB_EFFECTS, RiverbedMain.MOD_ID);
 

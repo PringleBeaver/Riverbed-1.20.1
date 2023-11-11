@@ -6,8 +6,6 @@ import net.minecraft.core.Direction;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.levelgen.feature.BlockColumnFeature;
@@ -15,7 +13,7 @@ import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
 import net.minecraft.world.level.levelgen.feature.configurations.BlockColumnConfiguration;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
-import net.pringlebeaver.riverbed.block.RiverbedBlocks;
+import net.pringlebeaver.riverbed.block.ModBlocks;
 import net.pringlebeaver.riverbed.block.custom.AlgaeBlock;
 
 public class RiverLogFeature extends BlockColumnFeature {
@@ -86,7 +84,7 @@ public class RiverLogFeature extends BlockColumnFeature {
 
         FluidState fluidstate = placeContext.level().getFluidState(blockPos.above());
         boolean flag = fluidstate.getType() == Fluids.WATER;
-        BlockState algaeState = RiverbedBlocks.ALGAE.get().defaultBlockState().setValue(BlockStateProperties.WATERLOGGED, flag).setValue(AlgaeBlock.ALGAE, randomsource.nextInt(2) + 1);
+        BlockState algaeState = ModBlocks.ALGAE.get().defaultBlockState().setValue(BlockStateProperties.WATERLOGGED, flag).setValue(AlgaeBlock.ALGAE, randomsource.nextInt(2) + 1);
         BlockState stateAbove = placeContext.level().getBlockState(blockPos.above());
         BlockState stateBelow = placeContext.level().getBlockState(blockPos.below());
 

@@ -9,7 +9,7 @@ import net.minecraftforge.registries.RegistryObject;
 import net.pringlebeaver.riverbed.RiverbedMain;
 import net.pringlebeaver.riverbed.entity.custom.TroutEntity;
 
-public class RiverbedEntities {
+public class ModEntities {
     public static final DeferredRegister<EntityType<?>> ENTITY_TYPES =
             DeferredRegister.create(ForgeRegistries.ENTITY_TYPES, RiverbedMain.MOD_ID);
 

@@ -8,7 +8,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.pringlebeaver.riverbed.RiverbedMain;
 
-public class RiverbedSounds {
+public class ModSounds {
 
     public static final DeferredRegister<SoundEvent> SOUND_EVENTS =
             DeferredRegister.create(ForgeRegistries.SOUND_EVENTS, RiverbedMain.MOD_ID);

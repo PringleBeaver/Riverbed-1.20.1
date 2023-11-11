@@ -123,7 +123,7 @@ public class AlgaeBlock extends BushBlock implements SimpleWaterloggedBlock, IFo
     }
 
     public boolean canBeReplaced(BlockState pState, BlockPlaceContext pUseContext) {
-        return !pUseContext.isSecondaryUseActive() && pUseContext.getItemInHand().is(this.asItem()) && pState.getValue(ALGAE) < MAX_ALGAE ? true : super.canBeReplaced(pState, pUseContext);
+        return !pUseContext.isSecondaryUseActive() && pUseContext.getItemInHand().is(this.asItem()) && pState.getValue(ALGAE) < MAX_ALGAE || super.canBeReplaced(pState, pUseContext);
     }
 
 

@@ -6,7 +6,7 @@ import net.minecraft.tags.TagKey;
 import net.minecraft.world.level.block.Block;
 import net.pringlebeaver.riverbed.RiverbedMain;
 
-public class RiverbedTags {
+public class ModTags {
 
     public static class Blocks {
         public static final TagKey<Block> RIVER_GRASS_PLACEABLE = tag("river_grass_placeable");

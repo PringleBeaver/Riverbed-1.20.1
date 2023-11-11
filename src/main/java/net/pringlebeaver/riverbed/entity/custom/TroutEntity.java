@@ -8,12 +8,9 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobSpawnType;
 import net.minecraft.world.entity.animal.AbstractSchoolingFish;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
-import net.pringlebeaver.riverbed.item.RiverbedItems;
-
-import java.util.Random;
+import net.pringlebeaver.riverbed.item.ModItems;
 
 public class TroutEntity extends AbstractSchoolingFish {
 
@@ -29,7 +26,7 @@ public class TroutEntity extends AbstractSchoolingFish {
 
     @Override
     public ItemStack getBucketItemStack() {
-        return new ItemStack(RiverbedItems.TROUT_BUCKET.get());
+        return new ItemStack(ModItems.TROUT_BUCKET.get());
     }
 
     public static boolean canSpawn (EntityType<TroutEntity> entityType, LevelAccessor levelAccessor, MobSpawnType spawnType, BlockPos blockPos, RandomSource random) {
