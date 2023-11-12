@@ -2,6 +2,9 @@ package net.pringlebeaver.riverbed.block.custom;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.tags.BlockTags;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.LevelAccessor;
@@ -21,13 +24,20 @@ import net.minecraft.world.level.pathfinder.PathComputationType;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraftforge.common.IForgeShearable;
+import net.pringlebeaver.riverbed.block.ModBlocks;
 
 import javax.annotation.Nullable;
+import java.util.OptionalInt;
 
 public class AlgaeBlock extends BushBlock implements SimpleWaterloggedBlock, IForgeShearable {
 
+    public static final int SPREADABLE_DISTANCE = 3;
+
     public static final int MAX_ALGAE = 3;
     public static final IntegerProperty ALGAE = IntegerProperty.create("algae", 1, 3);
+
+    public static final IntegerProperty DISTANCE = IntegerProperty.create("distance", 1, SPREADABLE_DISTANCE);
+
     public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
 
     protected static final VoxelShape SHAPE = Block.box(0.0D, 0.0D, 0.0D, 16.0D, 1.0D, 16.0D);
@@ -35,9 +45,18 @@ public class AlgaeBlock extends BushBlock implements SimpleWaterloggedBlock, IFo
 
     public AlgaeBlock(Properties pProperties) {
         super(pProperties);
-        this.registerDefaultState(this.stateDefinition.any().setValue(ALGAE, Integer.valueOf(1)).setValue(WATERLOGGED, Boolean.valueOf(true)));
+        this.registerDefaultState(this.stateDefinition.any().setValue(ALGAE, 1).setValue(WATERLOGGED, Boolean.TRUE).setValue(DISTANCE, SPREADABLE_DISTANCE));
 
     }
+    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> pBuilder) {
+        pBuilder.add(ALGAE, WATERLOGGED, DISTANCE);
+    }
+
+    protected boolean isSpreading(BlockState pState) {
+        return pState.getValue(DISTANCE) < SPREADABLE_DISTANCE || pState.getValue(ALGAE) == MAX_ALGAE;
+    }
+
+
 
     public VoxelShape getShape(BlockState pState, BlockGetter pLevel, BlockPos pPos, CollisionContext pContext) {
         return SHAPE;
@@ -48,57 +67,61 @@ public class AlgaeBlock extends BushBlock implements SimpleWaterloggedBlock, IFo
     @Nullable
     public BlockState getStateForPlacement(BlockPlaceContext pContext) {
         BlockState blockstate = pContext.getLevel().getBlockState(pContext.getClickedPos());
+        FluidState fluidstate = pContext.getLevel().getFluidState(pContext.getClickedPos());
+        boolean flag = fluidstate.getType() == Fluids.WATER;
+
         if (blockstate.is(this)) {
-            return blockstate.setValue(ALGAE, Integer.valueOf(Math.min(4, blockstate.getValue(ALGAE) + 1)));
+            return super.getStateForPlacement(pContext).setValue(ALGAE, Math.min(4, blockstate.getValue(ALGAE) + 1)).setValue(WATERLOGGED, flag).setValue(DISTANCE, getDistance(blockstate, pContext.getLevel(), pContext.getClickedPos()));
         } else {
-            FluidState fluidstate = pContext.getLevel().getFluidState(pContext.getClickedPos());
-            boolean flag = fluidstate.getType() == Fluids.WATER;
-            return super.getStateForPlacement(pContext).setValue(WATERLOGGED, Boolean.valueOf(flag));
+
+            return super.getStateForPlacement(pContext).setValue(WATERLOGGED, flag).setValue(DISTANCE, getDistance(blockstate, pContext.getLevel(), pContext.getClickedPos()));
         }
     }
 
-    protected IntegerProperty getLevelProperty() {
+    protected IntegerProperty GetAlgaeProperty() {
         return ALGAE;
     }
 
     public BlockState getStateForLevel(int pAge) {
-        return this.defaultBlockState().setValue(this.getLevelProperty(), Integer.valueOf(pAge));
+        return this.defaultBlockState().setValue(this.GetAlgaeProperty(), Integer.valueOf(pAge));
     }
 
-    public int getAlgaeLevel(BlockState pState) {
-        return pState.getValue(this.getLevelProperty());
+    public int getAlgaeValue(BlockState pState) {
+        return pState.getValue(this.GetAlgaeProperty());
     }
 
     public boolean isRandomlyTicking(BlockState pState) {
         return pState.getValue(WATERLOGGED);
     }
 
-  //  @Override
-   // public void randomTick(BlockState pState, ServerLevel pLevel, BlockPos pPos, RandomSource pRandom) {
+    public void tick(BlockState pState, ServerLevel pLevel, BlockPos pPos, RandomSource pRandom) {
+        pLevel.setBlock(pPos, updateDistance(pState, pLevel, pPos), 3);
+    }
+    @Override
+    public void randomTick(BlockState pState, ServerLevel pLevel, BlockPos pPos, RandomSource pRandom) {
+        if (isSpreading(pState) && pState.getValue(WATERLOGGED) && pLevel.isLoaded(pPos)) {
 
-      //  int i = this.getAlgaeLevel(pState);
-      // if (pLevel.random.nextInt(16) == 0 && pLevel.isAreaLoaded(pPos, 4)) {
-      //      if (pState.getValue(LEVEL) == 1 && pState.getValue(WATERLOGGED)) {
-           //     pLevel.setBlock(pPos, this.getStateForLevel(i + 1), 2);
-       //     }
-      //      if (pLevel.random.nextInt(4) == 0 && pState.getValue(LEVEL) == 2 && pState.getValue(WATERLOGGED)) {
-     //           pLevel.setBlock(pPos, this.getStateForLevel(i + 1), 2);
-      //      }
-      //  }
+            int algaeValue = getAlgaeValue(pState);
 
-      //      if (pState.getValue(LEVEL) > 1 && pState.getValue(WATERLOGGED)) {
-    //            BlockState blockstate = this.defaultBlockState();
+                BlockState blockstate = defaultBlockState();
+                for(int t = 0; t < 4; ++t) {
+                    BlockPos blockpos = pPos.offset(pRandom.nextInt(3) - 1, pRandom.nextInt(5) - 3, pRandom.nextInt(3) - 1);
+                if (pLevel.getBlockState(blockpos).is(Blocks.WATER) && pLevel.getFluidState(blockpos).isSource() && mayPlaceOn(pLevel.getBlockState(blockpos.below()), pLevel, pPos)) {
+                        pLevel.setBlockAndUpdate(blockpos, blockstate.setValue(ALGAE, 1).setValue(DISTANCE, getDistance(pState, pLevel, pPos)));
+                 } else if ((pLevel.getBlockState(blockpos).is(ModBlocks.ALGAE.get()) && pLevel.getBlockState(blockpos).getValue(ALGAE) == 1) && pLevel.getBlockState(blockpos).getValue(DISTANCE) < 3) {
+                    pLevel.setBlockAndUpdate(blockpos, blockstate.setValue(ALGAE, 2).setValue(DISTANCE, getDistance(pState, pLevel, pPos)));
 
-      //          for(int t = 0; t < 4; ++t) {
-     //               BlockPos blockpos = pPos.offset(pRandom.nextInt(3) - 1, pRandom.nextInt(5) - 3, pRandom.nextInt(3) - 1);
-     //               if (pLevel.getBlockState(blockpos).is(Blocks.WATER) && pLevel.getFluidState(blockpos).isSource() && mayPlaceOn(pLevel.getBlockState(blockpos.below()), pLevel, pPos)) {
-     //                   pLevel.setBlockAndUpdate(blockpos, blockstate.setValue(LEVEL, 1));
-    //                }
-    //            }
+                }
+               }
 
-    //    }
-   //     super.randomTick(pState, pLevel, pPos, pRandom);
-  //  }
+        }
+       super.randomTick(pState, pLevel, pPos, pRandom);
+
+    }
+
+
+
+
 
     protected boolean mayPlaceOn(BlockState pState, BlockGetter pLevel, BlockPos pPos) {
 
@@ -117,8 +140,47 @@ public class AlgaeBlock extends BushBlock implements SimpleWaterloggedBlock, IFo
             if (pState.getValue(WATERLOGGED)) {
                 pLevel.scheduleTick(pCurrentPos, Fluids.WATER, Fluids.WATER.getTickDelay(pLevel));
             }
+            int i = getDistanceAt(pFacingState) + 1;
+            if (i != 1 || pState.getValue(DISTANCE) != i) {
+                pLevel.scheduleTick(pCurrentPos, this, 1);
+            }
 
             return super.updateShape(pState, pFacing, pFacingState, pLevel, pCurrentPos, pFacingPos);
+        }
+
+
+
+    }
+
+    private static BlockState updateDistance(BlockState pState, LevelAccessor pLevel, BlockPos pPos) {
+        int i = getDistance(pState, pLevel, pPos);
+        return pState.setValue(DISTANCE, Integer.valueOf(i));
+    }
+
+    private static int getDistance(BlockState pState, LevelAccessor pLevel, BlockPos pPos) {
+        int i = SPREADABLE_DISTANCE;
+        BlockPos.MutableBlockPos blockpos$mutableblockpos = new BlockPos.MutableBlockPos();
+
+        for(Direction direction : Direction.values()) {
+            blockpos$mutableblockpos.setWithOffset(pPos, direction);
+            i = Math.min(i, getDistanceAt(pLevel.getBlockState(blockpos$mutableblockpos)) + 1);
+            if (i == 1) {
+                break;
+            }
+        }
+
+        return i;
+    }
+
+    private static int getDistanceAt(BlockState pNeighbor) {
+        return getOptionalDistanceAt(pNeighbor).orElse(SPREADABLE_DISTANCE);
+    }
+
+    public static OptionalInt getOptionalDistanceAt(BlockState pState) {
+        if (pState.is(ModBlocks.ALGAE.get()) && pState.getValue(ALGAE) == 3) {
+            return OptionalInt.of(0);
+        } else {
+            return pState.hasProperty(DISTANCE) ? OptionalInt.of(pState.getValue(DISTANCE)) : OptionalInt.empty();
         }
     }
 
@@ -129,10 +191,6 @@ public class AlgaeBlock extends BushBlock implements SimpleWaterloggedBlock, IFo
 
     public FluidState getFluidState(BlockState pState) {
         return pState.getValue(WATERLOGGED) ? Fluids.WATER.getSource(false) : super.getFluidState(pState);
-    }
-
-    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> pBuilder) {
-        pBuilder.add(ALGAE, WATERLOGGED);
     }
 
     public boolean isPathfindable(BlockState pState, BlockGetter pLevel, BlockPos pPos, PathComputationType pType) {

@@ -78,7 +78,6 @@ public class RiverbedMain
             ComposterBlock.COMPOSTABLES.put(ModBlocks.ALGAE_BLOCK.get().asItem(), 0.75f);
 
 
-
             // Flower Pots
             ((FlowerPotBlock) Blocks.FLOWER_POT).addPlant(ModBlocks.WATER_HYACINTH.getId(),ModBlocks.POTTED_HYACINTH);
         });
