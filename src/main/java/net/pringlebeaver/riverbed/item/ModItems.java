@@ -36,6 +36,8 @@ public class ModItems {
    // Spawn Eggs
 
     public static final RegistryObject<Item> TROUT_SPAWN_EGG = ITEMS.register("trout_spawn_egg", () -> new CustomSpawnEggItem(ModEntities.TROUT, 8227656, 14709092, new Item.Properties()));
+
+    public static final RegistryObject<Item> MANATEE_SPAWN_EGG = ITEMS.register("manatee_spawn_egg", () -> new CustomSpawnEggItem(ModEntities.MANATEE, 10002851, 6456106, new Item.Properties()));
     public static void register(IEventBus eventBus) {ITEMS.register(eventBus);
     }
 }

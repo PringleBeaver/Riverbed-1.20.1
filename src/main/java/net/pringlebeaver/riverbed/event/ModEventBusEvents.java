@@ -8,6 +8,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.pringlebeaver.riverbed.RiverbedMain;
 import net.pringlebeaver.riverbed.entity.ModEntities;
+import net.pringlebeaver.riverbed.entity.custom.ManateeEntity;
 import net.pringlebeaver.riverbed.entity.custom.TroutEntity;
 
 @Mod.EventBusSubscriber(modid = RiverbedMain.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
@@ -20,5 +21,7 @@ public class ModEventBusEvents {
 @SubscribeEvent
     public static void registerAttributes(EntityAttributeCreationEvent event) {
         event.put(ModEntities.TROUT.get(), TroutEntity.createAttributes().build());
-    }
+        event.put(ModEntities.MANATEE.get(), ManateeEntity.createAttributes().build());
+
+}
 }

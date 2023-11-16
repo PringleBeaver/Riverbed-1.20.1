@@ -18,12 +18,14 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.pringlebeaver.riverbed.block.ModBlocks;
 import net.pringlebeaver.riverbed.effect.ModEffects;
 import net.pringlebeaver.riverbed.entity.ModEntities;
+import net.pringlebeaver.riverbed.entity.client.ManateeRenderer;
 import net.pringlebeaver.riverbed.entity.client.TroutRenderer;
 import net.pringlebeaver.riverbed.item.ModItems;
 import net.pringlebeaver.riverbed.item.ModCreativeTabs;
 import net.pringlebeaver.riverbed.loot.ModLootModifiers;
 import net.pringlebeaver.riverbed.sound.ModSounds;
 import net.pringlebeaver.riverbed.world.ModFeatures;
+import net.pringlebeaver.riverbed.world.biome.ModTerrablenderAPI;
 import org.slf4j.Logger;
 
 // The value here should match an entry in the META-INF/mods.toml file
@@ -52,6 +54,7 @@ public class RiverbedMain
 
         ModFeatures.register(modEventBus);
 
+        ModTerrablenderAPI.registerRegions();
 
 
 
@@ -103,6 +106,8 @@ public class RiverbedMain
         public static void onClientSetup(FMLClientSetupEvent event)
         {
             EntityRenderers.register(ModEntities.TROUT.get(), TroutRenderer::new);
+            EntityRenderers.register(ModEntities.MANATEE.get(), ManateeRenderer::new);
+
         }
     }
 }

@@ -21,7 +21,7 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 
 public class WaterHyacinthBlock extends BushBlock {
     protected static final float AABB_OFFSET = 3.0F;
-    protected static final VoxelShape SHAPE = Block.box(5.0D, 0.0D, 5.0D, 11.0D, 10.0D, 11.0D);
+    protected static final VoxelShape SHAPE = Block.box(5.0D, -2.0D, 5.0D, 11.0D, 10.0D, 11.0D);
 
     public VoxelShape getShape(BlockState pState, BlockGetter pLevel, BlockPos pPos, CollisionContext pContext) {
         Vec3 vec3 = pState.getOffset(pLevel, pPos);

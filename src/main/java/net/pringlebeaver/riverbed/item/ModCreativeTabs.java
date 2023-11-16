@@ -51,6 +51,8 @@ public class ModCreativeTabs {
                         pOutput.accept(ModItems.MUSIC_DISC_DELTA.get());
 
                         pOutput.accept(ModItems.TROUT_SPAWN_EGG.get());
+                        pOutput.accept(ModItems.MANATEE_SPAWN_EGG.get());
+
 
 
 

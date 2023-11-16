@@ -5,6 +5,7 @@ import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.pringlebeaver.riverbed.RiverbedMain;
+import net.pringlebeaver.riverbed.entity.client.ManateeModel;
 import net.pringlebeaver.riverbed.entity.client.ModModelLayers;
 import net.pringlebeaver.riverbed.entity.client.TroutModel;
 
@@ -14,5 +15,7 @@ public class ModEventBusClientEvents {
     @SubscribeEvent
     public static void registerLayer(EntityRenderersEvent.RegisterLayerDefinitions event) {
         event.registerLayerDefinition(ModModelLayers.TROUT_LAYER, TroutModel::createBodyLayer);
+        event.registerLayerDefinition(ModModelLayers.MANATEE_LAYER, ManateeModel::createBodyLayer);
+
     }
 }

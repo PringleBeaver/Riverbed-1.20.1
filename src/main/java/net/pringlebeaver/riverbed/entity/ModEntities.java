@@ -7,6 +7,7 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.pringlebeaver.riverbed.RiverbedMain;
+import net.pringlebeaver.riverbed.entity.custom.ManateeEntity;
 import net.pringlebeaver.riverbed.entity.custom.TroutEntity;
 
 public class ModEntities {
@@ -16,7 +17,8 @@ public class ModEntities {
 
     public static final RegistryObject<EntityType<TroutEntity>> TROUT =
             ENTITY_TYPES.register("trout", () -> EntityType.Builder.of(TroutEntity::new, MobCategory.WATER_AMBIENT).sized(0.6f, 0.4f).build("trout"));
-
+    public static final RegistryObject<EntityType<ManateeEntity>> MANATEE =
+            ENTITY_TYPES.register("manatee", () -> EntityType.Builder.of(ManateeEntity::new, MobCategory.WATER_CREATURE).sized(1.5f, 1.2f).build("manatee"));
     public static void register(IEventBus eventBus) {
         ENTITY_TYPES.register(eventBus);
     }
