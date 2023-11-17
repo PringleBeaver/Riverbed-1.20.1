@@ -11,6 +11,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.pringlebeaver.riverbed.RiverbedMain;
 import net.pringlebeaver.riverbed.block.custom.AlgaeBlock;
+import net.pringlebeaver.riverbed.block.custom.GrassBasketBlock;
 import net.pringlebeaver.riverbed.block.custom.RivergrassBlock;
 import net.pringlebeaver.riverbed.block.custom.WaterHyacinthBlock;
 import net.pringlebeaver.riverbed.item.ModItems;
@@ -86,6 +87,19 @@ public class ModBlocks {
             () -> new FlowerPotBlock((() -> (FlowerPotBlock) Blocks.FLOWER_POT), WATER_HYACINTH ,BlockBehaviour.Properties.copy(Blocks.POTTED_DANDELION)));
 
 
+    // Woven Grass
+
+    public static final RegistryObject<Block> WOVEN_GRASS_BLOCK = registerBlock("woven_grass_block",
+            () -> new Block(BlockBehaviour.Properties.copy(Blocks.SPONGE).sound(SoundType.AZALEA_LEAVES)));
+
+    public static final RegistryObject<Block> WOVEN_GRASS_MAT = registerBlock("woven_grass_mat",
+            () -> new CarpetBlock(BlockBehaviour.Properties.copy(Blocks.SPONGE).sound(SoundType.AZALEA_LEAVES)));
+    // Special
+
+    public static final RegistryObject<Block> GRASS_BASKET = registerBlock("grass_basket",
+            () -> new GrassBasketBlock(BlockBehaviour.Properties.copy(Blocks.DIRT).sound(SoundType.AZALEA_LEAVES).noOcclusion()));
+
+
 
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block) {
         RegistryObject<T> toReturn = BLOCKS.register(name, block);
@@ -93,13 +107,18 @@ public class ModBlocks {
         return toReturn;
     }
     private static <T extends Block> RegistryObject<Item> registerBlockItem(String name, RegistryObject<T> block){
-        if (name == "algae_block") {
-            return ModItems.ITEMS.register(name, () -> new ModFuelBlockItem(block.get(), new Item.Properties(), 200));
-        }
-        if (name == "water_hyacinth") {
-            return ModItems.ITEMS.register(name, () -> new PlaceOnWaterBlockItem(block.get(), new Item.Properties()));
+        switch (name) {
+            case "algae_block":
+                return ModItems.ITEMS.register(name, () -> new ModFuelBlockItem(block.get(), new Item.Properties(), 200));
+
+            case "water_hyacinth":
+                return ModItems.ITEMS.register(name, () -> new PlaceOnWaterBlockItem(block.get(), new Item.Properties()));
+            case "grass_basket":
+                return ModItems.ITEMS.register(name, () -> new BlockItem(block.get(), new Item.Properties().stacksTo(1)));
+
 
         }
+
         return ModItems.ITEMS.register(name, () -> new BlockItem(block.get(), new Item.Properties()));
     }
 

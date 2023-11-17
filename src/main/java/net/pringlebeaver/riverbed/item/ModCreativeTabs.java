@@ -35,11 +35,20 @@ public class ModCreativeTabs {
 
                         pOutput.accept(ModBlocks.ALGAE_BLOCK.get());
 
-
                         pOutput.accept(ModBlocks.ALGAE.get());
 
                         pOutput.accept(ModBlocks.RIVER_GRASS.get());
                         pOutput.accept(ModBlocks.WATER_HYACINTH.get());
+
+                        pOutput.accept(ModBlocks.WOVEN_GRASS_BLOCK.get());
+                        pOutput.accept(ModBlocks.WOVEN_GRASS_MAT.get());
+
+
+                        pOutput.accept(ModBlocks.GRASS_BASKET.get());
+
+
+                        pOutput.accept(ModItems.WOVEN_GRASS.get());
+
 
 
                         pOutput.accept(ModItems.TROUT.get());

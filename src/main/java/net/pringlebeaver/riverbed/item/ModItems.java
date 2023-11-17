@@ -33,7 +33,11 @@ public class ModItems {
     // Mob Buckets
    public static final RegistryObject<Item> TROUT_BUCKET = ITEMS.register("trout_bucket", () -> new CustomFishBucketItem(ModEntities.TROUT, () -> Fluids.WATER, () -> SoundEvents.BUCKET_EMPTY_FISH,(new Item.Properties().stacksTo(1) )));
 
-   // Spawn Eggs
+   // Materials
+
+    public static final RegistryObject<Item> WOVEN_GRASS = ITEMS.register("woven_grass", () -> new Item(new Item.Properties()));
+
+    // Spawn Eggs
 
     public static final RegistryObject<Item> TROUT_SPAWN_EGG = ITEMS.register("trout_spawn_egg", () -> new CustomSpawnEggItem(ModEntities.TROUT, 8227656, 14709092, new Item.Properties()));
 

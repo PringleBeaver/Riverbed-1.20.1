@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "riverbed:block/grass_basket",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "riverbed:block/grass_basket"
+    },
+    "facing=south": {
+      "model": "riverbed:block/grass_basket",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "riverbed:block/grass_basket",
+      "y": 270
+    }
+  }
+}

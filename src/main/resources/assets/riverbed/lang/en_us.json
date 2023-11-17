@@ -2,6 +2,8 @@
 	"creativetab.riverbed_tab": "Riverbed Expansion",
 	"item.riverbed.copper_pan": "Copper Pan",
 	
+	"item.riverbed.woven_grass": "Woven Grass",
+
 	"item.riverbed.music_disc_delta": "Music Disc",
 	"item.riverbed.music_disc_delta.desc": "PringleBeaver - Delta",
 	"item.riverbed.trout": "Raw Trout",
@@ -35,7 +37,17 @@
 	"block.riverbed.algae": "Algae",
 	"block.riverbed.algae_block": "Algae Block",
 
+	"block.riverbed.woven_grass_block": "Woven Grass Block",
+	"block.riverbed.woven_grass_mat": "Grass Mat",
+
+	"block.riverbed.grass_basket": "Grass Basket",
+	"container.grass_basket": "Grass Basket",
+
+
+
 	"entity.riverbed.trout": "Trout",
+	"entity.riverbed.manatee": "Manatee",
+
 
 	"effect.riverbed.angling": "Angling"
 }

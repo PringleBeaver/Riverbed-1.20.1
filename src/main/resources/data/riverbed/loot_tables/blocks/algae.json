@@ -24,7 +24,7 @@
                   "block": "riverbed:algae",
                   "condition": "minecraft:block_state_property",
                   "properties": {
-                    "level": "2"
+                    "algae": "2"
                   }
                 }
               ],
@@ -38,7 +38,7 @@
                   "block": "riverbed:algae",
                   "condition": "minecraft:block_state_property",
                   "properties": {
-                    "level": "3"
+                    "algae": "3"
                   }
                 }
               ],

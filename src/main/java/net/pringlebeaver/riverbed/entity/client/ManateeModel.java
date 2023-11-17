@@ -9,6 +9,7 @@ import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.*;
 import net.minecraft.util.Mth;
 import net.pringlebeaver.riverbed.entity.custom.ManateeEntity;
+import org.joml.Vector3f;
 
 public class ManateeModel<T extends ManateeEntity> extends HierarchicalModel<T> {
 	// This layer location should be baked with EntityRendererProvider.Context in the entity renderer and passed into this model's constructor
@@ -61,16 +62,18 @@ public class ManateeModel<T extends ManateeEntity> extends HierarchicalModel<T> 
 
 @Override
 	public void setupAnim(T pEntity, float pLimbSwing, float pLimbSwingAmount, float pAgeInTicks, float pNetHeadYaw, float pHeadPitch) {
-		this.body.xRot = pHeadPitch * ((float)Math.PI / 180F);
-		this.head.xRot = pHeadPitch * ((float)Math.PI / 180F) / 2;
-		this.head.yRot = pNetHeadYaw * ((float)Math.PI / 180F);
-		if (pEntity.getDeltaMovement().horizontalDistanceSqr() > 1.0E-7D) {
-			this.body.xRot += -0.05F - 0.05F * Mth.cos(pAgeInTicks * 0.15F);
-			this.tail.xRot = -0.1F * Mth.cos(pAgeInTicks * 0.15F);
-			this.tail_back.xRot = -0.2F * Mth.cos(pAgeInTicks * 0.15F);
-		}
+	this.body.xRot = pHeadPitch * ((float) Math.PI / 180F) / 2;
+	this.head.xRot = (pHeadPitch * ((float) Math.PI / 180F) / 4) + 0.35f;
+	this.head.yRot = pNetHeadYaw * ((float) Math.PI / 180F);
 
+	this.right_flipper.xRot = Mth.cos(pLimbSwing * 0.6662F + (float)Math.PI) * 2.0F * pLimbSwingAmount * 0.5F;
+	this.left_flipper.xRot = Mth.cos(pLimbSwing * 0.6662F) * 2.0F * pLimbSwingAmount * 0.5F;
+	if (pEntity.getDeltaMovement().horizontalDistanceSqr() > 1.0E-7D) {
+		this.body.xRot += -0.05F - 0.05F * Mth.cos(pAgeInTicks * 0.15F);
+		this.tail.xRot = -0.1F * Mth.cos(pAgeInTicks * 0.15F);
+		this.tail_back.xRot = -0.2F * Mth.cos(pAgeInTicks * 0.15F);
 	}
+}
 
 	@Override
 	public ModelPart root() {

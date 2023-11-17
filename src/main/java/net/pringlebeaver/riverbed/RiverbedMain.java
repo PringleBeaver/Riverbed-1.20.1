@@ -16,6 +16,7 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.pringlebeaver.riverbed.block.ModBlocks;
+import net.pringlebeaver.riverbed.block.entity.ModBlockEntities;
 import net.pringlebeaver.riverbed.effect.ModEffects;
 import net.pringlebeaver.riverbed.entity.ModEntities;
 import net.pringlebeaver.riverbed.entity.client.ManateeRenderer;
@@ -44,6 +45,8 @@ public class RiverbedMain
         ModEntities.register(modEventBus);
         ModItems.register(modEventBus);
         ModBlocks.register(modEventBus);
+        ModBlockEntities.register(modEventBus);
+
         ModSounds.register(modEventBus);
         ModEffects.register(modEventBus);
 
