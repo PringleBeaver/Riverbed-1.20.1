@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "half=lower": {
+      "model": "riverbed:block/dry_river_grass_bottom"
+    },
+    "half=upper": {
+      "model": "riverbed:block/dry_river_grass_top"
+    }
+  }
+}

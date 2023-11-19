@@ -128,12 +128,10 @@ public class GrassBasketBlock extends BaseEntityBlock {
         super.appendHoverText(pStack, pLevel, pTooltip, pFlag);
         GrassBasketBlockEntity.Decorations GrassBasketBlockEntity$decorations = GrassBasketBlockEntity.Decorations.load(BlockItem.getBlockEntityData(pStack));
         if (!GrassBasketBlockEntity$decorations.equals(GrassBasketBlockEntity.Decorations.EMPTY)) {
-            pTooltip.add(CommonComponents.EMPTY);
             Stream.of(GrassBasketBlockEntity$decorations.top(), GrassBasketBlockEntity$decorations.middle(), GrassBasketBlockEntity$decorations.bottom()).forEach((item) -> {
                 Component tooltip = (new ItemStack(item, 1)).getHoverName();
                 if (!item.equals(ModItems.WOVEN_GRASS.get())) {
                     pTooltip.add(tooltip.plainCopy().withStyle(ChatFormatting.GRAY));
-
                 }
             });
         }

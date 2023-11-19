@@ -80,6 +80,9 @@ public class ModBlocks {
     public static final RegistryObject<Block> RIVER_GRASS = registerBlock("river_grass",
             () -> new RivergrassBlock(BlockBehaviour.Properties.copy(Blocks.SMALL_DRIPLEAF).sound(SoundType.WET_GRASS)));
 
+    public static final RegistryObject<Block> DRY_RIVER_GRASS = registerBlock("dry_river_grass",
+            () -> new RivergrassBlock(BlockBehaviour.Properties.copy(Blocks.SMALL_DRIPLEAF).sound(SoundType.GRASS)));
+
     public static final RegistryObject<Block> WATER_HYACINTH = registerBlock("water_hyacinth",
             () -> new WaterHyacinthBlock(BlockBehaviour.Properties.copy(Blocks.DANDELION).sound(SoundType.WET_GRASS)));
 

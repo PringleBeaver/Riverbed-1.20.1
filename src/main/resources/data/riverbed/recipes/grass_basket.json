@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "# #",
+    "# #",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "riverbed:woven_grass"
+    }
+  },
+  "result": {
+    "item": "riverbed:grass_basket",
+    "count": 1
+  }
+}
