@@ -70,7 +70,7 @@ public class ModBlocks {
 
     // Algae
     public static final RegistryObject<Block> ALGAE = registerBlock("algae",
-            () -> new AlgaeBlock(BlockBehaviour.Properties.copy(Blocks.LILY_PAD).sound(SoundType.WET_GRASS).strength(0.8F)));
+            () -> new AlgaeBlock(BlockBehaviour.Properties.copy(Blocks.LILY_PAD).sound(SoundType.WET_GRASS).strength(0.8F).noCollission()));
 
     public static final RegistryObject<Block> ALGAE_BLOCK = registerBlock("algae_block",
             () -> new Block(BlockBehaviour.Properties.copy(Blocks.SPONGE).sound(SoundType.WET_GRASS)));
@@ -97,10 +97,20 @@ public class ModBlocks {
 
     public static final RegistryObject<Block> WOVEN_GRASS_MAT = registerBlock("woven_grass_mat",
             () -> new CarpetBlock(BlockBehaviour.Properties.copy(Blocks.SPONGE).sound(SoundType.AZALEA_LEAVES)));
+
+    // Misc
+
+    public static final RegistryObject<Block> TWIG_PILE = registerBlock("twig_pile",
+            () -> new MangroveRootsBlock(BlockBehaviour.Properties.copy(Blocks.MANGROVE_ROOTS).sound(SoundType.GRASS)));
+
     // Special
 
     public static final RegistryObject<Block> GRASS_BASKET = registerBlock("grass_basket",
             () -> new GrassBasketBlock(BlockBehaviour.Properties.copy(Blocks.DIRT).sound(SoundType.AZALEA_LEAVES).noOcclusion()));
+
+
+    public static final RegistryObject<Block> BEAVER_NEST = registerBlock("beaver_nest",
+            () -> new RotatedPillarBlock(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS).sound(SoundType.WOOD)));
 
 
 

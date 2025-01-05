@@ -1,0 +1,23 @@
+{
+  "type": "riverbed:angling_effect_modifier",
+  "conditions":
+  [
+    {
+      "condition": "minecraft:entity_properties",
+      "entity": "this",
+      "predicate": {
+        "type": "minecraft:fishing_bobber"
+      }
+    },
+    {
+      "condition": "minecraft:entity_properties",
+      "entity": "killer",
+      "predicate": {
+        "effects": {
+          "riverbed:angling": {}
+        }
+      }
+    }
+  ],
+  "item_count": 1
+}

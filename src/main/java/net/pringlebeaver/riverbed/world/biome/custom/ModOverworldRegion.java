@@ -25,12 +25,12 @@ public class ModOverworldRegion extends Region {
         this.addModifiedVanillaOverworldBiomes(mapper, builder -> {
 
 
-           //builder.replaceBiome(Biomes.RIVER, ModBiomes.LUSH_RIVER);
+           builder.replaceBiome(Biomes.RIVER, ModBiomes.LUSH_RIVER);
 
-           // List<Climate.ParameterPoint> lushRiverPoints = new ParameterUtils.ParameterPointListBuilder()
-            //       .build();
+            List<Climate.ParameterPoint> lushRiverPoints = new ParameterUtils.ParameterPointListBuilder()
+                  .build();
 
-         //   lushRiverPoints.forEach(point -> addBiome(mapper, point, ModBiomes.LUSH_RIVER));
+            lushRiverPoints.forEach(point -> addBiome(mapper, point, ModBiomes.LUSH_RIVER));
 
         });
     }

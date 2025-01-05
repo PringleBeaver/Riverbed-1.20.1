@@ -152,7 +152,7 @@ public class GrassBasketBlockEntity extends RandomizableContainerBlockEntity imp
 
         private static Item itemFromTag(ListTag pTag, int pIndex) {
             if (pIndex >= pTag.size()) {
-                return Items.BRICK;
+                return ModItems.WOVEN_GRASS.get();
             } else {
                 Tag tag = pTag.get(pIndex);
                 return BuiltInRegistries.ITEM.get(new ResourceLocation(tag.getAsString()));

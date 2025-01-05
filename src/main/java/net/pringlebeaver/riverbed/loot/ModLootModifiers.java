@@ -9,13 +9,13 @@ import net.minecraftforge.registries.RegistryObject;
 import net.pringlebeaver.riverbed.RiverbedMain;
 
 public class ModLootModifiers {
-    public static final DeferredRegister<Codec<? extends IGlobalLootModifier>> LOOT_MODIFIER_SERIALIZERS =
-            DeferredRegister.create(ForgeRegistries.Keys.GLOBAL_LOOT_MODIFIER_SERIALIZERS, RiverbedMain.MOD_ID);
+public static final DeferredRegister<Codec<? extends IGlobalLootModifier>> LOOT_MODIFIER_SERIALIZERS =
+        DeferredRegister.create(ForgeRegistries.Keys.GLOBAL_LOOT_MODIFIER_SERIALIZERS, RiverbedMain.MOD_ID);
 
-    public static final RegistryObject<Codec<? extends IGlobalLootModifier>> REPLACE_ITEM =
-            LOOT_MODIFIER_SERIALIZERS.register("replace_item", ReplaceItemModifier.CODEC);
+public static final RegistryObject<Codec<? extends IGlobalLootModifier>> ANGLING_EFFECT_MODIFIER =
+        LOOT_MODIFIER_SERIALIZERS.register("angling_effect_modifier", AnglingEffectModifier.CODEC);
 
-    public static void register(IEventBus eventBus) {
-        LOOT_MODIFIER_SERIALIZERS.register(eventBus);
-    }
+        public static void register(IEventBus eventBus) {
+            LOOT_MODIFIER_SERIALIZERS.register(eventBus);
+        }
 }

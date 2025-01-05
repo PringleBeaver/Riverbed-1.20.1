@@ -1,5 +1,0 @@
-{
-  "type": "forge:remove_spawns",
-  "biomes": "minecraft:river",
-  "entity_types": "minecraft:salmon"
-}

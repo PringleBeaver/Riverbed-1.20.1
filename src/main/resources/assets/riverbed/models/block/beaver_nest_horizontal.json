@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column_horizontal",
+  "textures": {
+    "end": "riverbed:block/beaver_nest_top_side",
+    "side": "riverbed:block/beaver_nest"
+  }
+}

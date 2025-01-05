@@ -11,6 +11,8 @@ import net.pringlebeaver.riverbed.entity.custom.ManateeEntity;
 public class ManateeRenderer extends MobRenderer<ManateeEntity, ManateeModel<ManateeEntity>> {
     private static final ResourceLocation MANATEE_LOCATION = new ResourceLocation(RiverbedMain.MOD_ID, "textures/entity/manatee/manatee.png");
     private static final ResourceLocation ALGAE_LOCATION = new ResourceLocation(RiverbedMain.MOD_ID, "textures/entity/manatee/manatee_algae.png");
+    private static final ResourceLocation MEDIUM_ALGAE_LOCATION = new ResourceLocation(RiverbedMain.MOD_ID, "textures/entity/manatee/manatee_medium_algae.png");
+
 
     private static final ResourceLocation BABY_LOCATION = new ResourceLocation(RiverbedMain.MOD_ID, "textures/entity/manatee/manatee_baby.png");
 
@@ -26,7 +28,11 @@ public class ManateeRenderer extends MobRenderer<ManateeEntity, ManateeModel<Man
             if (pEntity.isAlgae()) {
                 return ALGAE_LOCATION;
             } else {
-                return MANATEE_LOCATION;
+                if (pEntity.getAlgaeGrowthTime() > pEntity.getTotalGrowthTime() * 0.75) {
+                    return MEDIUM_ALGAE_LOCATION;
+                } else {
+                    return MANATEE_LOCATION;
+                }
             }
         }
     }

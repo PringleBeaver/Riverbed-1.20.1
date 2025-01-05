@@ -1,0 +1,21 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "riverbed:dry_river_grass"
+        },
+        {
+            "item": "riverbed:dry_river_grass"
+        },
+        {
+            "item": "riverbed:dry_river_grass"
+        },
+        {
+            "item": "riverbed:dry_river_grass"
+        }
+    ],
+    "result": {
+        "item": "riverbed:woven_grass",
+        "count": 2
+    }
+}

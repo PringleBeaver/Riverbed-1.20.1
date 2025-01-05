@@ -1,7 +1,10 @@
 package net.pringlebeaver.riverbed.entity.custom;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.particles.ParticleOptions;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.chat.Component;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
@@ -9,6 +12,10 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.Mth;
 import net.minecraft.world.DifficultyInstance;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -20,6 +27,7 @@ import net.minecraft.world.entity.ai.navigation.WaterBoundPathNavigation;
 import net.minecraft.world.entity.animal.WaterAnimal;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
@@ -29,9 +37,12 @@ import net.minecraft.world.level.pathfinder.BlockPathTypes;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.common.IForgeShearable;
 import net.pringlebeaver.riverbed.block.ModBlocks;
+import net.pringlebeaver.riverbed.effect.ModEffects;
+import net.pringlebeaver.riverbed.sound.ModSounds;
 import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nullable;
+import javax.swing.text.JTextComponent;
 import java.util.Collections;
 import java.util.List;
 
@@ -39,7 +50,11 @@ public class ManateeEntity extends WaterAnimal implements Shearable, IForgeShear
     private static final EntityDataAccessor<Boolean> ALGAE = SynchedEntityData.defineId(ManateeEntity.class, EntityDataSerializers.BOOLEAN);
     private static final EntityDataAccessor<Integer> MOISTNESS_LEVEL = SynchedEntityData.defineId(ManateeEntity.class, EntityDataSerializers.INT);
 
+    private static final EntityDataAccessor<Integer> ALGAE_GROWTH_TIME = SynchedEntityData.defineId(ManateeEntity.class, EntityDataSerializers.INT);
+
     private static final int TOTAL_AIR_SUPPLY = 6000;
+
+    private static final int TOTAL_GROWTH_TIME = 10000;
 
     public ManateeEntity(EntityType<? extends WaterAnimal> pEntityType, Level pLevel) {
 
@@ -54,10 +69,6 @@ public class ManateeEntity extends WaterAnimal implements Shearable, IForgeShear
     }
 
 
-    public boolean isPushedByFluid() {
-        return false;
-    }
-
     @Override
     public void shear(SoundSource pCategory) {
         this.level().playSound((Player)null, this, SoundEvents.SHEEP_SHEAR, pCategory, 1.0F, 1.0F);
@@ -71,8 +82,61 @@ public class ManateeEntity extends WaterAnimal implements Shearable, IForgeShear
             }
         }
 
+
     }
-    public boolean readyForShearing() {
+
+    protected void addParticlesAroundSelf(ParticleOptions pParticleOption) {
+        for(int i = 0; i < 25; ++i) {
+            double d0 = this.random.nextGaussian() * 0.05D;
+            double d1 = this.random.nextGaussian() * 0.05D;
+            double d2 = this.random.nextGaussian() * 0.05D;
+            this.level().addParticle(pParticleOption, this.getRandomX(1.0D), this.getRandomY(), this.getRandomZ(1.0D), d0, d1, d2);
+        }
+
+    }
+
+    public void EatSuccess (Player pPlayer) {
+        this.addParticlesAroundSelf(ParticleTypes.HAPPY_VILLAGER);
+        playSound(ModSounds.MANATEE_EAT_SUCCESS.get());
+        if (!level().isClientSide) {
+            pPlayer.addEffect(new MobEffectInstance(ModEffects.MANATEES_MIGHT.get(), 6000), this);
+        }
+
+    }
+
+    public void EatFail(Player pPlayer) {
+        this.addParticlesAroundSelf(ParticleTypes.SMOKE);
+        playSound(ModSounds.MANATEE_EAT.get());
+    }
+
+
+
+    public InteractionResult mobInteract(Player pPlayer, InteractionHand pHand) {
+        ItemStack itemstack = pPlayer.getItemInHand(pHand);
+        boolean success_chance = this.random.nextInt(3) == 0;
+        Item item = itemstack.getItem();
+        if (itemstack.is(Items.SEAGRASS)) {
+            if (success_chance) {
+                this.EatSuccess(pPlayer);
+            } else {
+                this.EatFail(pPlayer);
+            }
+        }
+        if (this.level().isClientSide) {
+            boolean flag = itemstack.is(Items.SEAGRASS);
+            return flag ? InteractionResult.CONSUME : InteractionResult.PASS;
+        } else {
+            if (itemstack.is(Items.SEAGRASS)) {
+                itemstack.shrink(1);
+                return InteractionResult.SUCCESS;
+            } else {
+                return super.mobInteract(pPlayer, pHand);
+            }
+        }
+
+    }
+
+        public boolean readyForShearing() {
         return (this.isAlive() && this.isAlgae()) && !isBaby();
     }
     @Override
@@ -129,6 +193,13 @@ public class ManateeEntity extends WaterAnimal implements Shearable, IForgeShear
         return this.entityData.get(MOISTNESS_LEVEL);
     }
 
+    public int getAlgaeGrowthTime() {
+        return this.entityData.get(ALGAE_GROWTH_TIME);
+    }
+    public int getTotalGrowthTime() {
+        return TOTAL_GROWTH_TIME;
+    }
+
     @Override
     public boolean isPersistenceRequired() {
         return true;
@@ -141,17 +212,23 @@ public class ManateeEntity extends WaterAnimal implements Shearable, IForgeShear
         this.entityData.set(ALGAE, algae);
     }
 
+    public void setAlgaeGrowthTime(int algaeGrowthTime) {
+        this.entityData.set(ALGAE_GROWTH_TIME, algaeGrowthTime);
+    }
+
     @Override
     protected void defineSynchedData() {
         super.defineSynchedData();
         this.entityData.define(MOISTNESS_LEVEL, 2400);
         this.entityData.define(ALGAE, true);
+        this.entityData.define(ALGAE_GROWTH_TIME, 0);
     }
     @Override
     public void addAdditionalSaveData(CompoundTag pCompound) {
         super.addAdditionalSaveData(pCompound);
         pCompound.putInt("Moistness", this.getMoistnessLevel());
         pCompound.putBoolean("Algae", this.isAlgae());
+        pCompound.putInt("AlgaeGrowthTime", this.getAlgaeGrowthTime());
 
     }
     @Override
@@ -159,6 +236,7 @@ public class ManateeEntity extends WaterAnimal implements Shearable, IForgeShear
         super.readAdditionalSaveData(pCompound);
         this.setMoisntessLevel(pCompound.getInt("Moistness"));
         this.setAlgae(pCompound.getBoolean("Algae"));
+        this.setAlgaeGrowthTime(pCompound.getInt("AlgaeGrowthTime"));
 
     }
 
@@ -197,6 +275,15 @@ public class ManateeEntity extends WaterAnimal implements Shearable, IForgeShear
         if (this.isNoAi()) {
             this.setAirSupply(this.getMaxAirSupply());
         } else {
+            if (this.isAlgae()) {
+                this.setAlgaeGrowthTime(0);
+            } else {
+            this.setAlgaeGrowthTime(this.getAlgaeGrowthTime() + 1);
+            if (this.getAlgaeGrowthTime() > TOTAL_GROWTH_TIME) {
+                this.setAlgae(true);
+            }
+                }
+
             if (this.isInWaterRainOrBubble()) {
                 this.setMoisntessLevel(2400);
             } else {

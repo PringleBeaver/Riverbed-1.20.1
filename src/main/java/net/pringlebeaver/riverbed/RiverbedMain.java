@@ -46,6 +46,7 @@ public class RiverbedMain
         ModItems.register(modEventBus);
         ModBlocks.register(modEventBus);
         ModBlockEntities.register(modEventBus);
+        ModLootModifiers.register(modEventBus);
 
         ModSounds.register(modEventBus);
         ModEffects.register(modEventBus);

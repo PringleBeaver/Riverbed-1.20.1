@@ -32,6 +32,8 @@
 	"block.riverbed.algal_river_stone_brick_slab": "Algal River Stone Brick Slab",
 	"block.riverbed.algal_river_stone_brick_wall": "Algal River Stone Brick Wall",
 	"block.riverbed.river_grass": "River Grass",
+	"block.riverbed.dry_river_grass": "Dry River Grass",
+
 	"block.riverbed.water_hyacinth": "Water Hyacinth",
 
 	"block.riverbed.algae": "Algae",
@@ -43,11 +45,16 @@
 	"block.riverbed.grass_basket": "Grass Basket",
 	"container.grass_basket": "Grass Basket",
 
+	"block.riverbed.twig_pile": "Twig Pile",
+	"block.riverbed.beaver_nest": "Beaver Nest",
+
 
 
 	"entity.riverbed.trout": "Trout",
 	"entity.riverbed.manatee": "Manatee",
 
 
-	"effect.riverbed.angling": "Angling"
+	"effect.riverbed.angling": "Angling",
+	"effect.riverbed.manatees_might": "Manatee's Might"
+
 }

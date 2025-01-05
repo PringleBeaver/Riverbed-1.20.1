@@ -6,5 +6,35 @@
         "stream": true
       }
     ]
+  },
+
+  "manatee_eat": {
+    "subtitles": "sounds.riverbed.manatee_eat",
+    "sounds": [
+      {
+        "name": "riverbed:manatee/manatee_eat"
+      },
+      {
+        "name": "riverbed:manatee/manatee_eat_1"
+      },
+      {
+        "name": "riverbed:manatee/manatee_eat_2"
+      },
+      {
+        "name": "riverbed:manatee/manatee_eat_3"
+      },
+      {
+        "name": "riverbed:manatee/manatee_eat_4"
+      }
+    ]
+  },
+
+  "manatee_eat_success": {
+    "subtitles": "sounds.riverbed.manatee_eat_success",
+    "sounds": [
+      {
+        "name": "riverbed:manatee/manatee_eat_success"
+      }
+    ]
   }
 }
