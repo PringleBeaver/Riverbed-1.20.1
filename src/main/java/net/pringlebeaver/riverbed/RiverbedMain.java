@@ -6,6 +6,7 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.ComposterBlock;
 import net.minecraft.world.level.block.FlowerPotBlock;
 import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.client.event.RegisterColorHandlersEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
 import net.minecraftforge.event.server.ServerStartingEvent;
@@ -16,6 +17,7 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.pringlebeaver.riverbed.block.ModBlocks;
+import net.pringlebeaver.riverbed.block.custom.RivergrassBlock;
 import net.pringlebeaver.riverbed.block.entity.ModBlockEntities;
 import net.pringlebeaver.riverbed.effect.ModEffects;
 import net.pringlebeaver.riverbed.entity.ModEntities;
@@ -111,7 +113,20 @@ public class RiverbedMain
         {
             EntityRenderers.register(ModEntities.TROUT.get(), TroutRenderer::new);
             EntityRenderers.register(ModEntities.MANATEE.get(), ManateeRenderer::new);
-
         }
+
+        @SubscribeEvent
+        public static void itemTintSetup(RegisterColorHandlersEvent.Item event)
+        {
+            RivergrassBlock.loadItemTint(event);
+        }
+
+        @SubscribeEvent
+        public static void blockTintSetup(RegisterColorHandlersEvent.Block event)
+        {
+            RivergrassBlock.loadBlockTint(event);
+        }
+
+
     }
 }

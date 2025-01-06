@@ -1,9 +1,11 @@
 package net.pringlebeaver.riverbed.block.custom;
 
+import net.minecraft.client.renderer.BiomeColors;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.GrassColor;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockState;
@@ -15,6 +17,10 @@ import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraftforge.client.event.RegisterColorHandlersEvent;
+import net.pringlebeaver.riverbed.block.ModBlocks;
 import net.pringlebeaver.riverbed.util.ModTags;
 
 import javax.annotation.Nullable;
@@ -29,6 +35,20 @@ public class RivergrassBlock extends DoublePlantBlock implements SimpleWaterlogg
         super(pProperties);
         this.registerDefaultState(this.stateDefinition.any().setValue(HALF, DoubleBlockHalf.LOWER).setValue(WATERLOGGED, Boolean.valueOf(false)));
 
+    }
+
+    @OnlyIn(Dist.CLIENT)
+    public static void loadBlockTint(RegisterColorHandlersEvent.Block event) {
+        event.getBlockColors().register((bs, world, pos, index) -> {
+            return world != null && pos != null ? BiomeColors.getAverageGrassColor(world, pos) : GrassColor.get(0.5D, 1.0D);
+        }, ModBlocks.RIVER_GRASS.get());
+    }
+
+    @OnlyIn(Dist.CLIENT)
+    public static void loadItemTint(RegisterColorHandlersEvent.Item event) {
+        event.getItemColors().register((stack, index) -> {
+            return GrassColor.get(0.5D, 1.0D);
+        }, ModBlocks.RIVER_GRASS.get());
     }
 
     public VoxelShape getShape(BlockState blockState, BlockGetter blockGetter, BlockPos blockPos, CollisionContext collisionContext) {

@@ -5,6 +5,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.PlaceOnWaterBlockItem;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.material.MapColor;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -78,7 +79,7 @@ public class ModBlocks {
     // Plants
 
     public static final RegistryObject<Block> RIVER_GRASS = registerBlock("river_grass",
-            () -> new RivergrassBlock(BlockBehaviour.Properties.copy(Blocks.SMALL_DRIPLEAF).sound(SoundType.WET_GRASS)));
+            () -> new RivergrassBlock(BlockBehaviour.Properties.copy(Blocks.SMALL_DRIPLEAF).sound(SoundType.WET_GRASS).mapColor(MapColor.GRASS)));
 
     public static final RegistryObject<Block> DRY_RIVER_GRASS = registerBlock("dry_river_grass",
             () -> new RivergrassBlock(BlockBehaviour.Properties.copy(Blocks.SMALL_DRIPLEAF).sound(SoundType.GRASS)));
