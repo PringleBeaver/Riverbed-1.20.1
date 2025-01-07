@@ -7,6 +7,6 @@ import terrablender.api.Regions;
 
 public class ModTerrablenderAPI {
     public static void registerRegions() {
-        Regions.register(new ModOverworldRegion(new ResourceLocation(RiverbedMain.MOD_ID, "overworld"), 1));
+        Regions.register(new ModOverworldRegion(new ResourceLocation(RiverbedMain.MOD_ID, "overworld"), 2));
     }
 }
