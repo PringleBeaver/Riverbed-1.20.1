@@ -4,10 +4,10 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.network.chat.Component;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.Mth;
@@ -15,7 +15,6 @@ import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -24,6 +23,7 @@ import net.minecraft.world.entity.ai.control.SmoothSwimmingMoveControl;
 import net.minecraft.world.entity.ai.goal.*;
 import net.minecraft.world.entity.ai.navigation.PathNavigation;
 import net.minecraft.world.entity.ai.navigation.WaterBoundPathNavigation;
+import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.animal.WaterAnimal;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
@@ -38,15 +38,15 @@ import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.common.IForgeShearable;
 import net.pringlebeaver.riverbed.block.ModBlocks;
 import net.pringlebeaver.riverbed.effect.ModEffects;
+import net.pringlebeaver.riverbed.entity.ModEntities;
 import net.pringlebeaver.riverbed.sound.ModSounds;
 import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nullable;
-import javax.swing.text.JTextComponent;
 import java.util.Collections;
 import java.util.List;
 
-public class ManateeEntity extends WaterAnimal implements Shearable, IForgeShearable {
+public class ManateeEntity extends Animal implements IForgeShearable  {
     private static final EntityDataAccessor<Boolean> ALGAE = SynchedEntityData.defineId(ManateeEntity.class, EntityDataSerializers.BOOLEAN);
     private static final EntityDataAccessor<Integer> MOISTNESS_LEVEL = SynchedEntityData.defineId(ManateeEntity.class, EntityDataSerializers.INT);
 
@@ -56,7 +56,7 @@ public class ManateeEntity extends WaterAnimal implements Shearable, IForgeShear
 
     private static final int TOTAL_GROWTH_TIME = 10000;
 
-    public ManateeEntity(EntityType<? extends WaterAnimal> pEntityType, Level pLevel) {
+    public ManateeEntity(EntityType<? extends Animal> pEntityType, Level pLevel) {
 
         super(pEntityType, pLevel);
         this.moveControl = new SmoothSwimmingMoveControl(this, 85, 10, 0.02F, 0.1F, true);
@@ -68,8 +68,16 @@ public class ManateeEntity extends WaterAnimal implements Shearable, IForgeShear
         return MobType.WATER;
     }
 
+    public boolean canBreatheUnderwater() {
+        return true;
+    }
 
-    @Override
+    public boolean isPushedByFluid() {
+        return false;
+    }
+
+
+
     public void shear(SoundSource pCategory) {
         this.level().playSound((Player)null, this, SoundEvents.SHEEP_SHEAR, pCategory, 1.0F, 1.0F);
         this.setAlgae(false);
@@ -113,27 +121,22 @@ public class ManateeEntity extends WaterAnimal implements Shearable, IForgeShear
 
     public InteractionResult mobInteract(Player pPlayer, InteractionHand pHand) {
         ItemStack itemstack = pPlayer.getItemInHand(pHand);
-        boolean success_chance = this.random.nextInt(3) == 0;
         Item item = itemstack.getItem();
-        if (itemstack.is(Items.SEAGRASS)) {
-            if (success_chance) {
-                this.EatSuccess(pPlayer);
-            } else {
-                this.EatFail(pPlayer);
-            }
-        }
-        if (this.level().isClientSide) {
-            boolean flag = itemstack.is(Items.SEAGRASS);
-            return flag ? InteractionResult.CONSUME : InteractionResult.PASS;
+
+
+        if (level().isClientSide) {
+                boolean flag = itemstack.is(Items.BUCKET);
+                return flag ? InteractionResult.CONSUME : InteractionResult.PASS;
         } else {
-            if (itemstack.is(Items.SEAGRASS)) {
-                itemstack.shrink(1);
+            if (itemstack.is(Items.BUCKET)) {
+                this.EatSuccess(pPlayer);
                 return InteractionResult.SUCCESS;
+
             } else {
                 return super.mobInteract(pPlayer, pHand);
+
             }
         }
-
     }
 
         public boolean readyForShearing() {
@@ -148,11 +151,7 @@ public class ManateeEntity extends WaterAnimal implements Shearable, IForgeShear
             return Collections.emptyList();
         }
 
-    }
 
-    @Override
-    public boolean canBreatheUnderwater() {
-        return true;
     }
 
     protected void handleAirSupply(int pAirSupply) {
@@ -179,13 +178,20 @@ public class ManateeEntity extends WaterAnimal implements Shearable, IForgeShear
     public SpawnGroupData finalizeSpawn(ServerLevelAccessor pLevel, DifficultyInstance pDifficulty, MobSpawnType pReason, @Nullable SpawnGroupData pSpawnData, @Nullable CompoundTag pDataTag) {
         this.setAirSupply(this.getMaxAirSupply());
         this.setXRot(0.0F);
-        if (!isBaby()) {
-            setAlgae(random.nextBoolean());
-        } else {
+        if (isBaby()) {
             setAlgae(false);
+        } else {
+            setAlgae(random.nextBoolean());
+
         }
 
         return super.finalizeSpawn(pLevel, pDifficulty, pReason, pSpawnData, pDataTag);
+    }
+
+    @org.jetbrains.annotations.Nullable
+    @Override
+    public AgeableMob getBreedOffspring(ServerLevel pLevel, AgeableMob pOtherParent) {
+        return ModEntities.MANATEE.get().create(pLevel);
     }
 
 
@@ -205,7 +211,7 @@ public class ManateeEntity extends WaterAnimal implements Shearable, IForgeShear
         return true;
     }
 
-    public void setMoisntessLevel(int pMoistnessLevel) {
+    public void setMoistnessLevel(int pMoistnessLevel) {
         this.entityData.set(MOISTNESS_LEVEL, pMoistnessLevel);
     }
     public void setAlgae(boolean algae) {
@@ -234,7 +240,7 @@ public class ManateeEntity extends WaterAnimal implements Shearable, IForgeShear
     @Override
     public void readAdditionalSaveData(CompoundTag pCompound) {
         super.readAdditionalSaveData(pCompound);
-        this.setMoisntessLevel(pCompound.getInt("Moistness"));
+        this.setMoistnessLevel(pCompound.getInt("Moistness"));
         this.setAlgae(pCompound.getBoolean("Algae"));
         this.setAlgaeGrowthTime(pCompound.getInt("AlgaeGrowthTime"));
 
@@ -243,8 +249,11 @@ public class ManateeEntity extends WaterAnimal implements Shearable, IForgeShear
     protected void registerGoals() {
 
         this.goalSelector.addGoal(0, new TryFindWaterGoal(this));
+        this.goalSelector.addGoal(2, new BreedGoal(this, 0.8D));
+
 
         this.goalSelector.addGoal(3, new TemptGoal(this, 1.1D, Ingredient.of(Items.SEAGRASS), false));
+
 
         this.goalSelector.addGoal(4, new RandomSwimmingGoal(this, 1.0D, 10));
         this.goalSelector.addGoal(5, new RandomLookAroundGoal(this));
@@ -275,19 +284,24 @@ public class ManateeEntity extends WaterAnimal implements Shearable, IForgeShear
         if (this.isNoAi()) {
             this.setAirSupply(this.getMaxAirSupply());
         } else {
+            if (this.isBaby()) {
+                this.setAlgaeGrowthTime(0);
+                this.setAlgae(false);
+            } else {
             if (this.isAlgae()) {
                 this.setAlgaeGrowthTime(0);
             } else {
-            this.setAlgaeGrowthTime(this.getAlgaeGrowthTime() + 1);
-            if (this.getAlgaeGrowthTime() > TOTAL_GROWTH_TIME) {
-                this.setAlgae(true);
+                this.setAlgaeGrowthTime(this.getAlgaeGrowthTime() + 1);
+                if (this.getAlgaeGrowthTime() > TOTAL_GROWTH_TIME) {
+                    this.setAlgae(true);
+                }
             }
                 }
 
             if (this.isInWaterRainOrBubble()) {
-                this.setMoisntessLevel(2400);
+                this.setMoistnessLevel(2400);
             } else {
-                this.setMoisntessLevel(this.getMoistnessLevel() - 1);
+                this.setMoistnessLevel(this.getMoistnessLevel() - 1);
                 if (this.getMoistnessLevel() <= 0) {
                     this.hurt(this.damageSources().dryOut(), 1.0F);
                 }

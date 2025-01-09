@@ -1,12 +1,19 @@
 package net.pringlebeaver.riverbed.util;
 
+import net.minecraft.core.registries.Registries;
+import net.minecraft.data.tags.BiomeTagsProvider;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.BiomeTags;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Block;
+import net.minecraftforge.registries.RegistryObject;
 import net.pringlebeaver.riverbed.RiverbedMain;
+
+import java.rmi.registry.Registry;
 
 public class ModTags {
 
@@ -20,4 +27,13 @@ public class ModTags {
 
 
     }
+    public static class Biomes {
+
+        public static final TagKey<Biome> HAS_RIVER_VEGETATION = tag("has_river_vegetation");
+
+        private static TagKey<Biome> tag(String name) {
+            return TagKey.create(Registries.BIOME, new ResourceLocation(RiverbedMain.MOD_ID, name));
+        }
+    }
+
 }

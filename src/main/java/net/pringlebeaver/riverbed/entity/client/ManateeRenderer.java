@@ -39,9 +39,6 @@ public class ManateeRenderer extends MobRenderer<ManateeEntity, ManateeModel<Man
 
     @Override
     public void render(ManateeEntity pEntity, float pEntityYaw, float pPartialTicks, PoseStack pMatrixStack, MultiBufferSource pBuffer, int pPackedLight) {
-        if (pEntity.isBaby()) {
-           pMatrixStack.scale(0.35f, 0.35f, 0.35f);
-        }
         super.render(pEntity, pEntityYaw, pPartialTicks, pMatrixStack, pBuffer, pPackedLight);
     }
 }

@@ -60,7 +60,7 @@ public class RiverbedMain
 
         ModFeatures.register(modEventBus);
 
-        ModTerrablenderAPI.registerRegions();
+        //ModTerrablenderAPI.registerRegions();
 
 
 

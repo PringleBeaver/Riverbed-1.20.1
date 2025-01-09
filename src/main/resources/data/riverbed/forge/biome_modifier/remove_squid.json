@@ -1,5 +1,5 @@
 {
   "type": "forge:remove_spawns",
-  "biomes": "minecraft:river",
+  "biomes": "#minecraft:is_river",
   "entity_types": "minecraft:squid"
 }

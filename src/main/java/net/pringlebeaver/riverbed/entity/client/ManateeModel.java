@@ -3,6 +3,7 @@ package net.pringlebeaver.riverbed.entity.client;// Made with Blockbench 4.8.3
 // Paste this class into your mod and generate all required imports
 
 
+import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.model.HierarchicalModel;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
@@ -60,20 +61,42 @@ public class ManateeModel<T extends ManateeEntity> extends HierarchicalModel<T> 
 
 
 
-@Override
+	@Override
 	public void setupAnim(T pEntity, float pLimbSwing, float pLimbSwingAmount, float pAgeInTicks, float pNetHeadYaw, float pHeadPitch) {
-	this.body.xRot = pHeadPitch * ((float) Math.PI / 180F) / 2;
-	this.head.xRot = (pHeadPitch * ((float) Math.PI / 180F) / 4) + 0.35f;
-	this.head.yRot = pNetHeadYaw * ((float) Math.PI / 180F);
+		float BABY_HEAD_SCALE = 1.5F;
+		float BABY_BODY_SCALE = 0.35F;
+		if (this.young) {
+			root.xScale = BABY_BODY_SCALE;
+			root.yScale = BABY_BODY_SCALE;
+			root.zScale = BABY_BODY_SCALE;
+			root.y = 15F;
 
-	this.right_flipper.xRot = Mth.cos(pLimbSwing * 0.6662F + (float)Math.PI) * 2.0F * pLimbSwingAmount * 0.5F;
-	this.left_flipper.xRot = Mth.cos(pLimbSwing * 0.6662F) * 2.0F * pLimbSwingAmount * 0.5F;
-	if (pEntity.getDeltaMovement().horizontalDistanceSqr() > 1.0E-7D) {
-		this.body.xRot += -0.05F - 0.05F * Mth.cos(pAgeInTicks * 0.15F);
-		this.tail.xRot = -0.1F * Mth.cos(pAgeInTicks * 0.15F);
-		this.tail_back.xRot = -0.2F * Mth.cos(pAgeInTicks * 0.15F);
+			head.xScale = BABY_HEAD_SCALE;
+			head.yScale = BABY_HEAD_SCALE;
+			head.zScale = BABY_HEAD_SCALE;
+		} else {
+			root.y = 0F;
+
+			root.xScale = 1.0F;
+			root.yScale = 1.0F;
+			root.zScale = 1.0F;
+
+			head.xScale = 1.0F;
+			head.yScale = 1.0F;
+			head.zScale = 1.0F;
+		}
+		this.body.xRot = pHeadPitch * ((float) Math.PI / 180F) / 2;
+		this.head.xRot = (pHeadPitch * ((float) Math.PI / 180F) / 4) + 0.35f;
+		this.head.yRot = pNetHeadYaw * ((float) Math.PI / 180F);
+
+		this.right_flipper.xRot = Mth.cos(pLimbSwing * 0.6662F + (float)Math.PI) * 2.0F * pLimbSwingAmount * 0.5F;
+		this.left_flipper.xRot = Mth.cos(pLimbSwing * 0.6662F) * 2.0F * pLimbSwingAmount * 0.5F;
+		if (pEntity.getDeltaMovement().horizontalDistanceSqr() > 1.0E-7D) {
+			this.body.xRot += -0.05F - 0.05F * Mth.cos(pAgeInTicks * 0.15F);
+			this.tail.xRot = -0.1F * Mth.cos(pAgeInTicks * 0.15F);
+			this.tail_back.xRot = -0.2F * Mth.cos(pAgeInTicks * 0.15F);
+		}
 	}
-}
 
 	@Override
 	public ModelPart root() {

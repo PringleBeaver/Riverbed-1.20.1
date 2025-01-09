@@ -51,10 +51,23 @@
 
 
 	"entity.riverbed.trout": "Trout",
+	"entity.riverbed.trout.variant.rainbow": "Rainbow Trout",
+	"entity.riverbed.trout.variant.brook": "Brook Trout",
+	"entity.riverbed.trout.variant.bull": "Bull Trout",
+	"entity.riverbed.trout.variant.golden": "Golden Trout",
+
+
+
+
 	"entity.riverbed.manatee": "Manatee",
 
 
 	"effect.riverbed.angling": "Angling",
-	"effect.riverbed.manatees_might": "Manatee's Might"
+	"effect.riverbed.manatees_might": "Manatee's Might",
+
+
+	"advancements.riverbed.husbandry.triple_fish.title": "Oh Baby, a Triple!",
+	"advancements.riverbed.husbandry.triple_fish.description": "Catch 3 fish at once using Fish Chowder"
+
 
 }

@@ -10,10 +10,6 @@
       },
       {
         "model": "riverbed:block/river_stones",
-        "y": 180
-      },
-      {
-        "model": "riverbed:block/river_stones",
         "y": 270
       }
     ]

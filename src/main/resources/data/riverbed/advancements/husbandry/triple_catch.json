@@ -1,0 +1,39 @@
+{
+  "display": {
+    "icon": {
+      "item": "riverbed:fish_chowder"
+    },
+    "title": {
+      "translate": "advancements.riverbed.husbandry.triple_fish.title"
+    },
+    "description": {
+      "translate": "advancements.riverbed.husbandry.triple_fish.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true
+  },
+  "parent": "minecraft:husbandry/fishy_business",
+  "criteria": {
+    "triplecatch": {
+      "trigger": "minecraft:fishing_rod_hooked",
+      "conditions": {
+        "item": {
+          "count": {
+            "min": 3,
+            "max": 3
+          },
+          "item": {
+            "items": [],
+            "tag": "minecraft:fishes"
+          }
+        }
+      }
+    }
+  },
+  "requirements": [
+    [
+      "triplecatch"
+    ]
+  ]
+}
