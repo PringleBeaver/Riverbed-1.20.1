@@ -1,5 +1,5 @@
 {
-	"creativetab.riverbed_tab": "Riverbed Expansion",
+	"creativetab.riverbed_tab": "Riverbed",
 	"item.riverbed.copper_pan": "Copper Pan",
 	
 	"item.riverbed.woven_grass": "Woven Grass",
@@ -9,6 +9,10 @@
 	"item.riverbed.trout": "Raw Trout",
 	"item.riverbed.cooked_trout": "Cooked Trout",
 	"item.riverbed.fish_chowder": "Fish Chowder",
+	"item.riverbed.hyacinth_milk_bucket": "Hyacinth Milk",
+
+
+
 	"item.riverbed.trout_spawn_egg": "Trout Spawn Egg",
 	"item.riverbed.manatee_spawn_egg": "Manatee Spawn Egg",
 
@@ -63,7 +67,7 @@
 
 
 	"effect.riverbed.angling": "Angling",
-	"effect.riverbed.manatees_might": "Manatee's Might",
+	"effect.riverbed.manatees_touch": "Manatee's Touch",
 
 
 	"advancements.riverbed.husbandry.triple_fish.title": "Oh Baby, a Triple!",

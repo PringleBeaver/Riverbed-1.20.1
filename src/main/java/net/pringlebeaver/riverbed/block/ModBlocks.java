@@ -71,7 +71,7 @@ public class ModBlocks {
 
     // Algae
     public static final RegistryObject<Block> ALGAE = registerBlock("algae",
-            () -> new AlgaeBlock(BlockBehaviour.Properties.copy(Blocks.LILY_PAD).sound(SoundType.WET_GRASS).strength(0.8F).noCollission()));
+            () -> new AlgaeBlock(BlockBehaviour.Properties.copy(Blocks.MOSS_CARPET).sound(SoundType.WET_GRASS).noCollission()));
 
     public static final RegistryObject<Block> ALGAE_BLOCK = registerBlock("algae_block",
             () -> new Block(BlockBehaviour.Properties.copy(Blocks.SPONGE).sound(SoundType.WET_GRASS)));

@@ -7,6 +7,7 @@ import net.minecraft.tags.BlockTags;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
@@ -25,6 +26,7 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraftforge.common.IForgeShearable;
 import net.pringlebeaver.riverbed.block.ModBlocks;
+import net.pringlebeaver.riverbed.particle.ModParticles;
 
 import javax.annotation.Nullable;
 import java.util.OptionalInt;
@@ -62,6 +64,10 @@ public class AlgaeBlock extends BushBlock implements SimpleWaterloggedBlock, IFo
         return SHAPE;
     }
 
+    private void spawnAlgaeParticles(BlockPos blockpos, Level level, RandomSource randomSource) {
+        level.addParticle(ModParticles.ALGAE_PARTICLES.get(), false, (blockpos.getX() + randomSource.nextDouble() * 1.5) - 0.25, blockpos.getY(),(blockpos.getZ() + randomSource.nextDouble() * 1.5) - 0.25, 0.0D, 0.0D, 0.0D);
+    }
+
 
 
     @Nullable
@@ -94,9 +100,23 @@ public class AlgaeBlock extends BushBlock implements SimpleWaterloggedBlock, IFo
         return pState.getValue(WATERLOGGED);
     }
 
+    @Override
     public void tick(BlockState pState, ServerLevel pLevel, BlockPos pPos, RandomSource pRandom) {
         pLevel.setBlock(pPos, updateDistance(pState, pLevel, pPos), 3);
     }
+
+    @Override
+    public void animateTick(BlockState pState, Level pLevel, BlockPos pPos, RandomSource pRandom) {
+        if (pState.getValue(WATERLOGGED)) {
+            if (pState.getValue(ALGAE).equals(3)) {
+                spawnAlgaeParticles(pPos, pLevel, pRandom);
+            }
+
+        }
+
+        super.animateTick(pState, pLevel, pPos, pRandom);
+    }
+
     @Override
     public void randomTick(BlockState pState, ServerLevel pLevel, BlockPos pPos, RandomSource pRandom) {
         if (isSpreading(pState) && pState.getValue(WATERLOGGED) && pLevel.isLoaded(pPos)) {
@@ -124,7 +144,6 @@ public class AlgaeBlock extends BushBlock implements SimpleWaterloggedBlock, IFo
 
 
     protected boolean mayPlaceOn(BlockState pState, BlockGetter pLevel, BlockPos pPos) {
-
         return !pState.getCollisionShape(pLevel, pPos).getFaceShape(Direction.UP).isEmpty() || pState.isFaceSturdy(pLevel, pPos, Direction.UP);
     }
 

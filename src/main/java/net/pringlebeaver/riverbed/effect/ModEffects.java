@@ -8,7 +8,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.pringlebeaver.riverbed.RiverbedMain;
 import net.pringlebeaver.riverbed.effect.custom.AnglingEffect;
-import net.pringlebeaver.riverbed.effect.custom.ManateesMightEffect;
+import net.pringlebeaver.riverbed.effect.custom.ManateesTouchEffect;
 
 public class ModEffects {
     public static final DeferredRegister<MobEffect> MOB_EFFECTS =
@@ -16,7 +16,7 @@ public class ModEffects {
 
     public static final RegistryObject<MobEffect> ANGLING = MOB_EFFECTS.register("angling", () -> new AnglingEffect(MobEffectCategory.BENEFICIAL, 4294509));
 
-    public static final RegistryObject<MobEffect> MANATEES_MIGHT = MOB_EFFECTS.register("manatees_might", () -> new ManateesMightEffect(MobEffectCategory.BENEFICIAL, 8490127));
+    public static final RegistryObject<MobEffect> MANATEES_TOUCH = MOB_EFFECTS.register("manatees_touch", () -> new ManateesTouchEffect(MobEffectCategory.BENEFICIAL, 15125503));
 
     public static void register(IEventBus eventBus) {
         MOB_EFFECTS.register(eventBus);

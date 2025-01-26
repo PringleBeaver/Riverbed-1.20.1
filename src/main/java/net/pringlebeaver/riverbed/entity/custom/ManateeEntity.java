@@ -1,9 +1,13 @@
 package net.pringlebeaver.riverbed.entity.custom;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleOptions;
+import net.minecraft.core.particles.ParticleType;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.chat.Component;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
@@ -11,6 +15,7 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.Mth;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -29,6 +34,7 @@ import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.ItemUtils;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.Level;
@@ -39,6 +45,8 @@ import net.minecraftforge.common.IForgeShearable;
 import net.pringlebeaver.riverbed.block.ModBlocks;
 import net.pringlebeaver.riverbed.effect.ModEffects;
 import net.pringlebeaver.riverbed.entity.ModEntities;
+import net.pringlebeaver.riverbed.item.ModItems;
+import net.pringlebeaver.riverbed.particle.ModParticles;
 import net.pringlebeaver.riverbed.sound.ModSounds;
 import org.jetbrains.annotations.NotNull;
 
@@ -48,6 +56,8 @@ import java.util.List;
 
 public class ManateeEntity extends Animal implements IForgeShearable  {
     private static final EntityDataAccessor<Boolean> ALGAE = SynchedEntityData.defineId(ManateeEntity.class, EntityDataSerializers.BOOLEAN);
+    private static final EntityDataAccessor<Boolean> BLOOMING = SynchedEntityData.defineId(ManateeEntity.class, EntityDataSerializers.BOOLEAN);
+
     private static final EntityDataAccessor<Integer> MOISTNESS_LEVEL = SynchedEntityData.defineId(ManateeEntity.class, EntityDataSerializers.INT);
 
     private static final EntityDataAccessor<Integer> ALGAE_GROWTH_TIME = SynchedEntityData.defineId(ManateeEntity.class, EntityDataSerializers.INT);
@@ -80,7 +90,9 @@ public class ManateeEntity extends Animal implements IForgeShearable  {
 
     public void shear(SoundSource pCategory) {
         this.level().playSound((Player)null, this, SoundEvents.SHEEP_SHEAR, pCategory, 1.0F, 1.0F);
+        spawnParticles(this.blockPosition(), this.level(), 200, ModParticles.ALGAE_PARTICLES.get());
         this.setAlgae(false);
+        this.setBlooming(false);
         int i = 6 + this.random.nextInt(3);
 
         for(int j = 0; j < i; ++j) {
@@ -93,51 +105,37 @@ public class ManateeEntity extends Animal implements IForgeShearable  {
 
     }
 
-    protected void addParticlesAroundSelf(ParticleOptions pParticleOption) {
-        for(int i = 0; i < 25; ++i) {
-            double d0 = this.random.nextGaussian() * 0.05D;
-            double d1 = this.random.nextGaussian() * 0.05D;
-            double d2 = this.random.nextGaussian() * 0.05D;
-            this.level().addParticle(pParticleOption, this.getRandomX(1.0D), this.getRandomY(), this.getRandomZ(1.0D), d0, d1, d2);
-        }
-
-    }
-
-    public void EatSuccess (Player pPlayer) {
-        this.addParticlesAroundSelf(ParticleTypes.HAPPY_VILLAGER);
-        playSound(ModSounds.MANATEE_EAT_SUCCESS.get());
-        if (!level().isClientSide) {
-            pPlayer.addEffect(new MobEffectInstance(ModEffects.MANATEES_MIGHT.get(), 6000), this);
-        }
-
-    }
-
-    public void EatFail(Player pPlayer) {
-        this.addParticlesAroundSelf(ParticleTypes.SMOKE);
-        playSound(ModSounds.MANATEE_EAT.get());
-    }
 
 
 
-    public InteractionResult mobInteract(Player pPlayer, InteractionHand pHand) {
+
+    public @NotNull InteractionResult mobInteract(Player pPlayer, @NotNull InteractionHand pHand) {
         ItemStack itemstack = pPlayer.getItemInHand(pHand);
-        Item item = itemstack.getItem();
 
-
-        if (level().isClientSide) {
-                boolean flag = itemstack.is(Items.BUCKET);
-                return flag ? InteractionResult.CONSUME : InteractionResult.PASS;
-        } else {
-            if (itemstack.is(Items.BUCKET)) {
-                this.EatSuccess(pPlayer);
-                return InteractionResult.SUCCESS;
-
+        // Milking
+        if (itemstack.is(Items.BUCKET) && !this.isBaby()) {
+            pPlayer.playSound(SoundEvents.COW_MILK, 1.0F, 1.0F);
+            ItemStack milkResult;
+            if (this.isBlooming()) {
+                milkResult = ItemUtils.createFilledResult(itemstack, pPlayer, ModItems.HYACINTH_MILK_BUCKET.get().getDefaultInstance());
             } else {
-                return super.mobInteract(pPlayer, pHand);
-
+                milkResult = ItemUtils.createFilledResult(itemstack, pPlayer, Items.MILK_BUCKET.getDefaultInstance());
             }
+            pPlayer.setItemInHand(pHand, milkResult);
+            return InteractionResult.sidedSuccess(this.level().isClientSide);
+            // Convert to Flowers
+        } else if (itemstack.is(ModBlocks.WATER_HYACINTH.get().asItem()) && isAlgae() && !isBlooming()) {
+            pPlayer.playSound(ModSounds.MANATEE_EAT_SUCCESS.get(), 1.0F, 1.0F);
+            spawnParticles(this.blockPosition(), this.level(),150, ModParticles.ALGAE_PARTICLES.get());
+            spawnParticles(this.blockPosition(), this.level(), 50, ParticleTypes.EFFECT);
+            this.setBlooming(true);
+            return InteractionResult.sidedSuccess(this.level().isClientSide);
+        } else {
+
+            return super.mobInteract(pPlayer, pHand);
         }
     }
+
 
         public boolean readyForShearing() {
         return (this.isAlive() && this.isAlgae()) && !isBaby();
@@ -150,8 +148,20 @@ public class ManateeEntity extends Animal implements IForgeShearable  {
         } else {
             return Collections.emptyList();
         }
+    }
+
+    private void spawnParticles(BlockPos blockPos, Level level, Integer amount, ParticleType<?> particleType) {
+        if (level instanceof ServerLevel serverLevel) {
 
 
+            serverLevel.sendParticles(
+                    (SimpleParticleType) particleType,
+                        blockPos.getX() + 0.5,
+                        blockPos.getY()+ 0.75,
+                        blockPos.getZ()+ 0.5,
+                        amount, 0.5, 0.5, 0.5,
+                        0.01D);
+        }
     }
 
     protected void handleAirSupply(int pAirSupply) {
@@ -174,10 +184,15 @@ public class ManateeEntity extends Animal implements IForgeShearable  {
     return this.entityData.get(ALGAE);
     }
 
+    public boolean isBlooming() {
+        return this.entityData.get(BLOOMING);
+    }
+
     @Nullable
     public SpawnGroupData finalizeSpawn(ServerLevelAccessor pLevel, DifficultyInstance pDifficulty, MobSpawnType pReason, @Nullable SpawnGroupData pSpawnData, @Nullable CompoundTag pDataTag) {
         this.setAirSupply(this.getMaxAirSupply());
         this.setXRot(0.0F);
+        setBlooming(false);
         if (isBaby()) {
             setAlgae(false);
         } else {
@@ -218,6 +233,10 @@ public class ManateeEntity extends Animal implements IForgeShearable  {
         this.entityData.set(ALGAE, algae);
     }
 
+    public void setBlooming(boolean blooming) {
+        this.entityData.set(BLOOMING, blooming);
+    }
+
     public void setAlgaeGrowthTime(int algaeGrowthTime) {
         this.entityData.set(ALGAE_GROWTH_TIME, algaeGrowthTime);
     }
@@ -227,6 +246,7 @@ public class ManateeEntity extends Animal implements IForgeShearable  {
         super.defineSynchedData();
         this.entityData.define(MOISTNESS_LEVEL, 2400);
         this.entityData.define(ALGAE, true);
+        this.entityData.define(BLOOMING, false);
         this.entityData.define(ALGAE_GROWTH_TIME, 0);
     }
     @Override
@@ -234,14 +254,15 @@ public class ManateeEntity extends Animal implements IForgeShearable  {
         super.addAdditionalSaveData(pCompound);
         pCompound.putInt("Moistness", this.getMoistnessLevel());
         pCompound.putBoolean("Algae", this.isAlgae());
+        pCompound.putBoolean("Blooming", this.isBlooming());
         pCompound.putInt("AlgaeGrowthTime", this.getAlgaeGrowthTime());
-
     }
     @Override
     public void readAdditionalSaveData(CompoundTag pCompound) {
         super.readAdditionalSaveData(pCompound);
         this.setMoistnessLevel(pCompound.getInt("Moistness"));
         this.setAlgae(pCompound.getBoolean("Algae"));
+        this.setBlooming(pCompound.getBoolean("Blooming"));
         this.setAlgaeGrowthTime(pCompound.getInt("AlgaeGrowthTime"));
 
     }
@@ -250,8 +271,6 @@ public class ManateeEntity extends Animal implements IForgeShearable  {
 
         this.goalSelector.addGoal(0, new TryFindWaterGoal(this));
         this.goalSelector.addGoal(2, new BreedGoal(this, 0.8D));
-
-
         this.goalSelector.addGoal(3, new TemptGoal(this, 1.1D, Ingredient.of(Items.SEAGRASS), false));
 
 
@@ -329,10 +348,7 @@ public class ManateeEntity extends Animal implements IForgeShearable  {
     }
 
 
-    public boolean canBeLeashed(Player pPlayer) {
+    public boolean canBeLeashed(@NotNull Player pPlayer) {
         return true;
     }
-
-    // Breeding
-
 }

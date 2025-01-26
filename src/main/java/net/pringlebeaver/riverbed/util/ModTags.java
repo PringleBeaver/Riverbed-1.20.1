@@ -29,11 +29,6 @@ public class ModTags {
     }
     public static class Biomes {
 
-        public static final TagKey<Biome> HAS_RIVER_VEGETATION = tag("has_river_vegetation");
-
-        private static TagKey<Biome> tag(String name) {
-            return TagKey.create(Registries.BIOME, new ResourceLocation(RiverbedMain.MOD_ID, name));
-        }
     }
 
 }

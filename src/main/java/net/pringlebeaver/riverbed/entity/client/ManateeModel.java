@@ -20,6 +20,8 @@ public class ManateeModel<T extends ManateeEntity> extends HierarchicalModel<T> 
 	private final ModelPart right_flipper;
 	private final ModelPart body;
 	private final ModelPart head;
+	private final ModelPart flowers;
+
 	private final ModelPart tail;
 	private final ModelPart root;
 	private final ModelPart tail_back;
@@ -27,6 +29,7 @@ public class ManateeModel<T extends ManateeEntity> extends HierarchicalModel<T> 
 	public ManateeModel(ModelPart pRoot) {
 		this.root = pRoot;
 		this.body = root.getChild("body");
+		this.flowers = this.body.getChild("flowers");
 		this.left_flipper = body.getChild("left_flipper");
 		this.right_flipper = body.getChild("right_flipper");
 		this.head = body.getChild("head");
@@ -40,6 +43,24 @@ public class ManateeModel<T extends ManateeEntity> extends HierarchicalModel<T> 
 		PartDefinition partdefinition = meshdefinition.getRoot();
 
 		PartDefinition body = partdefinition.addOrReplaceChild("body", CubeListBuilder.create().texOffs(0, 0).addBox(-10.0F, -20.0F, -1.0F, 20.0F, 20.0F, 24.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, 24.0F, -12.0F));
+
+		PartDefinition flowers = body.addOrReplaceChild("flowers", CubeListBuilder.create(), PartPose.offset(0.0F, -10.0F, 10.0F));
+
+		PartDefinition flower4_r1 = flowers.addOrReplaceChild("flower4_r1", CubeListBuilder.create().texOffs(46, 76).addBox(0.0F, -1.0F, -5.5F, 0.0F, 8.0F, 8.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(-4.0F, -16.0F, 7.5F, 0.0F, -0.7854F, 0.0F));
+
+		PartDefinition flower4_r2 = flowers.addOrReplaceChild("flower4_r2", CubeListBuilder.create().texOffs(46, 76).addBox(-0.5F, -4.0F, -4.5F, 0.0F, 8.0F, 8.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(-2.9393F, -13.0F, 6.4393F, 0.0F, 0.7854F, 0.0F));
+
+		PartDefinition flower3_r1 = flowers.addOrReplaceChild("flower3_r1", CubeListBuilder.create().texOffs(46, 76).addBox(-0.5F, -4.0F, -4.5F, 0.0F, 8.0F, 8.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(2.0607F, -14.0F, -10.5607F, 0.0F, 0.7854F, 0.0F));
+
+		PartDefinition flower3_r2 = flowers.addOrReplaceChild("flower3_r2", CubeListBuilder.create().texOffs(46, 76).addBox(0.0F, -1.0F, -5.5F, 0.0F, 8.0F, 8.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(1.0F, -17.0F, -9.5F, 0.0F, -0.7854F, 0.0F));
+
+		PartDefinition flower2_r1 = flowers.addOrReplaceChild("flower2_r1", CubeListBuilder.create().texOffs(44, 55).addBox(0.0F, -7.0F, -5.5F, 0.0F, 14.0F, 11.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(8.0F, -15.0F, 7.5F, 0.0F, -0.7854F, 0.0F));
+
+		PartDefinition flower2_r2 = flowers.addOrReplaceChild("flower2_r2", CubeListBuilder.create().texOffs(44, 55).addBox(0.0F, -7.0F, -5.5F, 0.0F, 14.0F, 11.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(8.0F, -15.0F, 7.5F, 0.0F, 0.7854F, 0.0F));
+
+		PartDefinition flower1_r1 = flowers.addOrReplaceChild("flower1_r1", CubeListBuilder.create().texOffs(44, 55).addBox(0.0F, -7.0F, -5.5F, 0.0F, 14.0F, 11.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(-8.0F, -15.0F, -4.5F, 0.0F, 0.7854F, 0.0F));
+
+		PartDefinition flower1_r2 = flowers.addOrReplaceChild("flower1_r2", CubeListBuilder.create().texOffs(44, 55).addBox(0.0F, -7.0F, -5.5F, 0.0F, 14.0F, 11.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(-8.0F, -15.0F, -4.5F, 0.0F, -0.7854F, 0.0F));
 
 		PartDefinition right_flipper = body.addOrReplaceChild("right_flipper", CubeListBuilder.create(), PartPose.offset(-10.0F, -1.0F, 6.0F));
 

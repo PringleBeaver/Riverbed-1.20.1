@@ -6,7 +6,4 @@ import net.pringlebeaver.riverbed.RiverbedMain;
 @Mod.EventBusSubscriber(modid = RiverbedMain.MOD_ID)
 public class ModCommonEvents {
 
-
-
-
 }

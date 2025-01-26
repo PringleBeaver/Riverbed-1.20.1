@@ -11,6 +11,7 @@ import net.pringlebeaver.riverbed.RiverbedMain;
 import net.pringlebeaver.riverbed.entity.ModEntities;
 import net.pringlebeaver.riverbed.item.custom.CustomFishBucketItem;
 import net.pringlebeaver.riverbed.item.custom.CustomSpawnEggItem;
+import net.pringlebeaver.riverbed.item.custom.HyacinthMilkItem;
 import net.pringlebeaver.riverbed.sound.ModSounds;
 
 public class ModItems {
@@ -29,6 +30,10 @@ public class ModItems {
     public static final RegistryObject<Item> COOKED_TROUT = ITEMS.register("cooked_trout", () -> new Item(new Item.Properties().food(ModFoods.COOKED_TROUT)));
 
     public static final RegistryObject<Item> FISH_CHOWDER = ITEMS.register("fish_chowder", () -> new BowlFoodItem(new Item.Properties().food(ModFoods.FISH_CHOWDER).stacksTo(1)));
+
+    // Drinks
+
+    public static final RegistryObject<Item> HYACINTH_MILK_BUCKET = ITEMS.register("hyacinth_milk_bucket", () -> new HyacinthMilkItem(new Item.Properties().craftRemainder(Items.BUCKET).stacksTo(1)));
 
     // Mob Buckets
    public static final RegistryObject<Item> TROUT_BUCKET = ITEMS.register("trout_bucket", () -> new CustomFishBucketItem(ModEntities.TROUT, () -> Fluids.WATER, () -> SoundEvents.BUCKET_EMPTY_FISH,(new Item.Properties().stacksTo(1) )));

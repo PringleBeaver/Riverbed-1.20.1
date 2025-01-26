@@ -61,6 +61,8 @@ public class ModCreativeTabs {
                         pOutput.accept(ModItems.COOKED_TROUT.get());
                         pOutput.accept(ModItems.FISH_CHOWDER.get());
 
+                        pOutput.accept(ModItems.HYACINTH_MILK_BUCKET.get());
+
                         pOutput.accept(ModItems.TROUT_BUCKET.get());
 
                         pOutput.accept(ModItems.MUSIC_DISC_DELTA.get());
