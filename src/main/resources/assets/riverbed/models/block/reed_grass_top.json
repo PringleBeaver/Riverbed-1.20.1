@@ -1,0 +1,30 @@
+{
+	"render_type": "cutout",
+	"ambientocclusion": false,
+	"textures": {
+		"1": "riverbed:block/reed_grass",
+		"particle": "riverbed:block/reed_grass_item"
+	},
+	"elements": [
+		{
+			"from": [0.8, 0, 8],
+			"to": [15.2, 27, 8],
+			"shade": false,
+			"rotation": {"angle": 45, "axis": "y", "origin": [8, 8, 8], "rescale": true},
+			"faces": {
+				"north": {"uv": [0, 2.5, 8, 16], "texture": "#1", "tintindex": 0},
+				"south": {"uv": [0, 2.5, 8, 16], "texture": "#1", "tintindex": 0}
+			}
+		},
+		{
+			"from": [8, 0, 0.8],
+			"to": [8, 27, 15.2],
+			"shade": false,
+			"rotation": {"angle": 45, "axis": "y", "origin": [8, 8, 8], "rescale": true},
+			"faces": {
+				"east": {"uv": [0, 2.5, 8, 16], "texture": "#1", "tintindex": 0},
+				"west": {"uv": [0, 2.5, 8, 16], "texture": "#1", "tintindex": 0}
+			}
+		}
+	]
+}

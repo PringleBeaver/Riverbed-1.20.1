@@ -10,6 +10,7 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
@@ -26,7 +27,10 @@ import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.pringlebeaver.riverbed.block.ModBlocks;
+import net.pringlebeaver.riverbed.item.ModItems;
 import net.pringlebeaver.riverbed.particle.ModParticles;
+
+import javax.annotation.Nullable;
 
 public class SurfaceFilmBlock extends BushBlock {
     protected static final VoxelShape SHAPE = Block.box(0.0D, 0.0D, 0.0D, 16.0D, 1.0D, 16.0D);
@@ -60,6 +64,12 @@ public class SurfaceFilmBlock extends BushBlock {
         if (randomSource.nextInt(4) == 0) {
             level.addParticle(ModParticles.ALGAE_PARTICLES.get(), false, (blockpos.getX() + randomSource.nextDouble() * 1.5) - 0.25, blockpos.getY(),(blockpos.getZ() + randomSource.nextDouble() * 1.5) - 0.25, 0.0D, 0.0D, 0.0D);
         }
+    }
+
+    @Nullable
+    public BlockState getStateForPlacement(BlockPlaceContext pContext) {
+        BlockState blockstate = pContext.getLevel().getBlockState(pContext.getClickedPos());
+            return super.getStateForPlacement(pContext);
     }
 
     protected boolean mayPlaceOn(BlockState pState, BlockGetter pLevel, BlockPos pPos) {

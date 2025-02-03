@@ -37,9 +37,6 @@ public class ModCreativeTabs {
                         pOutput.accept(ModBlocks.ALGAE_BLOCK.get());
 
                         pOutput.accept(ModBlocks.ALGAE.get());
-
-                        pOutput.accept(ModItems.ALGAE_FILM_BOTTLE.get());
-
                         pOutput.accept(ModBlocks.TWIG_PILE.get());
                         pOutput.accept(ModBlocks.BEAVER_NEST.get());
 

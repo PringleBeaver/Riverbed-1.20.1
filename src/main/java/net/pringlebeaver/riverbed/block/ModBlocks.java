@@ -5,7 +5,6 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.PlaceOnWaterBlockItem;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.material.MapColor;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -13,7 +12,6 @@ import net.minecraftforge.registries.RegistryObject;
 import net.pringlebeaver.riverbed.RiverbedMain;
 import net.pringlebeaver.riverbed.block.custom.*;
 import net.pringlebeaver.riverbed.item.ModItems;
-import net.pringlebeaver.riverbed.item.custom.AlgaeBottleItem;
 import net.pringlebeaver.riverbed.item.custom.ModFuelBlockItem;
 
 import java.util.function.Supplier;
@@ -128,11 +126,8 @@ public class ModBlocks {
             case "algae_block":
                 return ModItems.ITEMS.register(name, () -> new ModFuelBlockItem(block.get(), new Item.Properties(), 200));
 
-            case "water_hyacinth":
+            case "water_hyacinth", "surface_film":
                 return ModItems.ITEMS.register(name, () -> new PlaceOnWaterBlockItem(block.get(), new Item.Properties()));
-
-            case "surface_film":
-                return null;
 
             case "grass_basket":
                 return ModItems.ITEMS.register(name, () -> new BlockItem(block.get(), new Item.Properties().stacksTo(1)));

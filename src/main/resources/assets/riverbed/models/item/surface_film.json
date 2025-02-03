@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "riverbed:item/algae_bottle"
+    "layer0": "riverbed:block/surface_film"
   }
 }
