@@ -42,6 +42,8 @@ public class AlgaeBlock extends BushBlock implements SimpleWaterloggedBlock, IFo
 
     public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
 
+    int filmSpreadDepth = 2;
+
     protected static final VoxelShape SHAPE = Block.box(0.0D, 0.0D, 0.0D, 16.0D, 1.0D, 16.0D);
 
 
@@ -68,6 +70,29 @@ public class AlgaeBlock extends BushBlock implements SimpleWaterloggedBlock, IFo
         level.addParticle(ModParticles.ALGAE_PARTICLES.get(), false, (blockpos.getX() + randomSource.nextDouble() * 1.5) - 0.25, blockpos.getY(),(blockpos.getZ() + randomSource.nextDouble() * 1.5) - 0.25, 0.0D, 0.0D, 0.0D);
     }
 
+    private void spreadSurfaceFilm(BlockPos blockPos, Level level, RandomSource randomSource, BlockState state) {
+        for (int i = 0; i <= filmSpreadDepth; i++) {
+            if (nearbyAlgaeCount(level, blockPos) >= 2) {
+                if (randomSource.nextInt(i * 2 + 10) < this.getAlgaeValue(state) * 2) {
+                    if (level.getBlockState(blockPos.above(i)).is(Blocks.AIR) && level.getFluidState(blockPos.above(i -1)).is(Fluids.WATER)) {
+                        level.setBlock(blockPos.above(i), ModBlocks.SURFACE_FILM.get().defaultBlockState(), 2);
+                    } else if (level.getBlockState(blockPos.above(i)).is(ModBlocks.SURFACE_FILM.get()) && nearbyAlgaeCount(level, blockPos) >= 3) {
+                        level.setBlock(blockPos.above(i), ModBlocks.SURFACE_FILM.get().defaultBlockState().setValue(SurfaceFilmBlock.AGE, 2), 2);
+                    }
+                }
+            }
+
+        }
+    }
+    public int nearbyAlgaeCount(Level level, BlockPos pos) {
+        int nearbyAlgaeCount = 0;
+        if (level.getBlockState(pos.east()).is(this)) {nearbyAlgaeCount++;}
+        if (level.getBlockState(pos.west()).is(this)) {nearbyAlgaeCount++;}
+        if (level.getBlockState(pos.north()).is(this)) {nearbyAlgaeCount++;}
+        if (level.getBlockState(pos.south()).is(this)) {nearbyAlgaeCount++;}
+        return nearbyAlgaeCount;
+    }
+
 
 
     @Nullable
@@ -84,16 +109,13 @@ public class AlgaeBlock extends BushBlock implements SimpleWaterloggedBlock, IFo
         }
     }
 
-    protected IntegerProperty GetAlgaeProperty() {
-        return ALGAE;
-    }
 
     public BlockState getStateForLevel(int pAge) {
-        return this.defaultBlockState().setValue(this.GetAlgaeProperty(), Integer.valueOf(pAge));
+        return this.defaultBlockState().setValue(ALGAE, Integer.valueOf(pAge));
     }
 
     public int getAlgaeValue(BlockState pState) {
-        return pState.getValue(this.GetAlgaeProperty());
+        return pState.getValue(ALGAE);
     }
 
     public boolean isRandomlyTicking(BlockState pState) {
@@ -119,6 +141,7 @@ public class AlgaeBlock extends BushBlock implements SimpleWaterloggedBlock, IFo
 
     @Override
     public void randomTick(BlockState pState, ServerLevel pLevel, BlockPos pPos, RandomSource pRandom) {
+        spreadSurfaceFilm(pPos, pLevel, pRandom, pState);
         if (isSpreading(pState) && pState.getValue(WATERLOGGED) && pLevel.isLoaded(pPos)) {
 
             int algaeValue = getAlgaeValue(pState);
@@ -144,6 +167,7 @@ public class AlgaeBlock extends BushBlock implements SimpleWaterloggedBlock, IFo
 
 
     protected boolean mayPlaceOn(BlockState pState, BlockGetter pLevel, BlockPos pPos) {
+        FluidState fluidstate = pLevel.getFluidState(pPos);
         return !pState.getCollisionShape(pLevel, pPos).getFaceShape(Direction.UP).isEmpty() || pState.isFaceSturdy(pLevel, pPos, Direction.UP);
     }
 

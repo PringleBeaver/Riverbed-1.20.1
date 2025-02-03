@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "age=1": {
+      "model": "riverbed:block/small_surface_film"
+    },
+    "age=2": {
+      "model": "riverbed:block/surface_film"
+    }
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "type": "riverbed:add_river_features",
+  "feature": "riverbed:seagrass_river_new",
+  "step": "vegetal_decoration",
+  "variant": "temperate"
+}

@@ -29,6 +29,60 @@
     ]
   },
 
+    "manatee_chirp": {
+    "subtitles": "sounds.riverbed.manatee_chirp",
+    "sounds": [
+      {
+        "name": "riverbed:manatee/manatee_chirp_1"
+      },
+      {
+        "name": "riverbed:manatee/manatee_chirp_2"
+      },
+      {
+        "name": "riverbed:manatee/manatee_chirp_3"
+      },
+      {
+        "name": "riverbed:manatee/manatee_chirp_4"
+      },
+      {
+        "name": "riverbed:manatee/manatee_chirp_5"
+      },
+            {
+        "name": "riverbed:manatee/manatee_chirp_6"
+      }
+    ]
+  },
+
+  "manatee_hurt": {
+    "subtitles": "sounds.riverbed.manatee_hurt",
+    "sounds": [
+      {
+        "name": "riverbed:manatee/manatee_hurt_1"
+      },
+      {
+        "name": "riverbed:manatee/manatee_hurt_2"
+      },
+      {
+        "name": "riverbed:manatee/manatee_hurt_3"
+      }
+    ]
+  },
+
+    "manatee_death": {
+    "subtitles": "sounds.riverbed.manatee_death",
+    "sounds": [
+      {
+        "name": "riverbed:manatee/manatee_death_1"
+      },
+      {
+        "name": "riverbed:manatee/manatee_death_2"
+      },
+      {
+        "name": "riverbed:manatee/manatee_death_3"
+      }
+    ]
+  },
+
   "manatee_eat_success": {
     "subtitles": "sounds.riverbed.manatee_eat_success",
     "sounds": [

@@ -1,0 +1,7 @@
+{
+  "values": [
+    "#minecraft:is_river",
+    "#forge:is_coniferous",
+    "#forge:is_snowy"
+  ]
+}

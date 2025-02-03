@@ -24,7 +24,7 @@
               {
                 "weight": 3,
                 "data": {
-                  "Name": "riverbed:river_grass",
+                  "Name": "riverbed:dry_river_grass",
                   "Properties": {
                     "half": "lower",
                     "dense": "true"
@@ -34,7 +34,7 @@
               {
                 "weight": 8,
                 "data": {
-                  "Name": "riverbed:river_grass",
+                  "Name": "riverbed:dry_river_grass",
                   "Properties": {
                     "half": "lower",
                     "dense": "false"

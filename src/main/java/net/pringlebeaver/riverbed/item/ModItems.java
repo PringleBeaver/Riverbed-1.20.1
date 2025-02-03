@@ -2,13 +2,16 @@ package net.pringlebeaver.riverbed.item;
 
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.item.*;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.pringlebeaver.riverbed.RiverbedMain;
+import net.pringlebeaver.riverbed.block.ModBlocks;
 import net.pringlebeaver.riverbed.entity.ModEntities;
+import net.pringlebeaver.riverbed.item.custom.AlgaeBottleItem;
 import net.pringlebeaver.riverbed.item.custom.CustomFishBucketItem;
 import net.pringlebeaver.riverbed.item.custom.CustomSpawnEggItem;
 import net.pringlebeaver.riverbed.item.custom.HyacinthMilkItem;
@@ -32,6 +35,8 @@ public class ModItems {
     public static final RegistryObject<Item> FISH_CHOWDER = ITEMS.register("fish_chowder", () -> new BowlFoodItem(new Item.Properties().food(ModFoods.FISH_CHOWDER).stacksTo(1)));
 
     // Drinks
+    public static final RegistryObject<Item> ALGAE_FILM_BOTTLE = ITEMS.register("algae_bottle", () -> new AlgaeBottleItem(ModBlocks.SURFACE_FILM.get(),new Item.Properties().stacksTo(16).craftRemainder(Items.GLASS_BOTTLE)));
+
 
     public static final RegistryObject<Item> HYACINTH_MILK_BUCKET = ITEMS.register("hyacinth_milk_bucket", () -> new HyacinthMilkItem(new Item.Properties().craftRemainder(Items.BUCKET).stacksTo(1)));
 

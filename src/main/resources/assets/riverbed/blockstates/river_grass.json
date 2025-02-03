@@ -1,10 +1,16 @@
 {
   "variants": {
-    "half=lower": {
+    "half=lower,dense=false": {
       "model": "riverbed:block/river_grass_bottom"
     },
-    "half=upper": {
+    "half=upper,dense=false": {
       "model": "riverbed:block/river_grass_top"
+    },
+    "half=lower,dense=true": {
+      "model": "riverbed:block/river_grass_dense_bottom"
+    },
+    "half=upper,dense=true": {
+      "model": "riverbed:block/river_grass_dense_top"
     }
   }
 }

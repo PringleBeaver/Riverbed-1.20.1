@@ -1,6 +1,0 @@
-{
-  "type": "forge:add_features",
-  "features": "riverbed:patch_river_grass",
-  "biomes": "#riverbed:has_basic_river",
-  "step": "vegetal_decoration"
-}

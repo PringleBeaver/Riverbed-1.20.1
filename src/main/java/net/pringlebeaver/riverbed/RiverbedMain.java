@@ -30,6 +30,7 @@ import net.pringlebeaver.riverbed.particle.ModParticles;
 import net.pringlebeaver.riverbed.sound.ModSounds;
 import net.pringlebeaver.riverbed.world.ModFeatures;
 import net.pringlebeaver.riverbed.world.biome.ModTerrablenderAPI;
+import net.pringlebeaver.riverbed.world.biomemodifiers.ModBiomeModifiers;
 import org.slf4j.Logger;
 
 // The value here should match an entry in the META-INF/mods.toml file
@@ -61,6 +62,8 @@ public class RiverbedMain
         ModLootModifiers.register(modEventBus);
 
         ModFeatures.register(modEventBus);
+
+        ModBiomeModifiers.register(modEventBus);
 
         //ModTerrablenderAPI.registerRegions();
 
@@ -120,13 +123,11 @@ public class RiverbedMain
         @SubscribeEvent
         public static void itemTintSetup(RegisterColorHandlersEvent.Item event)
         {
-            RivergrassBlock.loadItemTint(event);
         }
 
         @SubscribeEvent
         public static void blockTintSetup(RegisterColorHandlersEvent.Block event)
         {
-            RivergrassBlock.loadBlockTint(event);
         }
 
 

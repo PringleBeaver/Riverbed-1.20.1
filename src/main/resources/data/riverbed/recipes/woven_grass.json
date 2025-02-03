@@ -1,21 +1,16 @@
 {
-    "type": "minecraft:crafting_shapeless",
-    "ingredients": [
-        {
-            "item": "riverbed:dry_river_grass"
-        },
-        {
-            "item": "riverbed:dry_river_grass"
-        },
-        {
-            "item": "riverbed:dry_river_grass"
-        },
-        {
-            "item": "riverbed:dry_river_grass"
-        }
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "##",
+        "##"
     ],
+    "key": {
+        "#": {
+            "tag": "riverbed:weavable_grass"
+        }
+    },
     "result": {
         "item": "riverbed:woven_grass",
-        "count": 2
+        "count": 1
     }
 }

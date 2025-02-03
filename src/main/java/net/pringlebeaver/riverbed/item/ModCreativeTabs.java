@@ -18,6 +18,7 @@ public class ModCreativeTabs {
             () -> CreativeModeTab.builder().icon(() -> new ItemStack(ModItems.TROUT.get()))
                     .title(Component.translatable("creativetab.riverbed_tab"))
                     .displayItems((pParameters, pOutput) -> {
+                        
 
                         pOutput.accept(ModBlocks.RIVER_STONES.get());
                         pOutput.accept(ModBlocks.RIVER_STONE_STAIRS.get());
@@ -37,12 +38,15 @@ public class ModCreativeTabs {
 
                         pOutput.accept(ModBlocks.ALGAE.get());
 
+                        pOutput.accept(ModItems.ALGAE_FILM_BOTTLE.get());
+
                         pOutput.accept(ModBlocks.TWIG_PILE.get());
                         pOutput.accept(ModBlocks.BEAVER_NEST.get());
 
 
                         pOutput.accept(ModBlocks.WATER_HYACINTH.get());
                         pOutput.accept(ModBlocks.RIVER_GRASS.get());
+                        pOutput.accept(ModBlocks.REED_GRASS.get());
 
                         pOutput.accept(ModBlocks.DRY_RIVER_GRASS.get());
 

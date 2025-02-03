@@ -12,6 +12,7 @@ import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.Mth;
@@ -19,6 +20,7 @@ import net.minecraft.util.RandomSource;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
@@ -42,6 +44,7 @@ import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.pathfinder.BlockPathTypes;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.common.IForgeShearable;
+import net.minecraftforge.fml.common.Mod;
 import net.pringlebeaver.riverbed.block.ModBlocks;
 import net.pringlebeaver.riverbed.effect.ModEffects;
 import net.pringlebeaver.riverbed.entity.ModEntities;
@@ -76,6 +79,27 @@ public class ManateeEntity extends Animal implements IForgeShearable  {
 
     public MobType getMobType() {
         return MobType.WATER;
+    }
+
+    // Sounds
+
+
+    @org.jetbrains.annotations.Nullable
+    @Override
+    protected SoundEvent getAmbientSound() {
+        return ModSounds.MANATEE_CHIRP.get();
+    }
+
+    @org.jetbrains.annotations.Nullable
+    @Override
+    protected SoundEvent getHurtSound(DamageSource pDamageSource) {
+        return ModSounds.MANATEE_HURT.get();
+    }
+
+    @org.jetbrains.annotations.Nullable
+    @Override
+    protected SoundEvent getDeathSound() {
+        return ModSounds.MANATEE_DEATH.get();
     }
 
     public boolean canBreatheUnderwater() {
@@ -125,16 +149,33 @@ public class ManateeEntity extends Animal implements IForgeShearable  {
             return InteractionResult.sidedSuccess(this.level().isClientSide);
             // Convert to Flowers
         } else if (itemstack.is(ModBlocks.WATER_HYACINTH.get().asItem()) && isAlgae() && !isBlooming()) {
-            pPlayer.playSound(ModSounds.MANATEE_EAT_SUCCESS.get(), 1.0F, 1.0F);
-            spawnParticles(this.blockPosition(), this.level(),150, ModParticles.ALGAE_PARTICLES.get());
-            spawnParticles(this.blockPosition(), this.level(), 50, ParticleTypes.EFFECT);
-            this.setBlooming(true);
-            return InteractionResult.sidedSuccess(this.level().isClientSide);
+            itemstack.shrink(1);
+            int successChance = this.random.nextInt(6);
+
+            if (successChance == 0) {
+                if (!level().isClientSide) {
+                    level().playSound(this, this.blockPosition(), ModSounds.MANATEE_EAT_SUCCESS.get(), this.getSoundSource(), 1.0F, 1.0F);
+                    spawnParticles(this.blockPosition(), this.level(),150, ModParticles.ALGAE_PARTICLES.get());
+                    spawnParticles(this.blockPosition(), this.level(), 50, ParticleTypes.EFFECT);
+                    this.setBlooming(true);
+                }
+                return InteractionResult.sidedSuccess(this.level().isClientSide);
+
+            } else {
+                if (!level().isClientSide) {
+                    level().playSound(this, this.blockPosition(), ModSounds.MANATEE_EAT.get(), this.getSoundSource(), 1.0F, 1.0F);
+                    spawnParticles(this.blockPosition(), this.level(), 50, ParticleTypes.SMOKE);
+                }
+                return InteractionResult.sidedSuccess(this.level().isClientSide);
+            }
+
         } else {
 
             return super.mobInteract(pPlayer, pHand);
         }
     }
+
+
 
 
         public boolean readyForShearing() {

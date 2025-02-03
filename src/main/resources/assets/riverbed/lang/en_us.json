@@ -10,6 +10,7 @@
 	"item.riverbed.cooked_trout": "Cooked Trout",
 	"item.riverbed.fish_chowder": "Fish Chowder",
 	"item.riverbed.hyacinth_milk_bucket": "Hyacinth Milk",
+	"item.riverbed.algae_bottle": "Algae Bottle",
 
 
 
@@ -35,13 +36,15 @@
 	"block.riverbed.algal_river_stone_brick_stairs": "Algal River Stone Brick Stairs",
 	"block.riverbed.algal_river_stone_brick_slab": "Algal River Stone Brick Slab",
 	"block.riverbed.algal_river_stone_brick_wall": "Algal River Stone Brick Wall",
+	"block.riverbed.reed_grass": "Reed Grass",
 	"block.riverbed.river_grass": "River Grass",
 	"block.riverbed.dry_river_grass": "Dry River Grass",
 
 	"block.riverbed.water_hyacinth": "Water Hyacinth",
 
-	"block.riverbed.algae": "Algae",
+	"block.riverbed.algae": "Algae Clump",
 	"block.riverbed.algae_block": "Algae Block",
+	"block.riverbed.surface_film": "Film Algae",
 
 	"block.riverbed.woven_grass_block": "Woven Grass Block",
 	"block.riverbed.woven_grass_mat": "Grass Mat",
@@ -71,7 +74,10 @@
 
 
 	"advancements.riverbed.husbandry.triple_fish.title": "Oh Baby, a Triple!",
-	"advancements.riverbed.husbandry.triple_fish.description": "Catch 3 fish at once using Fish Chowder"
+	"advancements.riverbed.husbandry.triple_fish.description": "Catch 3 fish at once using Fish Chowder",
+
+	"sounds.riverbed.manatee_chirp": "Manatee Chirps",
+	"sounds.manatee_eat_success": "Manatee Converts"
 
 
 }

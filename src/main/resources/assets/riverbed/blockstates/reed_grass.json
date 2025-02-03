@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "half=lower,dense=false": {
+      "model": "riverbed:block/reed_grass_bottom"
+    },
+    "half=upper,dense=false": {
+      "model": "riverbed:block/reed_grass_top"
+    },
+    "half=lower,dense=true": {
+      "model": "riverbed:block/reed_grass_dense_bottom"
+    },
+    "half=upper,dense=true": {
+      "model": "riverbed:block/reed_grass_dense_top"
+    }
+  }
+}

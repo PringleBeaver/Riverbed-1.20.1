@@ -17,6 +17,12 @@ public class ModSounds {
 
     public static final RegistryObject<SoundEvent> MANATEE_EAT = registerSoundEvents("manatee_eat");
 
+    public static final RegistryObject<SoundEvent> MANATEE_CHIRP = registerSoundEvents("manatee_chirp");
+
+    public static final RegistryObject<SoundEvent> MANATEE_HURT = registerSoundEvents("manatee_hurt");
+
+    public static final RegistryObject<SoundEvent> MANATEE_DEATH = registerSoundEvents("manatee_death");
+
     public static final RegistryObject<SoundEvent> MANATEE_EAT_SUCCESS = registerSoundEvents("manatee_eat_success");
 
 

@@ -11,11 +11,9 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.pringlebeaver.riverbed.RiverbedMain;
-import net.pringlebeaver.riverbed.block.custom.AlgaeBlock;
-import net.pringlebeaver.riverbed.block.custom.GrassBasketBlock;
-import net.pringlebeaver.riverbed.block.custom.RivergrassBlock;
-import net.pringlebeaver.riverbed.block.custom.WaterHyacinthBlock;
+import net.pringlebeaver.riverbed.block.custom.*;
 import net.pringlebeaver.riverbed.item.ModItems;
+import net.pringlebeaver.riverbed.item.custom.AlgaeBottleItem;
 import net.pringlebeaver.riverbed.item.custom.ModFuelBlockItem;
 
 import java.util.function.Supplier;
@@ -76,10 +74,15 @@ public class ModBlocks {
     public static final RegistryObject<Block> ALGAE_BLOCK = registerBlock("algae_block",
             () -> new Block(BlockBehaviour.Properties.copy(Blocks.SPONGE).sound(SoundType.WET_GRASS)));
 
+    public static final RegistryObject<Block> SURFACE_FILM = registerBlock("surface_film",
+            () -> new SurfaceFilmBlock(BlockBehaviour.Properties.copy(Blocks.LILY_PAD).sound(SoundType.HONEY_BLOCK).noCollission()));
     // Plants
 
     public static final RegistryObject<Block> RIVER_GRASS = registerBlock("river_grass",
-            () -> new RivergrassBlock(BlockBehaviour.Properties.copy(Blocks.SMALL_DRIPLEAF).sound(SoundType.WET_GRASS).mapColor(MapColor.GRASS)));
+            () -> new RivergrassBlock(BlockBehaviour.Properties.copy(Blocks.SMALL_DRIPLEAF).sound(SoundType.WET_GRASS)));
+
+    public static final RegistryObject<Block> REED_GRASS = registerBlock("reed_grass",
+            () -> new RivergrassBlock(BlockBehaviour.Properties.copy(Blocks.SMALL_DRIPLEAF).sound(SoundType.WET_GRASS)));
 
     public static final RegistryObject<Block> DRY_RIVER_GRASS = registerBlock("dry_river_grass",
             () -> new RivergrassBlock(BlockBehaviour.Properties.copy(Blocks.SMALL_DRIPLEAF).sound(SoundType.GRASS)));
@@ -127,6 +130,10 @@ public class ModBlocks {
 
             case "water_hyacinth":
                 return ModItems.ITEMS.register(name, () -> new PlaceOnWaterBlockItem(block.get(), new Item.Properties()));
+
+            case "surface_film":
+                return null;
+
             case "grass_basket":
                 return ModItems.ITEMS.register(name, () -> new BlockItem(block.get(), new Item.Properties().stacksTo(1)));
 

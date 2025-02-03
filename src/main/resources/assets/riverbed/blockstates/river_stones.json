@@ -1,17 +1,7 @@
 {
   "variants": {
-    "": [
-      {
-        "model": "riverbed:block/river_stones"
-      },
-      {
-        "model": "riverbed:block/river_stones",
-        "y": 90
-      },
-      {
-        "model": "riverbed:block/river_stones",
-        "y": 270
-      }
-    ]
+    "": {
+      "model": "riverbed:block/river_stones"
+    }
   }
 }

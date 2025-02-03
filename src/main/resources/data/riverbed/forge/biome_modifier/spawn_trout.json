@@ -1,6 +1,6 @@
 {
   "type": "forge:add_spawns",
-  "biomes": "minecraft:river",
+  "biomes": "#minecraft:is_river",
   "spawners": {
     "type": "riverbed:trout",
     "weight": 8,

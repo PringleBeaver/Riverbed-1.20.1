@@ -1,5 +1,5 @@
 {
-  "feature": "riverbed:patch_river_grass",
+  "feature": "riverbed:patch_dry_river_grass",
   "placement": [
     {
       "type": "minecraft:count",
