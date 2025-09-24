@@ -30,6 +30,7 @@ import net.pringlebeaver.riverbed.item.ModItems;
 import net.pringlebeaver.riverbed.item.ModCreativeTabs;
 import net.pringlebeaver.riverbed.loot.ModLootModifiers;
 import net.pringlebeaver.riverbed.particle.ModParticles;
+import net.pringlebeaver.riverbed.recipes.ModRecipes;
 import net.pringlebeaver.riverbed.sound.ModSounds;
 import net.pringlebeaver.riverbed.world.ModFeatures;
 import net.pringlebeaver.riverbed.world.biome.ModTerrablenderAPI;
@@ -67,6 +68,8 @@ public class RiverbedMain
         ModFeatures.register(modEventBus);
 
         ModBiomeModifiers.register(modEventBus);
+
+        ModRecipes.register(modEventBus);
 
         //ModTerrablenderAPI.registerRegions();
 

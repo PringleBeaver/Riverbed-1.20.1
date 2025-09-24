@@ -1,0 +1,8 @@
+{
+  "sources": [
+ {
+            "type": "single",
+            "resource": "riverbed:entity/grass_basket/woven_grass"
+        },
+  ]
+}

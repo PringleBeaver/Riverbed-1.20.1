@@ -89,7 +89,7 @@ public class GrassBasketBlockEntity extends BlockEntity {
         this.decorations = GrassBasketBlockEntity.Decorations.load(BlockItem.getBlockEntityData(pItem));
     }
 
-    public static record Decorations(Item top, Item middle, Item bottom) {
+    public static record Decorations(Item bottom, Item middle, Item top) {
         public static final GrassBasketBlockEntity.Decorations EMPTY = new GrassBasketBlockEntity.Decorations(ModItems.WOVEN_GRASS.get(), ModItems.WOVEN_GRASS.get(), ModItems.WOVEN_GRASS.get());
 
         public CompoundTag save(CompoundTag pTag) {
@@ -102,7 +102,7 @@ public class GrassBasketBlockEntity extends BlockEntity {
         }
 
         public Stream<Item> sorted() {
-            return Stream.of(this.top, this.middle, this.bottom);
+            return Stream.of(this.bottom, this.middle, this.top);
         }
 
         public static GrassBasketBlockEntity.Decorations load(@Nullable CompoundTag pTag) {
