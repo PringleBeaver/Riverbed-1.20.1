@@ -40,7 +40,7 @@ import java.util.function.IntFunction;
 public class TroutEntity extends AbstractSchoolingFish {
 
 
-    private static final EntityDataAccessor<Integer> VARIANT_ID = SynchedEntityData.defineId(Frog.class, EntityDataSerializers.INT);
+    private static final EntityDataAccessor<Integer> VARIANT_ID = SynchedEntityData.defineId(TroutEntity.class, EntityDataSerializers.INT);
 
     public static final String BUCKET_VARIANT_TAG = "BucketVariantTag";
 

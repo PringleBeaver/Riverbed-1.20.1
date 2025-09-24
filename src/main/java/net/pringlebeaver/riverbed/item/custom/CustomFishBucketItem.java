@@ -28,13 +28,13 @@ public class CustomFishBucketItem extends MobBucketItem {
 
     @Override
     public void appendHoverText(ItemStack pStack, @Nullable Level pLevel, List<Component> pTooltipComponents, TooltipFlag pIsAdvanced) {
-        ChatFormatting[] fishTypeChatFormatting = new ChatFormatting[]{ChatFormatting.ITALIC, ChatFormatting.GRAY};
+        ChatFormatting[] chatFormatting = new ChatFormatting[]{ChatFormatting.ITALIC, ChatFormatting.GRAY};
 
         if (getFishType() == ModEntities.TROUT.get()) {
             CompoundTag compoundtag = pStack.getTag();
             if (compoundtag != null && compoundtag.contains("BucketVariantTag", 3)) {
                TroutEntity.Variant variant = TroutEntity.Variant.byId(compoundtag.getInt("BucketVariantTag"));
-                pTooltipComponents.add(Component.translatable("entity.riverbed.trout.variant." + variant.toString().toLowerCase()).withStyle(fishTypeChatFormatting));
+                pTooltipComponents.add(Component.translatable("entity.riverbed.trout.variant." + variant.toString().toLowerCase()).withStyle(chatFormatting));
             }
         }
     }

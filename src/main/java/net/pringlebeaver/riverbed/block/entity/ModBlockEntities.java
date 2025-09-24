@@ -22,7 +22,7 @@ public class ModBlockEntities {
             DeferredRegister.create(ForgeRegistries.BLOCK_ENTITY_TYPES, RiverbedMain.MOD_ID);
 
     public static final RegistryObject<BlockEntityType<GrassBasketBlockEntity>> GRASS_BASKET_BLOCK_ENTITY =
-            BLOCK_ENTITIES.register("grass_basket_block_entity", () -> BlockEntityType.Builder.of(GrassBasketBlockEntity::new, ModBlocks.GRASS_BASKET.get()).build(null));
+            BLOCK_ENTITIES.register("grass_basket", () -> BlockEntityType.Builder.of(GrassBasketBlockEntity::new, ModBlocks.GRASS_BASKET.get()).build(null));
 
     public static void register(IEventBus eventBus) {
         BLOCK_ENTITIES.register(eventBus);

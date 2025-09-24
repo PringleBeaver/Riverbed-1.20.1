@@ -15,8 +15,6 @@ public class ManateesTouchEffect extends MobEffect {
         super.applyEffectTick(pLivingEntity, pAmplifier);
     }
 
-
-
     @Override
     public boolean isDurationEffectTick(int pDuration, int pAmplifier) {
         return super.isDurationEffectTick(pDuration, pAmplifier);

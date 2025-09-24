@@ -1,5 +1,6 @@
 {
 	"creativetab.riverbed_tab": "Riverbed",
+	"creativetab.riverbed_basket_tab": "Basket Fragments",
 	"item.riverbed.copper_pan": "Copper Pan",
 	
 	"item.riverbed.woven_grass": "Woven Grass",
@@ -20,6 +21,42 @@
 
 
 	"item.riverbed.trout_bucket": "Bucket of Trout",
+
+
+	"item.riverbed.white_stripe_basket_fragment": "Basket Fragment",
+	"item.riverbed.red_stripe_basket_fragment": "Basket Fragment",
+	"item.riverbed.purple_stripe_basket_fragment": "Basket Fragment",
+	"item.riverbed.pink_stripe_basket_fragment": "Basket Fragment",
+	"item.riverbed.orange_stripe_basket_fragment": "Basket Fragment",
+	"item.riverbed.magenta_stripe_basket_fragment": "Basket Fragment",
+	"item.riverbed.lime_stripe_basket_fragment": "Basket Fragment",
+	"item.riverbed.light_gray_stripe_basket_fragment": "Basket Fragment",
+	"item.riverbed.light_blue_stripe_basket_fragment": "Basket Fragment",
+	"item.riverbed.green_stripe_basket_fragment": "Basket Fragment",
+	"item.riverbed.gray_stripe_basket_fragment": "Basket Fragment",
+	"item.riverbed.cyan_stripe_basket_fragment": "Basket Fragment",
+	"item.riverbed.brown_stripe_basket_fragment": "Basket Fragment",
+	"item.riverbed.blue_stripe_basket_fragment": "Basket Fragment",
+	"item.riverbed.black_stripe_basket_fragment": "Basket Fragment",
+	"item.riverbed.yellow_stripe_basket_fragment": "Basket Fragment",
+
+	 "tooltip.riverbed.white_stripe_basket_fragment": "White Stripe",
+  	"tooltip.riverbed.red_stripe_basket_fragment": "Red Stripe",
+  	"tooltip.riverbed.purple_stripe_basket_fragment": "Purple Stripe",
+  	"tooltip.riverbed.pink_stripe_basket_fragment": "Pink Stripe",
+  	"tooltip.riverbed.orange_stripe_basket_fragment": "Orange Stripe",
+  	"tooltip.riverbed.magenta_stripe_basket_fragment": "Magenta Stripe",
+  	"tooltip.riverbed.lime_stripe_basket_fragment": "Lime Stripe",
+  	"tooltip.riverbed.light_gray_stripe_basket_fragment": "Light Gray Stripe",
+  	"tooltip.riverbed.light_blue_stripe_basket_fragment": "Light Blue Stripe",
+  	"tooltip.riverbed.green_stripe_basket_fragment": "Green Stripe",
+  	"tooltip.riverbed.gray_stripe_basket_fragment": "Gray Stripe",
+  	"tooltip.riverbed.cyan_stripe_basket_fragment": "Cyan Stripe",
+  	"tooltip.riverbed.brown_stripe_basket_fragment": "Brown Stripe",
+  	"tooltip.riverbed.blue_stripe_basket_fragment": "Blue Stripe",
+  	"tooltip.riverbed.black_stripe_basket_fragment": "Black Stripe",
+  	"tooltip.riverbed.yellow_stripe_basket_fragment": "Yellow Stripe",
+
 
 
 	"block.riverbed.river_stones": "River Stones",

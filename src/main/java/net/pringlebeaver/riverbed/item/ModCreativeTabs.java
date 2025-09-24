@@ -78,6 +78,31 @@ public class ModCreativeTabs {
                     })
                     .build());
 
+    public static final RegistryObject<CreativeModeTab> S_RIVERBED_BASKET_TAB = CREATIVE_MOD_TABS.register("s_riverbed_basket_tab",
+            () -> CreativeModeTab.builder().icon(() -> new ItemStack(ModItems.WHITE_STRIPE_BASKET_FRAGMENT.get()))
+                    .title(Component.translatable("creativetab.riverbed_basket_tab"))
+                    .displayItems((pParameters, pOutput) -> {
+
+                        pOutput.accept(ModItems.WHITE_STRIPE_BASKET_FRAGMENT.get());
+                        pOutput.accept(ModItems.RED_STRIPE_BASKET_FRAGMENT.get());
+                        pOutput.accept(ModItems.PURPLE_STRIPE_BASKET_FRAGMENT.get());
+                        pOutput.accept(ModItems.PINK_STRIPE_BASKET_FRAGMENT.get());
+                        pOutput.accept(ModItems.ORANGE_STRIPE_BASKET_FRAGMENT.get());
+                        pOutput.accept(ModItems.MAGENTA_STRIPE_BASKET_FRAGMENT.get());
+                        pOutput.accept(ModItems.LIME_STRIPE_BASKET_FRAGMENT.get());
+                        pOutput.accept(ModItems.LIGHT_GRAY_STRIPE_BASKET_FRAGMENT.get());
+                        pOutput.accept(ModItems.LIGHT_BLUE_STRIPE_BASKET_FRAGMENT.get());
+                        pOutput.accept(ModItems.GREEN_STRIPE_BASKET_FRAGMENT.get());
+                        pOutput.accept(ModItems.GRAY_STRIPE_BASKET_FRAGMENT.get());
+                        pOutput.accept(ModItems.CYAN_STRIPE_BASKET_FRAGMENT.get());
+                        pOutput.accept(ModItems.BROWN_STRIPE_BASKET_FRAGMENT.get());
+                        pOutput.accept(ModItems.BLUE_STRIPE_BASKET_FRAGMENT.get());
+                        pOutput.accept(ModItems.BLACK_STRIPE_BASKET_FRAGMENT.get());
+                        pOutput.accept(ModItems.YELLOW_STRIPE_BASKET_FRAGMENT.get());
+
+                    })
+                    .build());
+
     public static void register(IEventBus eventBus) {
         CREATIVE_MOD_TABS.register(eventBus);
     }

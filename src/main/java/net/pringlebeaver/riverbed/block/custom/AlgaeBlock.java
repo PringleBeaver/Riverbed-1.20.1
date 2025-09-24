@@ -73,7 +73,7 @@ public class AlgaeBlock extends BushBlock implements SimpleWaterloggedBlock, IFo
     private void spreadSurfaceFilm(BlockPos blockPos, Level level, RandomSource randomSource, BlockState state) {
         for (int i = 0; i <= filmSpreadDepth; i++) {
             if (nearbyAlgaeCount(level, blockPos) >= 2) {
-                if (randomSource.nextInt(i * 2 + 10) < this.getAlgaeValue(state) * 2) {
+                if (randomSource.nextInt(2) < this.getAlgaeValue(state)) {
                     if (level.getBlockState(blockPos.above(i)).is(Blocks.AIR) && level.getFluidState(blockPos.above(i -1)).is(Fluids.WATER)) {
                         level.setBlock(blockPos.above(i), ModBlocks.SURFACE_FILM.get().defaultBlockState(), 2);
                     } else if (level.getBlockState(blockPos.above(i)).is(ModBlocks.SURFACE_FILM.get()) && nearbyAlgaeCount(level, blockPos) >= 3) {

@@ -11,4 +11,7 @@ public class ModModelLayers {
     public static final ModelLayerLocation MANATEE_LAYER = new ModelLayerLocation(
             new ResourceLocation(RiverbedMain.MOD_ID, "manatee_layer"), "main");
 
+    public static final ModelLayerLocation GRASS_BASKET_DECORATION_LAYER = new ModelLayerLocation(
+            new ResourceLocation(RiverbedMain.MOD_ID, "grass_basket_decoration_layer"), "main");
+
 }

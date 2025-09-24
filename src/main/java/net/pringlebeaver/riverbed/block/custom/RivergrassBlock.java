@@ -110,7 +110,5 @@ public class RivergrassBlock extends DoublePlantBlock implements SimpleWaterlogg
     public void performBonemeal(ServerLevel pLevel, RandomSource pRandom, BlockPos pPos, BlockState pState) {
         pLevel.setBlock(pPos, pState.setValue(DENSE, true), 2);
         updateDenseState(pLevel, pPos, pState);
-
-
     }
 }

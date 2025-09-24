@@ -42,8 +42,6 @@ import java.util.stream.Stream;
 
 public class GrassBasketBlock extends BaseEntityBlock {
 
-    public static final ResourceLocation CONTENTS = new ResourceLocation("contents");
-
 
     public static final VoxelShape SHAPE = Block.box(2, 0, 2, 14, 16, 14);
     public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
@@ -88,35 +86,6 @@ public class GrassBasketBlock extends BaseEntityBlock {
         return RenderShape.MODEL;
     }
 
-    @Override
-    public void onRemove(BlockState pState, Level pLevel, BlockPos pPos, BlockState pNewState, boolean pIsMoving) {
-        if (!pState.is(pNewState.getBlock())) {
-            BlockEntity blockentity = pLevel.getBlockEntity(pPos);
-            if (blockentity instanceof GrassBasketBlockEntity) {
-                Containers.dropContents(pLevel, pPos, (GrassBasketBlockEntity)blockentity);
-                pLevel.updateNeighbourForOutputSignal(pPos, this);
-            }
-
-            super.onRemove(pState, pLevel, pPos, pNewState, pIsMoving);
-        }
-    }
-    @Override
-    public InteractionResult use(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit) {
-        if (pLevel.isClientSide) {
-            return InteractionResult.SUCCESS;
-        } else if (pPlayer.isSpectator()) {
-            return InteractionResult.CONSUME;
-        } else {
-            BlockEntity blockentity = pLevel.getBlockEntity(pPos);
-            if (blockentity instanceof GrassBasketBlockEntity) {
-                pPlayer.openMenu((GrassBasketBlockEntity)blockentity);
-                return InteractionResult.CONSUME;
-            } else {
-                return InteractionResult.PASS;
-            }
-        }
-    }
-
     @Nullable
     @Override
     public BlockEntity newBlockEntity(BlockPos pPos, BlockState pState) {
@@ -128,10 +97,10 @@ public class GrassBasketBlock extends BaseEntityBlock {
         super.appendHoverText(pStack, pLevel, pTooltip, pFlag);
         GrassBasketBlockEntity.Decorations GrassBasketBlockEntity$decorations = GrassBasketBlockEntity.Decorations.load(BlockItem.getBlockEntityData(pStack));
         if (!GrassBasketBlockEntity$decorations.equals(GrassBasketBlockEntity.Decorations.EMPTY)) {
-            Stream.of(GrassBasketBlockEntity$decorations.top(), GrassBasketBlockEntity$decorations.middle(), GrassBasketBlockEntity$decorations.bottom()).forEach((item) -> {
-                Component tooltip = (new ItemStack(item, 1)).getHoverName();
+            Stream.of(GrassBasketBlockEntity$decorations.bottom(), GrassBasketBlockEntity$decorations.middle(), GrassBasketBlockEntity$decorations.top()).forEach((item) -> {
+                String tooltip = (new ItemStack(item, 1)).getItem().toString();
                 if (!item.equals(ModItems.WOVEN_GRASS.get())) {
-                    pTooltip.add(tooltip.plainCopy().withStyle(ChatFormatting.GRAY));
+                    pTooltip.add(Component.translatable("tooltip.riverbed." + tooltip).withStyle(ChatFormatting.GRAY));
                 }
             });
         }

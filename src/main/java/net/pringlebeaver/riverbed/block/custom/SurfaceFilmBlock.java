@@ -1,6 +1,7 @@
 package net.pringlebeaver.riverbed.block.custom;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
@@ -16,6 +17,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.BonemealableBlock;
 import net.minecraft.world.level.block.BushBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
@@ -32,7 +34,7 @@ import net.pringlebeaver.riverbed.particle.ModParticles;
 
 import javax.annotation.Nullable;
 
-public class SurfaceFilmBlock extends BushBlock {
+public class SurfaceFilmBlock extends BushBlock implements BonemealableBlock {
     protected static final VoxelShape SHAPE = Block.box(0.0D, 0.0D, 0.0D, 16.0D, 1.0D, 16.0D);
 
     public static final IntegerProperty AGE = IntegerProperty.create("age", 1, 2);
@@ -56,7 +58,9 @@ public class SurfaceFilmBlock extends BushBlock {
 
     @Override
     public void animateTick(BlockState pState, Level pLevel, BlockPos pPos, RandomSource pRandom) {
-                spawnAlgaeParticles(pPos, pLevel, pRandom);
+        if (pState.getValue(AGE).equals(2)) {
+            spawnAlgaeParticles(pPos, pLevel, pRandom);
+        }
         super.animateTick(pState, pLevel, pPos, pRandom);
     }
 
@@ -85,23 +89,17 @@ public class SurfaceFilmBlock extends BushBlock {
     }
 
     @Override
-    public InteractionResult use(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit) {
-        ItemStack usedStack = pPlayer.getItemInHand(pHand);
-        ItemStack algaeBottleItemStack = new ItemStack(ModBlocks.SURFACE_FILM.get().asItem());
+    public boolean isValidBonemealTarget(LevelReader pLevel, BlockPos pPos, BlockState pState, boolean pIsClient) {
+        return pState.getValue(AGE).equals(1);
+    }
 
-        if (usedStack.is(Items.GLASS_BOTTLE)) {
-            usedStack.shrink(1);
-            pLevel.playSound(pPlayer, pPlayer.getX(), pPlayer.getY(), pPlayer.getZ(), SoundEvents.BOTTLE_FILL, SoundSource.BLOCKS, 1.0F, 1.0F);
+    @Override
+    public boolean isBonemealSuccess(Level pLevel, RandomSource pRandom, BlockPos pPos, BlockState pState) {
+        return true;
+    }
 
-            pLevel.setBlock(pPos, Blocks.AIR.defaultBlockState(), 2);
-
-            if (usedStack.isEmpty()) {
-                pPlayer.setItemInHand(pHand, algaeBottleItemStack);
-            } else if (!pPlayer.getInventory().add(algaeBottleItemStack)) {
-                pPlayer.drop(algaeBottleItemStack, false);
-            }
-            return InteractionResult.sidedSuccess(pLevel.isClientSide);
-        }
-        return super.use(pState, pLevel, pPos, pPlayer, pHand, pHit);
+    @Override
+    public void performBonemeal(ServerLevel pLevel, RandomSource pRandom, BlockPos pPos, BlockState pState) {
+        pLevel.setBlock(pPos, pState.setValue(AGE, 2), 2);
     }
 }
