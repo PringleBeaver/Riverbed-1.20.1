@@ -12,6 +12,7 @@ import net.minecraftforge.registries.RegistryObject;
 import net.pringlebeaver.riverbed.RiverbedMain;
 import net.pringlebeaver.riverbed.block.custom.*;
 import net.pringlebeaver.riverbed.item.ModItems;
+import net.pringlebeaver.riverbed.item.custom.GrassBasketBlockItem;
 import net.pringlebeaver.riverbed.item.custom.ModFuelBlockItem;
 
 import java.util.function.Supplier;
@@ -130,7 +131,7 @@ public class ModBlocks {
                 return ModItems.ITEMS.register(name, () -> new PlaceOnWaterBlockItem(block.get(), new Item.Properties()));
 
             case "grass_basket":
-                return ModItems.ITEMS.register(name, () -> new BlockItem(block.get(), new Item.Properties().stacksTo(1)));
+                return ModItems.ITEMS.register(name, () -> new GrassBasketBlockItem(block.get(), new Item.Properties().stacksTo(1)));
 
 
         }

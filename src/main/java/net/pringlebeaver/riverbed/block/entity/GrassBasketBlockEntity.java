@@ -26,9 +26,11 @@ import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.ShulkerBoxBlock;
+import net.minecraft.world.level.block.SimpleWaterloggedBlock;
 import net.minecraft.world.level.block.entity.*;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
@@ -48,6 +50,7 @@ public class GrassBasketBlockEntity extends BlockEntity {
     public static final String TAG_PATTERNS = "patterns";
 
     private GrassBasketBlockEntity.Decorations decorations = GrassBasketBlockEntity.Decorations.EMPTY;
+
 
 
     public GrassBasketBlockEntity(BlockPos pPos, BlockState pBlockState) {

@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "basket_fragment_dye",
+  "category": "misc",
+  "ingredients": [
+    {
+      "tag": "riverbed:zigzag_basket_fragments"
+    },
+    {
+      "item": "minecraft:brown_dye"
+    }
+  ],
+  "result": {
+    "item": "riverbed:brown_zigzag_basket_fragment"
+  }
+}

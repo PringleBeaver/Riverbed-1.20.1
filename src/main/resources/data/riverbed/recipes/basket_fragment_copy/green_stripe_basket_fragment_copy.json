@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "basket_fragment",
+  "category": "misc",
+  "pattern": [
+    "###",
+    "#X#",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "riverbed:woven_grass"
+    },
+    "X": {
+      "item": "riverbed:green_stripe_basket_fragment"
+    }
+  },
+  "result": {
+    "item": "riverbed:green_stripe_basket_fragment",
+    "count": 2
+  }
+}

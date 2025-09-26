@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "riverbed:item/basket_patterns/pink_solid_basket_fragment"
+  }
+}

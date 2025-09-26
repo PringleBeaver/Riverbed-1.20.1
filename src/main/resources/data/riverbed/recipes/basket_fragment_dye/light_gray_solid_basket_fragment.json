@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "basket_fragment_dye",
+  "category": "misc",
+  "ingredients": [
+    {
+      "tag": "riverbed:solid_basket_fragments"
+    },
+    {
+      "item": "minecraft:light_gray_dye"
+    }
+  ],
+  "result": {
+    "item": "riverbed:light_gray_solid_basket_fragment"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "values": [
+    "riverbed:stripe_basket_fragment",
+    "riverbed:double_stripe_basket_fragment",
+    "riverbed:zigzag_basket_fragment",
+    "riverbed:dots_basket_fragment",
+    "riverbed:solid_basket_fragment"
+  ]
+}

@@ -16,6 +16,7 @@ import net.pringlebeaver.riverbed.item.custom.CustomFishBucketItem;
 import net.pringlebeaver.riverbed.item.custom.CustomSpawnEggItem;
 import net.pringlebeaver.riverbed.item.custom.HyacinthMilkItem;
 import net.pringlebeaver.riverbed.sound.ModSounds;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
@@ -50,11 +51,41 @@ public class ModItems {
 
     //Basket Fragments
 
-
-
-    public static final RegistryObject<Item> WHITE_STRIPE_BASKET_FRAGMENT = ITEMS.register("white_stripe_basket_fragment", () -> new Item(new Item.Properties()){
+    public static final RegistryObject<Item> STRIPE_BASKET_FRAGMENT = ITEMS.register("stripe_basket_fragment", () -> new Item(new Item.Properties()){
         @Override
-        public void appendHoverText(ItemStack pStack, @Nullable Level pLevel, List<Component> pTooltipComponents, TooltipFlag pIsAdvanced) {
+        public void appendHoverText(@NotNull ItemStack pStack, @Nullable Level pLevel, @NotNull List<Component> pTooltipComponents, @NotNull TooltipFlag pIsAdvanced) {
+            pTooltipComponents.add(getBasketTooltip(pStack));
+            super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
+        }
+    });
+
+    public static final RegistryObject<Item> DOTS_BASKET_FRAGMENT = ITEMS.register("dots_basket_fragment", () -> new Item(new Item.Properties()){
+        @Override
+        public void appendHoverText(@NotNull ItemStack pStack, @Nullable Level pLevel, @NotNull List<Component> pTooltipComponents, @NotNull TooltipFlag pIsAdvanced) {
+            pTooltipComponents.add(getBasketTooltip(pStack));
+            super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
+        }
+    });
+
+    public static final RegistryObject<Item> DOUBLE_STRIPE_BASKET_FRAGMENT = ITEMS.register("double_stripe_basket_fragment", () -> new Item(new Item.Properties()){
+        @Override
+        public void appendHoverText(@NotNull ItemStack pStack, @Nullable Level pLevel, @NotNull List<Component> pTooltipComponents, @NotNull TooltipFlag pIsAdvanced) {
+            pTooltipComponents.add(getBasketTooltip(pStack));
+            super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
+        }
+    });
+
+    public static final RegistryObject<Item> ZIGZAG_BASKET_FRAGMENT = ITEMS.register("zigzag_basket_fragment", () -> new Item(new Item.Properties()){
+        @Override
+        public void appendHoverText(@NotNull ItemStack pStack, @Nullable Level pLevel, @NotNull List<Component> pTooltipComponents, @NotNull TooltipFlag pIsAdvanced) {
+            pTooltipComponents.add(getBasketTooltip(pStack));
+            super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
+        }
+    });
+
+    public static final RegistryObject<Item> SOLID_BASKET_FRAGMENT = ITEMS.register("solid_basket_fragment", () -> new Item(new Item.Properties()){
+        @Override
+        public void appendHoverText(@NotNull ItemStack pStack, @Nullable Level pLevel, @NotNull List<Component> pTooltipComponents, @NotNull TooltipFlag pIsAdvanced) {
             pTooltipComponents.add(getBasketTooltip(pStack));
             super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
         }
@@ -62,23 +93,39 @@ public class ModItems {
 
     public static final RegistryObject<Item> RED_STRIPE_BASKET_FRAGMENT = ITEMS.register("red_stripe_basket_fragment", () -> new Item(new Item.Properties()){
         @Override
-        public void appendHoverText(ItemStack pStack, @Nullable Level pLevel, List<Component> pTooltipComponents, TooltipFlag pIsAdvanced) {
+        public void appendHoverText(@NotNull ItemStack pStack, @Nullable Level pLevel, @NotNull List<Component> pTooltipComponents, @NotNull TooltipFlag pIsAdvanced) {
             pTooltipComponents.add(getBasketTooltip(pStack));
             super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
         }
     });
 
-    public static final RegistryObject<Item> PURPLE_STRIPE_BASKET_FRAGMENT = ITEMS.register("purple_stripe_basket_fragment", () -> new Item(new Item.Properties()){
+    public static final RegistryObject<Item> RED_DOTS_BASKET_FRAGMENT = ITEMS.register("red_dots_basket_fragment", () -> new Item(new Item.Properties()){
         @Override
-        public void appendHoverText(ItemStack pStack, @Nullable Level pLevel, List<Component> pTooltipComponents, TooltipFlag pIsAdvanced) {
+        public void appendHoverText(@NotNull ItemStack pStack, @Nullable Level pLevel, @NotNull List<Component> pTooltipComponents, @NotNull TooltipFlag pIsAdvanced) {
             pTooltipComponents.add(getBasketTooltip(pStack));
             super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
         }
     });
 
-    public static final RegistryObject<Item> PINK_STRIPE_BASKET_FRAGMENT = ITEMS.register("pink_stripe_basket_fragment", () -> new Item(new Item.Properties()){
+    public static final RegistryObject<Item> RED_DOUBLE_STRIPE_BASKET_FRAGMENT = ITEMS.register("red_double_stripe_basket_fragment", () -> new Item(new Item.Properties()){
         @Override
-        public void appendHoverText(ItemStack pStack, @Nullable Level pLevel, List<Component> pTooltipComponents, TooltipFlag pIsAdvanced) {
+        public void appendHoverText(@NotNull ItemStack pStack, @Nullable Level pLevel, @NotNull List<Component> pTooltipComponents, @NotNull TooltipFlag pIsAdvanced) {
+            pTooltipComponents.add(getBasketTooltip(pStack));
+            super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
+        }
+    });
+
+    public static final RegistryObject<Item> RED_ZIGZAG_BASKET_FRAGMENT = ITEMS.register("red_zigzag_basket_fragment", () -> new Item(new Item.Properties()){
+        @Override
+        public void appendHoverText(@NotNull ItemStack pStack, @Nullable Level pLevel, @NotNull List<Component> pTooltipComponents, @NotNull TooltipFlag pIsAdvanced) {
+            pTooltipComponents.add(getBasketTooltip(pStack));
+            super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
+        }
+    });
+
+    public static final RegistryObject<Item> RED_SOLID_BASKET_FRAGMENT = ITEMS.register("red_solid_basket_fragment", () -> new Item(new Item.Properties()){
+        @Override
+        public void appendHoverText(@NotNull ItemStack pStack, @Nullable Level pLevel, @NotNull List<Component> pTooltipComponents, @NotNull TooltipFlag pIsAdvanced) {
             pTooltipComponents.add(getBasketTooltip(pStack));
             super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
         }
@@ -86,87 +133,39 @@ public class ModItems {
 
     public static final RegistryObject<Item> ORANGE_STRIPE_BASKET_FRAGMENT = ITEMS.register("orange_stripe_basket_fragment", () -> new Item(new Item.Properties()){
         @Override
-        public void appendHoverText(ItemStack pStack, @Nullable Level pLevel, List<Component> pTooltipComponents, TooltipFlag pIsAdvanced) {
+        public void appendHoverText(@NotNull ItemStack pStack, @Nullable Level pLevel, @NotNull List<Component> pTooltipComponents, @NotNull TooltipFlag pIsAdvanced) {
             pTooltipComponents.add(getBasketTooltip(pStack));
             super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
         }
     });
 
-    public static final RegistryObject<Item> MAGENTA_STRIPE_BASKET_FRAGMENT = ITEMS.register("magenta_stripe_basket_fragment", () -> new Item(new Item.Properties()){
+    public static final RegistryObject<Item> ORANGE_DOTS_BASKET_FRAGMENT = ITEMS.register("orange_dots_basket_fragment", () -> new Item(new Item.Properties()){
         @Override
-        public void appendHoverText(ItemStack pStack, @Nullable Level pLevel, List<Component> pTooltipComponents, TooltipFlag pIsAdvanced) {
+        public void appendHoverText(@NotNull ItemStack pStack, @Nullable Level pLevel, @NotNull List<Component> pTooltipComponents, @NotNull TooltipFlag pIsAdvanced) {
             pTooltipComponents.add(getBasketTooltip(pStack));
             super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
         }
     });
 
-    public static final RegistryObject<Item> LIME_STRIPE_BASKET_FRAGMENT = ITEMS.register("lime_stripe_basket_fragment", () -> new Item(new Item.Properties()){
+    public static final RegistryObject<Item> ORANGE_DOUBLE_STRIPE_BASKET_FRAGMENT = ITEMS.register("orange_double_stripe_basket_fragment", () -> new Item(new Item.Properties()){
         @Override
-        public void appendHoverText(ItemStack pStack, @Nullable Level pLevel, List<Component> pTooltipComponents, TooltipFlag pIsAdvanced) {
+        public void appendHoverText(@NotNull ItemStack pStack, @Nullable Level pLevel, @NotNull List<Component> pTooltipComponents, @NotNull TooltipFlag pIsAdvanced) {
             pTooltipComponents.add(getBasketTooltip(pStack));
             super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
         }
     });
 
-    public static final RegistryObject<Item> LIGHT_GRAY_STRIPE_BASKET_FRAGMENT = ITEMS.register("light_gray_stripe_basket_fragment", () -> new Item(new Item.Properties()){
+    public static final RegistryObject<Item> ORANGE_ZIGZAG_BASKET_FRAGMENT = ITEMS.register("orange_zigzag_basket_fragment", () -> new Item(new Item.Properties()){
         @Override
-        public void appendHoverText(ItemStack pStack, @Nullable Level pLevel, List<Component> pTooltipComponents, TooltipFlag pIsAdvanced) {
+        public void appendHoverText(@NotNull ItemStack pStack, @Nullable Level pLevel, @NotNull List<Component> pTooltipComponents, @NotNull TooltipFlag pIsAdvanced) {
             pTooltipComponents.add(getBasketTooltip(pStack));
             super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
         }
     });
 
-    public static final RegistryObject<Item> LIGHT_BLUE_STRIPE_BASKET_FRAGMENT = ITEMS.register("light_blue_stripe_basket_fragment", () -> new Item(new Item.Properties()){
+    public static final RegistryObject<Item> ORANGE_SOLID_BASKET_FRAGMENT = ITEMS.register("orange_solid_basket_fragment", () -> new Item(new Item.Properties()){
         @Override
-        public void appendHoverText(ItemStack pStack, @Nullable Level pLevel, List<Component> pTooltipComponents, TooltipFlag pIsAdvanced) {
-            pTooltipComponents.add(getBasketTooltip(pStack));
-            super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
-        }
-    });
-
-    public static final RegistryObject<Item> GREEN_STRIPE_BASKET_FRAGMENT = ITEMS.register("green_stripe_basket_fragment", () -> new Item(new Item.Properties()){
-        @Override
-        public void appendHoverText(ItemStack pStack, @Nullable Level pLevel, List<Component> pTooltipComponents, TooltipFlag pIsAdvanced) {
-            pTooltipComponents.add(getBasketTooltip(pStack));
-            super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
-        }
-    });
-
-    public static final RegistryObject<Item> GRAY_STRIPE_BASKET_FRAGMENT = ITEMS.register("gray_stripe_basket_fragment", () -> new Item(new Item.Properties()){
-        @Override
-        public void appendHoverText(ItemStack pStack, @Nullable Level pLevel, List<Component> pTooltipComponents, TooltipFlag pIsAdvanced) {
-            pTooltipComponents.add(getBasketTooltip(pStack));
-            super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
-        }
-    });
-
-    public static final RegistryObject<Item> CYAN_STRIPE_BASKET_FRAGMENT = ITEMS.register("cyan_stripe_basket_fragment", () -> new Item(new Item.Properties()){
-        @Override
-        public void appendHoverText(ItemStack pStack, @Nullable Level pLevel, List<Component> pTooltipComponents, TooltipFlag pIsAdvanced) {
-            pTooltipComponents.add(getBasketTooltip(pStack));
-            super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
-        }
-    });
-
-    public static final RegistryObject<Item> BROWN_STRIPE_BASKET_FRAGMENT = ITEMS.register("brown_stripe_basket_fragment", () -> new Item(new Item.Properties()){
-        @Override
-        public void appendHoverText(ItemStack pStack, @Nullable Level pLevel, List<Component> pTooltipComponents, TooltipFlag pIsAdvanced) {
-            pTooltipComponents.add(getBasketTooltip(pStack));
-            super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
-        }
-    });
-
-    public static final RegistryObject<Item> BLUE_STRIPE_BASKET_FRAGMENT = ITEMS.register("blue_stripe_basket_fragment", () -> new Item(new Item.Properties()){
-        @Override
-        public void appendHoverText(ItemStack pStack, @Nullable Level pLevel, List<Component> pTooltipComponents, TooltipFlag pIsAdvanced) {
-            pTooltipComponents.add(getBasketTooltip(pStack));
-            super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
-        }
-    });
-
-    public static final RegistryObject<Item> BLACK_STRIPE_BASKET_FRAGMENT = ITEMS.register("black_stripe_basket_fragment", () -> new Item(new Item.Properties()){
-        @Override
-        public void appendHoverText(ItemStack pStack, @Nullable Level pLevel, List<Component> pTooltipComponents, TooltipFlag pIsAdvanced) {
+        public void appendHoverText(@NotNull ItemStack pStack, @Nullable Level pLevel, @NotNull List<Component> pTooltipComponents, @NotNull TooltipFlag pIsAdvanced) {
             pTooltipComponents.add(getBasketTooltip(pStack));
             super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
         }
@@ -174,11 +173,567 @@ public class ModItems {
 
     public static final RegistryObject<Item> YELLOW_STRIPE_BASKET_FRAGMENT = ITEMS.register("yellow_stripe_basket_fragment", () -> new Item(new Item.Properties()){
         @Override
-        public void appendHoverText(ItemStack pStack, @Nullable Level pLevel, List<Component> pTooltipComponents, TooltipFlag pIsAdvanced) {
+        public void appendHoverText(@NotNull ItemStack pStack, @Nullable Level pLevel, @NotNull List<Component> pTooltipComponents, @NotNull TooltipFlag pIsAdvanced) {
             pTooltipComponents.add(getBasketTooltip(pStack));
             super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
         }
     });
+
+    public static final RegistryObject<Item> YELLOW_DOTS_BASKET_FRAGMENT = ITEMS.register("yellow_dots_basket_fragment", () -> new Item(new Item.Properties()){
+        @Override
+        public void appendHoverText(@NotNull ItemStack pStack, @Nullable Level pLevel, @NotNull List<Component> pTooltipComponents, @NotNull TooltipFlag pIsAdvanced) {
+            pTooltipComponents.add(getBasketTooltip(pStack));
+            super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
+        }
+    });
+
+    public static final RegistryObject<Item> YELLOW_DOUBLE_STRIPE_BASKET_FRAGMENT = ITEMS.register("yellow_double_stripe_basket_fragment", () -> new Item(new Item.Properties()){
+        @Override
+        public void appendHoverText(@NotNull ItemStack pStack, @Nullable Level pLevel, @NotNull List<Component> pTooltipComponents, @NotNull TooltipFlag pIsAdvanced) {
+            pTooltipComponents.add(getBasketTooltip(pStack));
+            super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
+        }
+    });
+
+    public static final RegistryObject<Item> YELLOW_ZIGZAG_BASKET_FRAGMENT = ITEMS.register("yellow_zigzag_basket_fragment", () -> new Item(new Item.Properties()){
+        @Override
+        public void appendHoverText(@NotNull ItemStack pStack, @Nullable Level pLevel, @NotNull List<Component> pTooltipComponents, @NotNull TooltipFlag pIsAdvanced) {
+            pTooltipComponents.add(getBasketTooltip(pStack));
+            super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
+        }
+    });
+
+    public static final RegistryObject<Item> YELLOW_SOLID_BASKET_FRAGMENT = ITEMS.register("yellow_solid_basket_fragment", () -> new Item(new Item.Properties()){
+        @Override
+        public void appendHoverText(@NotNull ItemStack pStack, @Nullable Level pLevel, @NotNull List<Component> pTooltipComponents, @NotNull TooltipFlag pIsAdvanced) {
+            pTooltipComponents.add(getBasketTooltip(pStack));
+            super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
+        }
+    });
+
+    public static final RegistryObject<Item> LIME_STRIPE_BASKET_FRAGMENT = ITEMS.register("lime_stripe_basket_fragment", () -> new Item(new Item.Properties()){
+        @Override
+        public void appendHoverText(@NotNull ItemStack pStack, @Nullable Level pLevel, @NotNull List<Component> pTooltipComponents, @NotNull TooltipFlag pIsAdvanced) {
+            pTooltipComponents.add(getBasketTooltip(pStack));
+            super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
+        }
+    });
+
+    public static final RegistryObject<Item> LIME_DOTS_BASKET_FRAGMENT = ITEMS.register("lime_dots_basket_fragment", () -> new Item(new Item.Properties()){
+        @Override
+        public void appendHoverText(@NotNull ItemStack pStack, @Nullable Level pLevel, @NotNull List<Component> pTooltipComponents, @NotNull TooltipFlag pIsAdvanced) {
+            pTooltipComponents.add(getBasketTooltip(pStack));
+            super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
+        }
+    });
+
+    public static final RegistryObject<Item> LIME_DOUBLE_STRIPE_BASKET_FRAGMENT = ITEMS.register("lime_double_stripe_basket_fragment", () -> new Item(new Item.Properties()){
+        @Override
+        public void appendHoverText(@NotNull ItemStack pStack, @Nullable Level pLevel, @NotNull List<Component> pTooltipComponents, @NotNull TooltipFlag pIsAdvanced) {
+            pTooltipComponents.add(getBasketTooltip(pStack));
+            super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
+        }
+    });
+
+    public static final RegistryObject<Item> LIME_ZIGZAG_BASKET_FRAGMENT = ITEMS.register("lime_zigzag_basket_fragment", () -> new Item(new Item.Properties()){
+        @Override
+        public void appendHoverText(@NotNull ItemStack pStack, @Nullable Level pLevel, @NotNull List<Component> pTooltipComponents, @NotNull TooltipFlag pIsAdvanced) {
+            pTooltipComponents.add(getBasketTooltip(pStack));
+            super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
+        }
+    });
+
+    public static final RegistryObject<Item> LIME_SOLID_BASKET_FRAGMENT = ITEMS.register("lime_solid_basket_fragment", () -> new Item(new Item.Properties()){
+        @Override
+        public void appendHoverText(@NotNull ItemStack pStack, @Nullable Level pLevel, @NotNull List<Component> pTooltipComponents, @NotNull TooltipFlag pIsAdvanced) {
+            pTooltipComponents.add(getBasketTooltip(pStack));
+            super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
+        }
+    });
+
+    public static final RegistryObject<Item> CYAN_STRIPE_BASKET_FRAGMENT = ITEMS.register("cyan_stripe_basket_fragment", () -> new Item(new Item.Properties()){
+        @Override
+        public void appendHoverText(@NotNull ItemStack pStack, @Nullable Level pLevel, @NotNull List<Component> pTooltipComponents, @NotNull TooltipFlag pIsAdvanced) {
+            pTooltipComponents.add(getBasketTooltip(pStack));
+            super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
+        }
+    });
+
+    public static final RegistryObject<Item> CYAN_DOTS_BASKET_FRAGMENT = ITEMS.register("cyan_dots_basket_fragment", () -> new Item(new Item.Properties()){
+        @Override
+        public void appendHoverText(@NotNull ItemStack pStack, @Nullable Level pLevel, @NotNull List<Component> pTooltipComponents, @NotNull TooltipFlag pIsAdvanced) {
+            pTooltipComponents.add(getBasketTooltip(pStack));
+            super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
+        }
+    });
+
+    public static final RegistryObject<Item> CYAN_DOUBLE_STRIPE_BASKET_FRAGMENT = ITEMS.register("cyan_double_stripe_basket_fragment", () -> new Item(new Item.Properties()){
+        @Override
+        public void appendHoverText(@NotNull ItemStack pStack, @Nullable Level pLevel, @NotNull List<Component> pTooltipComponents, @NotNull TooltipFlag pIsAdvanced) {
+            pTooltipComponents.add(getBasketTooltip(pStack));
+            super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
+        }
+    });
+
+    public static final RegistryObject<Item> CYAN_ZIGZAG_BASKET_FRAGMENT = ITEMS.register("cyan_zigzag_basket_fragment", () -> new Item(new Item.Properties()){
+        @Override
+        public void appendHoverText(@NotNull ItemStack pStack, @Nullable Level pLevel, @NotNull List<Component> pTooltipComponents, @NotNull TooltipFlag pIsAdvanced) {
+            pTooltipComponents.add(getBasketTooltip(pStack));
+            super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
+        }
+    });
+
+    public static final RegistryObject<Item> CYAN_SOLID_BASKET_FRAGMENT = ITEMS.register("cyan_solid_basket_fragment", () -> new Item(new Item.Properties()){
+        @Override
+        public void appendHoverText(@NotNull ItemStack pStack, @Nullable Level pLevel, @NotNull List<Component> pTooltipComponents, @NotNull TooltipFlag pIsAdvanced) {
+            pTooltipComponents.add(getBasketTooltip(pStack));
+            super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
+        }
+    });
+
+    public static final RegistryObject<Item> LIGHT_BLUE_STRIPE_BASKET_FRAGMENT = ITEMS.register("light_blue_stripe_basket_fragment", () -> new Item(new Item.Properties()){
+        @Override
+        public void appendHoverText(@NotNull ItemStack pStack, @Nullable Level pLevel, @NotNull List<Component> pTooltipComponents, @NotNull TooltipFlag pIsAdvanced) {
+            pTooltipComponents.add(getBasketTooltip(pStack));
+            super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
+        }
+    });
+
+    public static final RegistryObject<Item> LIGHT_BLUE_DOTS_BASKET_FRAGMENT = ITEMS.register("light_blue_dots_basket_fragment", () -> new Item(new Item.Properties()){
+        @Override
+        public void appendHoverText(@NotNull ItemStack pStack, @Nullable Level pLevel, @NotNull List<Component> pTooltipComponents, @NotNull TooltipFlag pIsAdvanced) {
+            pTooltipComponents.add(getBasketTooltip(pStack));
+            super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
+        }
+    });
+
+    public static final RegistryObject<Item> LIGHT_BLUE_DOUBLE_STRIPE_BASKET_FRAGMENT = ITEMS.register("light_blue_double_stripe_basket_fragment", () -> new Item(new Item.Properties()){
+        @Override
+        public void appendHoverText(@NotNull ItemStack pStack, @Nullable Level pLevel, @NotNull List<Component> pTooltipComponents, @NotNull TooltipFlag pIsAdvanced) {
+            pTooltipComponents.add(getBasketTooltip(pStack));
+            super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
+        }
+    });
+
+    public static final RegistryObject<Item> LIGHT_BLUE_ZIGZAG_BASKET_FRAGMENT = ITEMS.register("light_blue_zigzag_basket_fragment", () -> new Item(new Item.Properties()){
+        @Override
+        public void appendHoverText(@NotNull ItemStack pStack, @Nullable Level pLevel, @NotNull List<Component> pTooltipComponents, @NotNull TooltipFlag pIsAdvanced) {
+            pTooltipComponents.add(getBasketTooltip(pStack));
+            super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
+        }
+    });
+
+    public static final RegistryObject<Item> LIGHT_BLUE_SOLID_BASKET_FRAGMENT = ITEMS.register("light_blue_solid_basket_fragment", () -> new Item(new Item.Properties()){
+        @Override
+        public void appendHoverText(@NotNull ItemStack pStack, @Nullable Level pLevel, @NotNull List<Component> pTooltipComponents, @NotNull TooltipFlag pIsAdvanced) {
+            pTooltipComponents.add(getBasketTooltip(pStack));
+            super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
+        }
+    });
+
+    public static final RegistryObject<Item> BLUE_STRIPE_BASKET_FRAGMENT = ITEMS.register("blue_stripe_basket_fragment", () -> new Item(new Item.Properties()){
+        @Override
+        public void appendHoverText(@NotNull ItemStack pStack, @Nullable Level pLevel, @NotNull List<Component> pTooltipComponents, @NotNull TooltipFlag pIsAdvanced) {
+            pTooltipComponents.add(getBasketTooltip(pStack));
+            super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
+        }
+    });
+
+    public static final RegistryObject<Item> BLUE_DOTS_BASKET_FRAGMENT = ITEMS.register("blue_dots_basket_fragment", () -> new Item(new Item.Properties()){
+        @Override
+        public void appendHoverText(@NotNull ItemStack pStack, @Nullable Level pLevel, @NotNull List<Component> pTooltipComponents, @NotNull TooltipFlag pIsAdvanced) {
+            pTooltipComponents.add(getBasketTooltip(pStack));
+            super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
+        }
+    });
+
+    public static final RegistryObject<Item> BLUE_DOUBLE_STRIPE_BASKET_FRAGMENT = ITEMS.register("blue_double_stripe_basket_fragment", () -> new Item(new Item.Properties()){
+        @Override
+        public void appendHoverText(@NotNull ItemStack pStack, @Nullable Level pLevel, @NotNull List<Component> pTooltipComponents, @NotNull TooltipFlag pIsAdvanced) {
+            pTooltipComponents.add(getBasketTooltip(pStack));
+            super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
+        }
+    });
+
+    public static final RegistryObject<Item> BLUE_ZIGZAG_BASKET_FRAGMENT = ITEMS.register("blue_zigzag_basket_fragment", () -> new Item(new Item.Properties()){
+        @Override
+        public void appendHoverText(@NotNull ItemStack pStack, @Nullable Level pLevel, @NotNull List<Component> pTooltipComponents, @NotNull TooltipFlag pIsAdvanced) {
+            pTooltipComponents.add(getBasketTooltip(pStack));
+            super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
+        }
+    });
+
+    public static final RegistryObject<Item> BLUE_SOLID_BASKET_FRAGMENT = ITEMS.register("blue_solid_basket_fragment", () -> new Item(new Item.Properties()){
+        @Override
+        public void appendHoverText(@NotNull ItemStack pStack, @Nullable Level pLevel, @NotNull List<Component> pTooltipComponents, @NotNull TooltipFlag pIsAdvanced) {
+            pTooltipComponents.add(getBasketTooltip(pStack));
+            super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
+        }
+    });
+
+    public static final RegistryObject<Item> PURPLE_STRIPE_BASKET_FRAGMENT = ITEMS.register("purple_stripe_basket_fragment", () -> new Item(new Item.Properties()){
+        @Override
+        public void appendHoverText(@NotNull ItemStack pStack, @Nullable Level pLevel, @NotNull List<Component> pTooltipComponents, @NotNull TooltipFlag pIsAdvanced) {
+            pTooltipComponents.add(getBasketTooltip(pStack));
+            super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
+        }
+    });
+
+    public static final RegistryObject<Item> PURPLE_DOTS_BASKET_FRAGMENT = ITEMS.register("purple_dots_basket_fragment", () -> new Item(new Item.Properties()){
+        @Override
+        public void appendHoverText(@NotNull ItemStack pStack, @Nullable Level pLevel, @NotNull List<Component> pTooltipComponents, @NotNull TooltipFlag pIsAdvanced) {
+            pTooltipComponents.add(getBasketTooltip(pStack));
+            super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
+        }
+    });
+
+    public static final RegistryObject<Item> PURPLE_DOUBLE_STRIPE_BASKET_FRAGMENT = ITEMS.register("purple_double_stripe_basket_fragment", () -> new Item(new Item.Properties()){
+        @Override
+        public void appendHoverText(@NotNull ItemStack pStack, @Nullable Level pLevel, @NotNull List<Component> pTooltipComponents, @NotNull TooltipFlag pIsAdvanced) {
+            pTooltipComponents.add(getBasketTooltip(pStack));
+            super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
+        }
+    });
+
+    public static final RegistryObject<Item> PURPLE_ZIGZAG_BASKET_FRAGMENT = ITEMS.register("purple_zigzag_basket_fragment", () -> new Item(new Item.Properties()){
+        @Override
+        public void appendHoverText(@NotNull ItemStack pStack, @Nullable Level pLevel, @NotNull List<Component> pTooltipComponents, @NotNull TooltipFlag pIsAdvanced) {
+            pTooltipComponents.add(getBasketTooltip(pStack));
+            super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
+        }
+    });
+
+    public static final RegistryObject<Item> PURPLE_SOLID_BASKET_FRAGMENT = ITEMS.register("purple_solid_basket_fragment", () -> new Item(new Item.Properties()){
+        @Override
+        public void appendHoverText(@NotNull ItemStack pStack, @Nullable Level pLevel, @NotNull List<Component> pTooltipComponents, @NotNull TooltipFlag pIsAdvanced) {
+            pTooltipComponents.add(getBasketTooltip(pStack));
+            super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
+        }
+    });
+
+    public static final RegistryObject<Item> MAGENTA_STRIPE_BASKET_FRAGMENT = ITEMS.register("magenta_stripe_basket_fragment", () -> new Item(new Item.Properties()){
+        @Override
+        public void appendHoverText(@NotNull ItemStack pStack, @Nullable Level pLevel, @NotNull List<Component> pTooltipComponents, @NotNull TooltipFlag pIsAdvanced) {
+            pTooltipComponents.add(getBasketTooltip(pStack));
+            super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
+        }
+    });
+
+    public static final RegistryObject<Item> MAGENTA_DOTS_BASKET_FRAGMENT = ITEMS.register("magenta_dots_basket_fragment", () -> new Item(new Item.Properties()){
+        @Override
+        public void appendHoverText(@NotNull ItemStack pStack, @Nullable Level pLevel, @NotNull List<Component> pTooltipComponents, @NotNull TooltipFlag pIsAdvanced) {
+            pTooltipComponents.add(getBasketTooltip(pStack));
+            super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
+        }
+    });
+
+    public static final RegistryObject<Item> MAGENTA_DOUBLE_STRIPE_BASKET_FRAGMENT = ITEMS.register("magenta_double_stripe_basket_fragment", () -> new Item(new Item.Properties()){
+        @Override
+        public void appendHoverText(@NotNull ItemStack pStack, @Nullable Level pLevel, @NotNull List<Component> pTooltipComponents, @NotNull TooltipFlag pIsAdvanced) {
+            pTooltipComponents.add(getBasketTooltip(pStack));
+            super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
+        }
+    });
+
+    public static final RegistryObject<Item> MAGENTA_ZIGZAG_BASKET_FRAGMENT = ITEMS.register("magenta_zigzag_basket_fragment", () -> new Item(new Item.Properties()){
+        @Override
+        public void appendHoverText(@NotNull ItemStack pStack, @Nullable Level pLevel, @NotNull List<Component> pTooltipComponents, @NotNull TooltipFlag pIsAdvanced) {
+            pTooltipComponents.add(getBasketTooltip(pStack));
+            super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
+        }
+    });
+
+    public static final RegistryObject<Item> MAGENTA_SOLID_BASKET_FRAGMENT = ITEMS.register("magenta_solid_basket_fragment", () -> new Item(new Item.Properties()){
+        @Override
+        public void appendHoverText(@NotNull ItemStack pStack, @Nullable Level pLevel, @NotNull List<Component> pTooltipComponents, @NotNull TooltipFlag pIsAdvanced) {
+            pTooltipComponents.add(getBasketTooltip(pStack));
+            super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
+        }
+    });
+
+    public static final RegistryObject<Item> PINK_STRIPE_BASKET_FRAGMENT = ITEMS.register("pink_stripe_basket_fragment", () -> new Item(new Item.Properties()){
+        @Override
+        public void appendHoverText(@NotNull ItemStack pStack, @Nullable Level pLevel, @NotNull List<Component> pTooltipComponents, @NotNull TooltipFlag pIsAdvanced) {
+            pTooltipComponents.add(getBasketTooltip(pStack));
+            super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
+        }
+    });
+
+    public static final RegistryObject<Item> PINK_DOTS_BASKET_FRAGMENT = ITEMS.register("pink_dots_basket_fragment", () -> new Item(new Item.Properties()){
+        @Override
+        public void appendHoverText(@NotNull ItemStack pStack, @Nullable Level pLevel, @NotNull List<Component> pTooltipComponents, @NotNull TooltipFlag pIsAdvanced) {
+            pTooltipComponents.add(getBasketTooltip(pStack));
+            super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
+        }
+    });
+
+    public static final RegistryObject<Item> PINK_DOUBLE_STRIPE_BASKET_FRAGMENT = ITEMS.register("pink_double_stripe_basket_fragment", () -> new Item(new Item.Properties()){
+        @Override
+        public void appendHoverText(@NotNull ItemStack pStack, @Nullable Level pLevel, @NotNull List<Component> pTooltipComponents, @NotNull TooltipFlag pIsAdvanced) {
+            pTooltipComponents.add(getBasketTooltip(pStack));
+            super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
+        }
+    });
+
+    public static final RegistryObject<Item> PINK_ZIGZAG_BASKET_FRAGMENT = ITEMS.register("pink_zigzag_basket_fragment", () -> new Item(new Item.Properties()){
+        @Override
+        public void appendHoverText(@NotNull ItemStack pStack, @Nullable Level pLevel, @NotNull List<Component> pTooltipComponents, @NotNull TooltipFlag pIsAdvanced) {
+            pTooltipComponents.add(getBasketTooltip(pStack));
+            super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
+        }
+    });
+
+    public static final RegistryObject<Item> PINK_SOLID_BASKET_FRAGMENT = ITEMS.register("pink_solid_basket_fragment", () -> new Item(new Item.Properties()){
+        @Override
+        public void appendHoverText(@NotNull ItemStack pStack, @Nullable Level pLevel, @NotNull List<Component> pTooltipComponents, @NotNull TooltipFlag pIsAdvanced) {
+            pTooltipComponents.add(getBasketTooltip(pStack));
+            super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
+        }
+    });
+
+    public static final RegistryObject<Item> BROWN_STRIPE_BASKET_FRAGMENT = ITEMS.register("brown_stripe_basket_fragment", () -> new Item(new Item.Properties()){
+        @Override
+        public void appendHoverText(@NotNull ItemStack pStack, @Nullable Level pLevel, @NotNull List<Component> pTooltipComponents, @NotNull TooltipFlag pIsAdvanced) {
+            pTooltipComponents.add(getBasketTooltip(pStack));
+            super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
+        }
+    });
+
+    public static final RegistryObject<Item> BROWN_DOTS_BASKET_FRAGMENT = ITEMS.register("brown_dots_basket_fragment", () -> new Item(new Item.Properties()){
+        @Override
+        public void appendHoverText(@NotNull ItemStack pStack, @Nullable Level pLevel, @NotNull List<Component> pTooltipComponents, @NotNull TooltipFlag pIsAdvanced) {
+            pTooltipComponents.add(getBasketTooltip(pStack));
+            super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
+        }
+    });
+
+    public static final RegistryObject<Item> BROWN_DOUBLE_STRIPE_BASKET_FRAGMENT = ITEMS.register("brown_double_stripe_basket_fragment", () -> new Item(new Item.Properties()){
+        @Override
+        public void appendHoverText(@NotNull ItemStack pStack, @Nullable Level pLevel, @NotNull List<Component> pTooltipComponents, @NotNull TooltipFlag pIsAdvanced) {
+            pTooltipComponents.add(getBasketTooltip(pStack));
+            super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
+        }
+    });
+
+    public static final RegistryObject<Item> BROWN_ZIGZAG_BASKET_FRAGMENT = ITEMS.register("brown_zigzag_basket_fragment", () -> new Item(new Item.Properties()){
+        @Override
+        public void appendHoverText(@NotNull ItemStack pStack, @Nullable Level pLevel, @NotNull List<Component> pTooltipComponents, @NotNull TooltipFlag pIsAdvanced) {
+            pTooltipComponents.add(getBasketTooltip(pStack));
+            super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
+        }
+    });
+
+    public static final RegistryObject<Item> BROWN_SOLID_BASKET_FRAGMENT = ITEMS.register("brown_solid_basket_fragment", () -> new Item(new Item.Properties()){
+        @Override
+        public void appendHoverText(@NotNull ItemStack pStack, @Nullable Level pLevel, @NotNull List<Component> pTooltipComponents, @NotNull TooltipFlag pIsAdvanced) {
+            pTooltipComponents.add(getBasketTooltip(pStack));
+            super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
+        }
+    });
+
+    public static final RegistryObject<Item> BLACK_STRIPE_BASKET_FRAGMENT = ITEMS.register("black_stripe_basket_fragment", () -> new Item(new Item.Properties()){
+        @Override
+        public void appendHoverText(@NotNull ItemStack pStack, @Nullable Level pLevel, @NotNull List<Component> pTooltipComponents, @NotNull TooltipFlag pIsAdvanced) {
+            pTooltipComponents.add(getBasketTooltip(pStack));
+            super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
+        }
+    });
+
+    public static final RegistryObject<Item> BLACK_DOTS_BASKET_FRAGMENT = ITEMS.register("black_dots_basket_fragment", () -> new Item(new Item.Properties()){
+        @Override
+        public void appendHoverText(@NotNull ItemStack pStack, @Nullable Level pLevel, @NotNull List<Component> pTooltipComponents, @NotNull TooltipFlag pIsAdvanced) {
+            pTooltipComponents.add(getBasketTooltip(pStack));
+            super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
+        }
+    });
+
+    public static final RegistryObject<Item> BLACK_DOUBLE_STRIPE_BASKET_FRAGMENT = ITEMS.register("black_double_stripe_basket_fragment", () -> new Item(new Item.Properties()){
+        @Override
+        public void appendHoverText(@NotNull ItemStack pStack, @Nullable Level pLevel, @NotNull List<Component> pTooltipComponents, @NotNull TooltipFlag pIsAdvanced) {
+            pTooltipComponents.add(getBasketTooltip(pStack));
+            super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
+        }
+    });
+
+    public static final RegistryObject<Item> BLACK_ZIGZAG_BASKET_FRAGMENT = ITEMS.register("black_zigzag_basket_fragment", () -> new Item(new Item.Properties()){
+        @Override
+        public void appendHoverText(@NotNull ItemStack pStack, @Nullable Level pLevel, @NotNull List<Component> pTooltipComponents, @NotNull TooltipFlag pIsAdvanced) {
+            pTooltipComponents.add(getBasketTooltip(pStack));
+            super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
+        }
+    });
+
+    public static final RegistryObject<Item> BLACK_SOLID_BASKET_FRAGMENT = ITEMS.register("black_solid_basket_fragment", () -> new Item(new Item.Properties()){
+        @Override
+        public void appendHoverText(@NotNull ItemStack pStack, @Nullable Level pLevel, @NotNull List<Component> pTooltipComponents, @NotNull TooltipFlag pIsAdvanced) {
+            pTooltipComponents.add(getBasketTooltip(pStack));
+            super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
+        }
+    });
+
+    public static final RegistryObject<Item> GRAY_STRIPE_BASKET_FRAGMENT = ITEMS.register("gray_stripe_basket_fragment", () -> new Item(new Item.Properties()){
+        @Override
+        public void appendHoverText(@NotNull ItemStack pStack, @Nullable Level pLevel, @NotNull List<Component> pTooltipComponents, @NotNull TooltipFlag pIsAdvanced) {
+            pTooltipComponents.add(getBasketTooltip(pStack));
+            super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
+        }
+    });
+
+    public static final RegistryObject<Item> GRAY_DOTS_BASKET_FRAGMENT = ITEMS.register("gray_dots_basket_fragment", () -> new Item(new Item.Properties()){
+        @Override
+        public void appendHoverText(@NotNull ItemStack pStack, @Nullable Level pLevel, @NotNull List<Component> pTooltipComponents, @NotNull TooltipFlag pIsAdvanced) {
+            pTooltipComponents.add(getBasketTooltip(pStack));
+            super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
+        }
+    });
+
+    public static final RegistryObject<Item> GRAY_DOUBLE_STRIPE_BASKET_FRAGMENT = ITEMS.register("gray_double_stripe_basket_fragment", () -> new Item(new Item.Properties()){
+        @Override
+        public void appendHoverText(@NotNull ItemStack pStack, @Nullable Level pLevel, @NotNull List<Component> pTooltipComponents, @NotNull TooltipFlag pIsAdvanced) {
+            pTooltipComponents.add(getBasketTooltip(pStack));
+            super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
+        }
+    });
+
+    public static final RegistryObject<Item> GRAY_ZIGZAG_BASKET_FRAGMENT = ITEMS.register("gray_zigzag_basket_fragment", () -> new Item(new Item.Properties()){
+        @Override
+        public void appendHoverText(@NotNull ItemStack pStack, @Nullable Level pLevel, @NotNull List<Component> pTooltipComponents, @NotNull TooltipFlag pIsAdvanced) {
+            pTooltipComponents.add(getBasketTooltip(pStack));
+            super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
+        }
+    });
+
+    public static final RegistryObject<Item> GRAY_SOLID_BASKET_FRAGMENT = ITEMS.register("gray_solid_basket_fragment", () -> new Item(new Item.Properties()){
+        @Override
+        public void appendHoverText(@NotNull ItemStack pStack, @Nullable Level pLevel, @NotNull List<Component> pTooltipComponents, @NotNull TooltipFlag pIsAdvanced) {
+            pTooltipComponents.add(getBasketTooltip(pStack));
+            super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
+        }
+    });
+
+    public static final RegistryObject<Item> LIGHT_GRAY_STRIPE_BASKET_FRAGMENT = ITEMS.register("light_gray_stripe_basket_fragment", () -> new Item(new Item.Properties()){
+        @Override
+        public void appendHoverText(@NotNull ItemStack pStack, @Nullable Level pLevel, @NotNull List<Component> pTooltipComponents, @NotNull TooltipFlag pIsAdvanced) {
+            pTooltipComponents.add(getBasketTooltip(pStack));
+            super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
+        }
+    });
+
+    public static final RegistryObject<Item> LIGHT_GRAY_DOTS_BASKET_FRAGMENT = ITEMS.register("light_gray_dots_basket_fragment", () -> new Item(new Item.Properties()){
+        @Override
+        public void appendHoverText(@NotNull ItemStack pStack, @Nullable Level pLevel, @NotNull List<Component> pTooltipComponents, @NotNull TooltipFlag pIsAdvanced) {
+            pTooltipComponents.add(getBasketTooltip(pStack));
+            super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
+        }
+    });
+
+    public static final RegistryObject<Item> LIGHT_GRAY_DOUBLE_STRIPE_BASKET_FRAGMENT = ITEMS.register("light_gray_double_stripe_basket_fragment", () -> new Item(new Item.Properties()){
+        @Override
+        public void appendHoverText(@NotNull ItemStack pStack, @Nullable Level pLevel, @NotNull List<Component> pTooltipComponents, @NotNull TooltipFlag pIsAdvanced) {
+            pTooltipComponents.add(getBasketTooltip(pStack));
+            super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
+        }
+    });
+
+    public static final RegistryObject<Item> LIGHT_GRAY_ZIGZAG_BASKET_FRAGMENT = ITEMS.register("light_gray_zigzag_basket_fragment", () -> new Item(new Item.Properties()){
+        @Override
+        public void appendHoverText(@NotNull ItemStack pStack, @Nullable Level pLevel, @NotNull List<Component> pTooltipComponents, @NotNull TooltipFlag pIsAdvanced) {
+            pTooltipComponents.add(getBasketTooltip(pStack));
+            super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
+        }
+    });
+
+    public static final RegistryObject<Item> LIGHT_GRAY_SOLID_BASKET_FRAGMENT = ITEMS.register("light_gray_solid_basket_fragment", () -> new Item(new Item.Properties()){
+        @Override
+        public void appendHoverText(@NotNull ItemStack pStack, @Nullable Level pLevel, @NotNull List<Component> pTooltipComponents, @NotNull TooltipFlag pIsAdvanced) {
+            pTooltipComponents.add(getBasketTooltip(pStack));
+            super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
+        }
+    });
+
+    public static final RegistryObject<Item> WHITE_STRIPE_BASKET_FRAGMENT = ITEMS.register("white_stripe_basket_fragment", () -> new Item(new Item.Properties()){
+        @Override
+        public void appendHoverText(@NotNull ItemStack pStack, @Nullable Level pLevel, @NotNull List<Component> pTooltipComponents, @NotNull TooltipFlag pIsAdvanced) {
+            pTooltipComponents.add(getBasketTooltip(pStack));
+            super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
+        }
+    });
+
+    public static final RegistryObject<Item> WHITE_DOTS_BASKET_FRAGMENT = ITEMS.register("white_dots_basket_fragment", () -> new Item(new Item.Properties()){
+        @Override
+        public void appendHoverText(@NotNull ItemStack pStack, @Nullable Level pLevel, @NotNull List<Component> pTooltipComponents, @NotNull TooltipFlag pIsAdvanced) {
+            pTooltipComponents.add(getBasketTooltip(pStack));
+            super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
+        }
+    });
+
+    public static final RegistryObject<Item> WHITE_DOUBLE_STRIPE_BASKET_FRAGMENT = ITEMS.register("white_double_stripe_basket_fragment", () -> new Item(new Item.Properties()){
+        @Override
+        public void appendHoverText(@NotNull ItemStack pStack, @Nullable Level pLevel, @NotNull List<Component> pTooltipComponents, @NotNull TooltipFlag pIsAdvanced) {
+            pTooltipComponents.add(getBasketTooltip(pStack));
+            super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
+        }
+    });
+
+    public static final RegistryObject<Item> WHITE_ZIGZAG_BASKET_FRAGMENT = ITEMS.register("white_zigzag_basket_fragment", () -> new Item(new Item.Properties()){
+        @Override
+        public void appendHoverText(@NotNull ItemStack pStack, @Nullable Level pLevel, @NotNull List<Component> pTooltipComponents, @NotNull TooltipFlag pIsAdvanced) {
+            pTooltipComponents.add(getBasketTooltip(pStack));
+            super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
+        }
+    });
+
+    public static final RegistryObject<Item> WHITE_SOLID_BASKET_FRAGMENT = ITEMS.register("white_solid_basket_fragment", () -> new Item(new Item.Properties()){
+        @Override
+        public void appendHoverText(@NotNull ItemStack pStack, @Nullable Level pLevel, @NotNull List<Component> pTooltipComponents, @NotNull TooltipFlag pIsAdvanced) {
+            pTooltipComponents.add(getBasketTooltip(pStack));
+            super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
+        }
+    });
+
+    public static final RegistryObject<Item> GREEN_STRIPE_BASKET_FRAGMENT = ITEMS.register("green_stripe_basket_fragment", () -> new Item(new Item.Properties()){
+        @Override
+        public void appendHoverText(@NotNull ItemStack pStack, @Nullable Level pLevel, @NotNull List<Component> pTooltipComponents, @NotNull TooltipFlag pIsAdvanced) {
+            pTooltipComponents.add(getBasketTooltip(pStack));
+            super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
+        }
+    });
+
+    public static final RegistryObject<Item> GREEN_DOTS_BASKET_FRAGMENT = ITEMS.register("green_dots_basket_fragment", () -> new Item(new Item.Properties()){
+        @Override
+        public void appendHoverText(@NotNull ItemStack pStack, @Nullable Level pLevel, @NotNull List<Component> pTooltipComponents, @NotNull TooltipFlag pIsAdvanced) {
+            pTooltipComponents.add(getBasketTooltip(pStack));
+            super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
+        }
+    });
+
+    public static final RegistryObject<Item> GREEN_DOUBLE_STRIPE_BASKET_FRAGMENT = ITEMS.register("green_double_stripe_basket_fragment", () -> new Item(new Item.Properties()){
+        @Override
+        public void appendHoverText(@NotNull ItemStack pStack, @Nullable Level pLevel, @NotNull List<Component> pTooltipComponents, @NotNull TooltipFlag pIsAdvanced) {
+            pTooltipComponents.add(getBasketTooltip(pStack));
+            super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
+        }
+    });
+
+    public static final RegistryObject<Item> GREEN_ZIGZAG_BASKET_FRAGMENT = ITEMS.register("green_zigzag_basket_fragment", () -> new Item(new Item.Properties()){
+        @Override
+        public void appendHoverText(@NotNull ItemStack pStack, @Nullable Level pLevel, @NotNull List<Component> pTooltipComponents, @NotNull TooltipFlag pIsAdvanced) {
+            pTooltipComponents.add(getBasketTooltip(pStack));
+            super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
+        }
+    });
+
+    public static final RegistryObject<Item> GREEN_SOLID_BASKET_FRAGMENT = ITEMS.register("green_solid_basket_fragment", () -> new Item(new Item.Properties()){
+        @Override
+        public void appendHoverText(@NotNull ItemStack pStack, @Nullable Level pLevel, @NotNull List<Component> pTooltipComponents, @NotNull TooltipFlag pIsAdvanced) {
+            pTooltipComponents.add(getBasketTooltip(pStack));
+            super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
+        }
+    });
+
+
+
+
 
 
 

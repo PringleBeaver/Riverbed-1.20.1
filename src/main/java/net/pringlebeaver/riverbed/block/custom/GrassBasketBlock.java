@@ -25,6 +25,7 @@ import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.DirectionProperty;
+import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.level.storage.loot.LootParams;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
@@ -40,11 +41,12 @@ import org.jetbrains.annotations.Nullable;
 import java.util.List;
 import java.util.stream.Stream;
 
-public class GrassBasketBlock extends BaseEntityBlock {
+public class GrassBasketBlock extends BaseEntityBlock implements SimpleWaterloggedBlock{
 
 
     public static final VoxelShape SHAPE = Block.box(2, 0, 2, 14, 16, 14);
     public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
+    public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
 
     public BlockState rotate(BlockState pState, Rotation pRot) {
         return pState.setValue(FACING, pRot.rotate(pState.getValue(FACING)));
@@ -56,7 +58,10 @@ public class GrassBasketBlock extends BaseEntityBlock {
     }
 
     public GrassBasketBlock(Properties pProperties) {
+
         super(pProperties);
+        this.registerDefaultState(this.stateDefinition.any().setValue(WATERLOGGED, Boolean.FALSE));
+
     }
 
 
@@ -65,16 +70,22 @@ public class GrassBasketBlock extends BaseEntityBlock {
         return SHAPE;
     }
 
+    public FluidState getFluidState(BlockState pState) {
+        return pState.getValue(WATERLOGGED) ? Fluids.WATER.getSource(false) : super.getFluidState(pState);
+    }
+
     @Nullable
     @Override
     public BlockState getStateForPlacement(BlockPlaceContext pContext) {
+        FluidState fluidstate = pContext.getLevel().getFluidState(pContext.getClickedPos());
+        boolean flag = fluidstate.getType() == Fluids.WATER;
 
-        return this.defaultBlockState().setValue(FACING, pContext.getHorizontalDirection().getOpposite());
+        return this.defaultBlockState().setValue(FACING, pContext.getHorizontalDirection().getOpposite()).setValue(WATERLOGGED, flag);
     }
 
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> pBuilder) {
-        pBuilder.add(FACING);
+        pBuilder.add(FACING, WATERLOGGED);
     }
 
 

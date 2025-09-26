@@ -19,10 +19,11 @@ import net.minecraftforge.common.Tags;
 import net.pringlebeaver.riverbed.RiverbedMain;
 
 public class ModBiomes {
-    public static final ResourceKey<Biome> LUSH_RIVER = register("lush_river");
+  /*  public static final ResourceKey<Biome> LUSH_RIVER = register("lush_river");
 
 
             public static ResourceKey<Biome> register(String name) {
         return ResourceKey.create(Registries.BIOME, new ResourceLocation(RiverbedMain.MOD_ID, name));
             }
+*/
 }

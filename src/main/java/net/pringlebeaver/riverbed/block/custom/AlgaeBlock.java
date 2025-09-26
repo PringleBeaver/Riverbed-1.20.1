@@ -168,7 +168,7 @@ public class AlgaeBlock extends BushBlock implements SimpleWaterloggedBlock, IFo
 
     protected boolean mayPlaceOn(BlockState pState, BlockGetter pLevel, BlockPos pPos) {
         FluidState fluidstate = pLevel.getFluidState(pPos);
-        return !pState.getCollisionShape(pLevel, pPos).getFaceShape(Direction.UP).isEmpty() || pState.isFaceSturdy(pLevel, pPos, Direction.UP);
+        return pState.isFaceSturdy(pLevel, pPos, Direction.UP);
     }
 
     public boolean canSurvive(BlockState pState, LevelReader pLevel, BlockPos pPos) {
