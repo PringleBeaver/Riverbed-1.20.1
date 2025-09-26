@@ -1,0 +1,107 @@
+{
+  "type": "minecraft:archaeology",
+  "pools": [
+    {
+      "bonus_rolls": 0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:raw_iron",
+          "weight": 1
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:name_tag",
+          "weight": 1
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:bone",
+          "weight": 2
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:glass_bottle",
+          "weight": 1
+        },
+        {
+          "type": "minecraft:item",
+          "name": "lead",
+          "weight": 1
+        },
+        {
+          "type": "minecraft:item",
+          "name": "riverbed:solid_basket_fragment",
+          "weight": 3
+        },
+        {
+          "type": "minecraft:item",
+          "name": "riverbed:zigzag_basket_fragment",
+          "weight": 3
+        },
+        {
+          "type": "minecraft:item",
+          "name": "riverbed:dots_basket_fragment",
+          "weight": 3
+        },
+        {
+          "type": "minecraft:item",
+          "name": "riverbed:double_stripe_basket_fragment",
+          "weight": 3
+        },
+        {
+          "type": "minecraft:item",
+          "name": "riverbed:stripe_basket_fragment",
+          "weight": 3
+        },
+        {
+          "type": "minecraft:item",
+          "name": "riverbed:music_disc_delta",
+          "weight": 1
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:fishing_rod",
+          "weight": 1
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:bucket",
+          "weight": 3
+        },
+        {
+          "type": "minecraft:item",
+          "name": "riverbed:algae",
+          "weight": 1
+        },
+        {
+          "type": "minecraft:item",
+          "name": "riverbed:woven_grass",
+          "weight": 3
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:bowl",
+          "weight": 3
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:stick",
+          "weight": 3
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:flint",
+          "weight": 3
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:string",
+          "weight": 3
+        }
+      ],
+      "rolls": 1
+    }
+  ],
+  "random_sequence": "minecraft:archaeology/desert_pyramid"
+}

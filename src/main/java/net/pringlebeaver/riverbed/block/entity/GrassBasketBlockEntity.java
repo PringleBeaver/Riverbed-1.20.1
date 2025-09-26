@@ -51,7 +51,9 @@ public class GrassBasketBlockEntity extends BlockEntity {
 
     private GrassBasketBlockEntity.Decorations decorations = GrassBasketBlockEntity.Decorations.EMPTY;
 
-
+    public GrassBasketBlockEntity() {
+        super(ModBlockEntities.GRASS_BASKET_BLOCK_ENTITY.get(), BlockPos.ZERO, ModBlocks.GRASS_BASKET.get().defaultBlockState());
+    }
 
     public GrassBasketBlockEntity(BlockPos pPos, BlockState pBlockState) {
         super(ModBlockEntities.GRASS_BASKET_BLOCK_ENTITY.get(), pPos, pBlockState);

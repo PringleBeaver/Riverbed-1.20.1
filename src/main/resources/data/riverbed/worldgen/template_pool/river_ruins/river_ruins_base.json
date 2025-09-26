@@ -1,0 +1,15 @@
+{
+  "name": "riverbed:river_ruins/river_ruins_base",
+  "fallback": "minecraft:empty",
+  "elements": [
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "riverbed:river_ruins/base/river_ruins_base1",
+        "processors": "minecraft:empty"
+      }
+    }
+  ]
+}
