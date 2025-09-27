@@ -1,6 +1,6 @@
 {
   "type": "riverbed:add_river_features",
   "feature": "riverbed:river_boulder",
-  "step": "underground_decoration",
+  "step": "vegetal_decoration",
   "variant": "has_rocks"
 }

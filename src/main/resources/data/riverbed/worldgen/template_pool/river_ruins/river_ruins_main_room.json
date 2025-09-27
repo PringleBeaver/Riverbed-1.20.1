@@ -1,5 +1,5 @@
 {
-  "name": "riverbed:river_ruins/river_ruins_base",
+  "name": "riverbed:river_ruins/river_ruins_main_room",
   "fallback": "minecraft:empty",
   "elements": [
     {
@@ -7,7 +7,7 @@
       "element": {
         "element_type": "minecraft:single_pool_element",
         "projection": "rigid",
-        "location": "riverbed:river_ruins/base/river_ruins_base5",
+        "location": "riverbed:river_ruins/main_room/river_ruins_main_room6",
         "processors": "minecraft:empty"
       }
     },
@@ -16,7 +16,7 @@
       "element": {
         "element_type": "minecraft:single_pool_element",
         "projection": "rigid",
-        "location": "riverbed:river_ruins/base/river_ruins_base4",
+        "location": "riverbed:river_ruins/main_room/river_ruins_main_room5",
         "processors": "minecraft:empty"
       }
     },
@@ -25,7 +25,7 @@
       "element": {
         "element_type": "minecraft:single_pool_element",
         "projection": "rigid",
-        "location": "riverbed:river_ruins/base/river_ruins_base3",
+        "location": "riverbed:river_ruins/main_room/river_ruins_main_room4",
         "processors": "minecraft:empty"
       }
     },
@@ -34,7 +34,7 @@
       "element": {
         "element_type": "minecraft:single_pool_element",
         "projection": "rigid",
-        "location": "riverbed:river_ruins/base/river_ruins_base2",
+        "location": "riverbed:river_ruins/main_room/river_ruins_main_room3",
         "processors": "minecraft:empty"
       }
     },
@@ -43,7 +43,16 @@
       "element": {
         "element_type": "minecraft:single_pool_element",
         "projection": "rigid",
-        "location": "riverbed:river_ruins/base/river_ruins_base1",
+        "location": "riverbed:river_ruins/main_room/river_ruins_main_room2",
+        "processors": "minecraft:empty"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "riverbed:river_ruins/main_room/river_ruins_main_room1",
         "processors": "minecraft:empty"
       }
     }
