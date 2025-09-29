@@ -9,6 +9,9 @@
     "riverbed:river_stone_brick_slab",
     "riverbed:algal_river_stone_bricks",
     "riverbed:algal_river_stone_brick_stairs",
-    "riverbed:algal_river_stone_brick_slab"
+    "riverbed:algal_river_stone_brick_slab",
+    "riverbed:river_stone_tiles",
+    "riverbed:river_stone_tile_stairs",
+    "riverbed:river_stone_tile_slab"
   ]
 }

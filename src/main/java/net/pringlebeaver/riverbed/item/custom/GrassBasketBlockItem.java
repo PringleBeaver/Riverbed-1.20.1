@@ -21,7 +21,6 @@ public class GrassBasketBlockItem extends BlockItem {
         consumer.accept(new IClientItemExtensions() {
             @Override
             public BlockEntityWithoutLevelRenderer getCustomRenderer() {
-                // Simply return the singleton instance of our ItemRenderer.
                 return GrassBasketItemRenderer.INSTANCE;
             }
         });

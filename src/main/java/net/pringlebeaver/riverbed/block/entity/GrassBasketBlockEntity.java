@@ -55,9 +55,12 @@ public class GrassBasketBlockEntity extends BlockEntity {
         super(ModBlockEntities.GRASS_BASKET_BLOCK_ENTITY.get(), BlockPos.ZERO, ModBlocks.GRASS_BASKET.get().defaultBlockState());
     }
 
+
     public GrassBasketBlockEntity(BlockPos pPos, BlockState pBlockState) {
         super(ModBlockEntities.GRASS_BASKET_BLOCK_ENTITY.get(), pPos, pBlockState);
     }
+
+
 
     public void load(CompoundTag pTag) {
         super.load(pTag);
@@ -83,11 +86,20 @@ public class GrassBasketBlockEntity extends BlockEntity {
     }
 
 
+    //Drop Decorations
+
+    public void drops() {
+
+    }
+
+
     // Decoration Stuff
 
     public GrassBasketBlockEntity.Decorations getDecorations() {
         return this.decorations;
     }
+
+
 
 
     public void setFromItem(ItemStack pItem) {

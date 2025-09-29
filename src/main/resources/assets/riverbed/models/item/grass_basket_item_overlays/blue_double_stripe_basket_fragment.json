@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:item/generated",
-  "textures": {
-    "layer0": "riverbed:item/basket_patterns/blue_double_stripe_basket_fragment"
-  }
-}

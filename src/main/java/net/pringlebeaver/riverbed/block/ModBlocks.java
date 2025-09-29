@@ -115,17 +115,11 @@ public class ModBlocks {
 
     // Misc
 
-    public static final RegistryObject<Block> TWIG_PILE = registerBlock("twig_pile",
-            () -> new MangroveRootsBlock(BlockBehaviour.Properties.copy(Blocks.MANGROVE_ROOTS).sound(SoundType.GRASS)));
-
     // Special
 
     public static final RegistryObject<Block> GRASS_BASKET = registerBlock("grass_basket",
             () -> new GrassBasketBlock(BlockBehaviour.Properties.copy(Blocks.DIRT).sound(SoundType.AZALEA_LEAVES).noOcclusion()));
 
-
-    public static final RegistryObject<Block> BEAVER_NEST = registerBlock("beaver_nest",
-            () -> new RotatedPillarBlock(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS).sound(SoundType.WOOD)));
 
 
 
