@@ -41,9 +41,6 @@ public class ModBlocks {
     public static final RegistryObject<Block> RIVER_STONE_BRICKS = registerBlock("river_stone_bricks",
             () -> new Block(BlockBehaviour.Properties.copy(Blocks.STONE_BRICKS).sound(SoundType.NETHER_BRICKS)));
 
-    public static final RegistryObject<Block> CHISELED_RIVER_STONE = registerBlock("chiseled_river_stone",
-            () -> new Block(BlockBehaviour.Properties.copy(Blocks.STONE_BRICKS).sound(SoundType.NETHER_BRICKS)));
-
     public static final RegistryObject<Block> RIVER_STONE_BRICK_SLAB = registerBlock("river_stone_brick_slab",
             () -> new SlabBlock(BlockBehaviour.Properties.copy(Blocks.STONE_BRICKS).sound(SoundType.NETHER_BRICKS)));
 
@@ -52,6 +49,9 @@ public class ModBlocks {
 
     public static final RegistryObject<Block> RIVER_STONE_BRICK_WALL = registerBlock("river_stone_brick_wall",
             () -> new WallBlock(BlockBehaviour.Properties.copy(Blocks.STONE_BRICKS).sound(SoundType.NETHER_BRICKS)));
+
+    public static final RegistryObject<Block> CHISELED_RIVER_STONE = registerBlock("chiseled_river_stone",
+            () -> new Block(BlockBehaviour.Properties.copy(Blocks.STONE_BRICKS).sound(SoundType.NETHER_BRICKS)));
 
 
     public static final RegistryObject<Block> ALGAL_RIVER_STONE_BRICKS = registerBlock("algal_river_stone_bricks",
@@ -64,6 +64,18 @@ public class ModBlocks {
             () -> new StairBlock(() -> ModBlocks.RIVER_STONE_BRICKS.get().defaultBlockState(), BlockBehaviour.Properties.copy(Blocks.STONE_BRICKS).sound(SoundType.NETHER_BRICKS)));
 
     public static final RegistryObject<Block> ALGAL_RIVER_STONE_BRICK_WALL = registerBlock("algal_river_stone_brick_wall",
+            () -> new WallBlock(BlockBehaviour.Properties.copy(Blocks.STONE_BRICKS).sound(SoundType.NETHER_BRICKS)));
+
+    public static final RegistryObject<Block> RIVER_STONE_TILES = registerBlock("river_stone_tiles",
+            () -> new Block(BlockBehaviour.Properties.copy(Blocks.STONE_BRICKS).sound(SoundType.NETHER_BRICKS)));
+
+    public static final RegistryObject<Block> RIVER_STONE_TILE_SLAB = registerBlock("river_stone_tile_slab",
+            () -> new SlabBlock(BlockBehaviour.Properties.copy(Blocks.STONE_BRICKS).sound(SoundType.NETHER_BRICKS)));
+
+    public static final RegistryObject<Block> RIVER_STONE_TILE_STAIRS = registerBlock("river_stone_tile_stairs",
+            () -> new StairBlock(() -> ModBlocks.RIVER_STONE_BRICKS.get().defaultBlockState(), BlockBehaviour.Properties.copy(Blocks.STONE_BRICKS).sound(SoundType.NETHER_BRICKS)));
+
+    public static final RegistryObject<Block> RIVER_STONE_TILE_WALL = registerBlock("river_stone_tile_wall",
             () -> new WallBlock(BlockBehaviour.Properties.copy(Blocks.STONE_BRICKS).sound(SoundType.NETHER_BRICKS)));
 
     // Algae

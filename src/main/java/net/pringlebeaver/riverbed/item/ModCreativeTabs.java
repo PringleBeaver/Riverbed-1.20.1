@@ -33,6 +33,10 @@ public class ModCreativeTabs {
                         pOutput.accept(ModBlocks.ALGAL_RIVER_STONE_BRICK_STAIRS.get());
                         pOutput.accept(ModBlocks.ALGAL_RIVER_STONE_BRICK_SLAB.get());
                         pOutput.accept(ModBlocks.ALGAL_RIVER_STONE_BRICK_WALL.get());
+                        pOutput.accept(ModBlocks.RIVER_STONE_TILES.get());
+                        pOutput.accept(ModBlocks.RIVER_STONE_TILE_STAIRS.get());
+                        pOutput.accept(ModBlocks.RIVER_STONE_TILE_SLAB.get());
+                        pOutput.accept(ModBlocks.RIVER_STONE_TILE_WALL.get());
 
                         pOutput.accept(ModBlocks.ALGAE_BLOCK.get());
 

@@ -1,0 +1,42 @@
+{
+  "name": "riverbed:river_ruins/river_ruins_storage_path",
+  "fallback": "minecraft:empty",
+  "elements": [
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "riverbed:river_ruins/storage_path/river_ruins_storage_path4",
+        "processors": "minecraft:empty"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "riverbed:river_ruins/storage_path/river_ruins_storage_path3",
+        "processors": "minecraft:empty"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "riverbed:river_ruins/storage_path/river_ruins_storage_path2",
+        "processors": "minecraft:empty"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "riverbed:river_ruins/storage_path/river_ruins_storage_path1",
+        "processors": "minecraft:empty"
+      }
+    }
+  ]
+}

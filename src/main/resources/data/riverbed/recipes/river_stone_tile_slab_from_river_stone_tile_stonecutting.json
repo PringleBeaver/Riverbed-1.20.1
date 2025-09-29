@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "count": 2,
+  "ingredient": {
+    "item": "riverbed:river_stone_tiles"
+  },
+  "result": "riverbed:river_stone_tile_slab"
+}

@@ -16,10 +16,11 @@ public class ModForgeEventBusEvents {
         Player playerEntity = event.getEntity();
         if (playerEntity.isInWater() && playerEntity.hasEffect(ModEffects.MANATEES_TOUCH.get())) {
             if (!playerEntity.onGround() && playerEntity.isUnderWater()) {
-                event.setNewSpeed(event.getOriginalSpeed() * 10);
+                event.setNewSpeed(event.getOriginalSpeed() * 25);
             } else if (!playerEntity.onGround() ^ playerEntity.isUnderWater()) {
                 event.setNewSpeed(event.getOriginalSpeed() * 5);
             }
         }
     }
+
 }

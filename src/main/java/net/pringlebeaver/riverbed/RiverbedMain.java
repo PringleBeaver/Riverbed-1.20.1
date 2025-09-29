@@ -1,15 +1,13 @@
 package net.pringlebeaver.riverbed;
 
 import com.mojang.logging.LogUtils;
-import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 import net.minecraft.client.renderer.entity.EntityRenderers;
-import net.minecraft.client.renderer.texture.TextureAtlas;
-import net.minecraft.client.resources.model.BakedModel;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.ComposterBlock;
 import net.minecraft.world.level.block.FlowerPotBlock;
 import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.client.event.ModelEvent;
 import net.minecraftforge.client.event.RegisterColorHandlersEvent;
 import net.minecraftforge.common.MinecraftForge;
@@ -22,8 +20,8 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.pringlebeaver.riverbed.block.ModBlocks;
-import net.pringlebeaver.riverbed.block.custom.RivergrassBlock;
 import net.pringlebeaver.riverbed.block.entity.ModBlockEntities;
+import net.pringlebeaver.riverbed.block.entity.renderer.GrassBasketBlockEntityRenderer;
 import net.pringlebeaver.riverbed.effect.ModEffects;
 import net.pringlebeaver.riverbed.entity.ModEntities;
 import net.pringlebeaver.riverbed.entity.client.ManateeRenderer;
@@ -35,7 +33,6 @@ import net.pringlebeaver.riverbed.particle.ModParticles;
 import net.pringlebeaver.riverbed.recipes.ModRecipes;
 import net.pringlebeaver.riverbed.sound.ModSounds;
 import net.pringlebeaver.riverbed.world.ModFeatures;
-import net.pringlebeaver.riverbed.world.biome.ModTerrablenderAPI;
 import net.pringlebeaver.riverbed.world.biomemodifiers.ModBiomeModifiers;
 import org.slf4j.Logger;
 
@@ -120,10 +117,10 @@ public class RiverbedMain
     public static class ClientModEvents
     {
 
+
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event)
         {
-
             EntityRenderers.register(ModEntities.TROUT.get(), TroutRenderer::new);
             EntityRenderers.register(ModEntities.MANATEE.get(), ManateeRenderer::new);
         }

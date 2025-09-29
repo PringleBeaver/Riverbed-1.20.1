@@ -224,6 +224,11 @@
 	"block.riverbed.river_stone_brick_slab": "River Stone Brick Slab",
 	"block.riverbed.river_stone_brick_wall": "River Stone Brick Wall",
 
+		"block.riverbed.river_stone_tiles": "River Stone Tiles",
+	"block.riverbed.river_stone_tile_stairs": "River Stone Tile Stairs",
+	"block.riverbed.river_stone_tile_slab": "River Stone Tile Slab",
+	"block.riverbed.river_stone_tile_wall": "River Stone Tile Wall",
+
 	"block.riverbed.algal_river_stone_bricks": "Algal River Stone Bricks",
 	"block.riverbed.algal_river_stone_brick_stairs": "Algal River Stone Brick Stairs",
 	"block.riverbed.algal_river_stone_brick_slab": "Algal River Stone Brick Slab",
@@ -266,7 +271,7 @@
 
 
 	"advancements.riverbed.husbandry.triple_fish.title": "Oh Baby, a Triple!",
-	"advancements.riverbed.husbandry.triple_fish.description": "Catch 3 fish at once using Fish Chowder",
+	"advancements.riverbed.husbandry.triple_fish.description": "Catch 3 fish at once, using Fish Chowder",
 
 	"sounds.riverbed.manatee_chirp": "Manatee Chirps",
 	"sounds.manatee_eat_success": "Manatee Converts"
