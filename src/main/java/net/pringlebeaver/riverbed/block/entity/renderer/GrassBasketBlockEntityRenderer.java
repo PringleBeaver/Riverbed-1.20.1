@@ -97,8 +97,8 @@ import java.util.stream.Collectors;
         MeshDefinition meshdefinition = new MeshDefinition();
         PartDefinition partdefinition = meshdefinition.getRoot();
         PartDefinition basket_body = partdefinition.addOrReplaceChild("basket_body", CubeListBuilder.create().texOffs(0, 0).addBox(-11.0F, 0.0F, -1.0F, 12.0F, 16.01F, 12.0F, new CubeDeformation(0.0F)), PartPose.offset(13.0F, 0.0F, 3.0F));
-        PartDefinition handle_left = partdefinition.addOrReplaceChild("handle_left", CubeListBuilder.create().texOffs(30, 6).addBox(0.0F, 0.0F, -3.0F, 4.0F, 0.0F, 6.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(14.0F, 4.0F, 8.0F, 0.0F, 0.0F, 0.3927F));
-        PartDefinition handle_right = partdefinition.addOrReplaceChild("handle_right", CubeListBuilder.create().texOffs(30, 6).mirror().addBox(-4.0F, 0.0F, -3.0F, 4.0F, 0.0F, 6.0F, new CubeDeformation(0.0F)).mirror(false), PartPose.offsetAndRotation(2.0F, 4.0F, 8.0F, 0.0F, 0.0F, -0.3927F));
+        PartDefinition handle_left = partdefinition.addOrReplaceChild("handle_left", CubeListBuilder.create().texOffs(30, 6).addBox(0.0F, 0.0F, -3.0F, 4.0F, 0.0F, 6.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(14.0F, 4.0F, 8.0F, 0.0F, 0.0F, 0.7854F));
+        PartDefinition handle_right = partdefinition.addOrReplaceChild("handle_right", CubeListBuilder.create().texOffs(30, 6).mirror().addBox(-4.0F, 0.0F, -3.0F, 4.0F, 0.0F, 6.0F, new CubeDeformation(0.0F)).mirror(false), PartPose.offsetAndRotation(2.0F, 4.0F, 8.0F, 0.0F, 0.0F, -0.7854F));
 
         PartDefinition decoration_bottom = partdefinition.addOrReplaceChild("decoration_bottom", CubeListBuilder.create().texOffs(0, 12).addBox(-11.0F, -4.0F, -1.0F, 12.0F, 4.0F, 12.0F, new CubeDeformation(0.005F)), PartPose.offset(13.0F, 16.0F, 3.0F));
         PartDefinition decoration_middle = partdefinition.addOrReplaceChild("decoration_middle", CubeListBuilder.create().texOffs(0, 8).addBox(-11.0F, -4.0F, -1.0F, 12.0F, 4.0F, 12.0F, new CubeDeformation(0.005F)), PartPose.offset(13.0F, 12.0F, 3.0F));
@@ -106,28 +106,32 @@ import java.util.stream.Collectors;
         return LayerDefinition.create(meshdefinition, 64, 64);
     }
 
-    public static void renderInventory(PoseStack poseStack, MultiBufferSource buffer, int packedLight, int packedOverlay, GrassBasketBlockEntity.Decorations decorations, GrassBasketBlockEntityRenderer renderer) {
+    public static void renderInventory(PoseStack pPoseStack, MultiBufferSource pBuffer, int pPackedLight, int pPackedOverlay, GrassBasketBlockEntity.Decorations decorations, GrassBasketBlockEntityRenderer renderer) {
+        // Direction Positioning Stuff
+
+
         Direction direction = Direction.NORTH;
 
-        poseStack.pushPose();
-        poseStack.translate(0.5D, 0.5D, 0.5D);
-        poseStack.mulPose(Axis.YP.rotationDegrees(180.0F - direction.toYRot()));
-        poseStack.mulPose(Axis.XP.rotationDegrees(180.0F));
-        poseStack.translate(-0.5D, -0.5D, -0.5D);
+        pPoseStack.pushPose();
+        pPoseStack.translate(0.5D, 0.5D, 0.5D);
+        pPoseStack.mulPose(Axis.YP.rotationDegrees(180.0F - direction.toYRot()));
+        pPoseStack.mulPose(Axis.XP.rotationDegrees(180.0F));
+        pPoseStack.translate(-0.5D, -0.5D, -0.5D);
 
         Item topDecoration = decorations.top();
         Item middleDecoration = decorations.middle();
         Item bottomDecoration = decorations.bottom();
+        // Decorations
 
-        renderer.renderDecoration(renderer.decoration_bottom, poseStack, buffer, packedLight, packedOverlay, getMaterialForItem(topDecoration), DyeColor.getColor(topDecoration.asItem().getDefaultInstance()));
-        renderer.renderDecoration(renderer.decoration_middle, poseStack, buffer, packedLight, packedOverlay, getMaterialForItem(middleDecoration), DyeColor.getColor(middleDecoration.asItem().getDefaultInstance()));
-        renderer.renderDecoration(renderer.decoration_top, poseStack, buffer, packedLight, packedOverlay, getMaterialForItem(bottomDecoration), DyeColor.getColor(bottomDecoration.asItem().getDefaultInstance()));
+        renderer.renderDecoration(renderer.decoration_bottom, pPoseStack, pBuffer, pPackedLight, pPackedOverlay, getMaterialForItem(topDecoration), DyeColor.getColor(topDecoration.asItem().getDefaultInstance()));
+        renderer.renderDecoration(renderer.decoration_middle, pPoseStack, pBuffer, pPackedLight, pPackedOverlay, getMaterialForItem(middleDecoration), DyeColor.getColor(middleDecoration.asItem().getDefaultInstance()));
+        renderer.renderDecoration(renderer.decoration_top, pPoseStack, pBuffer, pPackedLight, pPackedOverlay, getMaterialForItem(bottomDecoration), DyeColor.getColor(bottomDecoration.asItem().getDefaultInstance()));
+        // Base
+        renderer.basket_body.render(pPoseStack, getBasketMaterial().buffer(pBuffer, RenderType::entitySolid), pPackedLight, pPackedOverlay);
+        renderer.handle_left.render(pPoseStack, getBasketMaterial().buffer(pBuffer, RenderType::entityCutout), pPackedLight, pPackedOverlay);
+        renderer.handle_right.render(pPoseStack, getBasketMaterial().buffer(pBuffer, RenderType::entityCutout), pPackedLight, pPackedOverlay);
 
-        renderer.basket_body.render(poseStack, getBasketMaterial().buffer(buffer, RenderType::entitySolid), packedLight, packedOverlay);
-        renderer.handle_left.render(poseStack, getBasketMaterial().buffer(buffer, RenderType::entityCutout), packedLight, packedOverlay);
-        renderer.handle_right.render(poseStack, getBasketMaterial().buffer(buffer, RenderType::entityCutout), packedLight, packedOverlay);
-
-        poseStack.popPose();
+        pPoseStack.popPose();
     }
 
     public void render(GrassBasketBlockEntity pBlockEntity, float pPartialTick, PoseStack pPoseStack, MultiBufferSource pBuffer, int pPackedLight, int pPackedOverlay)
@@ -140,16 +144,18 @@ import java.util.stream.Collectors;
         pPoseStack.mulPose(Axis.YP.rotationDegrees(180.0F - direction.toYRot()));
         pPoseStack.mulPose(Axis.XP.rotationDegrees(180.0F));
         pPoseStack.translate(-0.5D, -0.5D, -0.5D);
-        // Decorations
 
         VertexConsumer vertexconsumer = DEFAULT_MATERIAL.buffer(pBuffer, RenderType::entityCutout);
         Item TOP_DECORATION = pBlockEntity.getDecorations().top();
         Item MIDDLE_DECORATION = pBlockEntity.getDecorations().middle();
         Item BOTTOM_DECORATION = pBlockEntity.getDecorations().bottom();
+        // Decorations
 
         this.renderDecoration(this.decoration_bottom, pPoseStack, pBuffer, pPackedLight, pPackedOverlay, getMaterialForItem(TOP_DECORATION), DyeColor.getColor(TOP_DECORATION.asItem().getDefaultInstance()));
         this.renderDecoration(this.decoration_middle, pPoseStack, pBuffer, pPackedLight, pPackedOverlay, getMaterialForItem(MIDDLE_DECORATION), DyeColor.getColor(MIDDLE_DECORATION.asItem().getDefaultInstance()));
         this.renderDecoration(this.decoration_top, pPoseStack, pBuffer, pPackedLight, pPackedOverlay, getMaterialForItem(BOTTOM_DECORATION), DyeColor.getColor(BOTTOM_DECORATION.asItem().getDefaultInstance()));
+
+        // Base
         basket_body.render(pPoseStack, getBasketMaterial().buffer(pBuffer, RenderType::entitySolid), pPackedLight, pPackedOverlay);
         handle_left.render(pPoseStack, getBasketMaterial().buffer(pBuffer, RenderType::entityCutout), pPackedLight, pPackedOverlay);
         handle_right.render(pPoseStack, getBasketMaterial().buffer(pBuffer, RenderType::entityCutout), pPackedLight, pPackedOverlay);
