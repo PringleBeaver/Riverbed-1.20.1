@@ -25,6 +25,8 @@ public class ModTags {
     }
     public static class Items {
         public static final TagKey<Item> GRASS_BASKET_INGREDIENT = tag("grass_basket_ingredient");
+        public static final TagKey<Item> BREAKS_GRASS_BASKET = tag("breaks_grass_basket");
+
         private static TagKey<Item> tag(String name) {
             return ItemTags.create(new ResourceLocation(RiverbedMain.MOD_ID, name));
         }

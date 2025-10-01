@@ -25,6 +25,9 @@ public class ModSounds {
 
     public static final RegistryObject<SoundEvent> MANATEE_EAT_SUCCESS = registerSoundEvents("manatee_eat_success");
 
+    public static final RegistryObject<SoundEvent> MANATEE_BLOOM_REMOVE = registerSoundEvents("manatee_bloom_remove");
+
+
 
     private static RegistryObject<SoundEvent> registerSoundEvents(String name) {
         return SOUND_EVENTS.register(name, () -> SoundEvent.createVariableRangeEvent(new ResourceLocation(RiverbedMain.MOD_ID, name)));

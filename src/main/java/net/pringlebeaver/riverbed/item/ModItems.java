@@ -3,14 +3,18 @@ package net.pringlebeaver.riverbed.item;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.item.*;
+import net.minecraft.world.item.alchemy.PotionUtils;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.fml.ModList;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.pringlebeaver.riverbed.RiverbedMain;
+import net.pringlebeaver.riverbed.effect.ModEffects;
 import net.pringlebeaver.riverbed.entity.ModEntities;
 import net.pringlebeaver.riverbed.item.custom.CustomFishBucketItem;
 import net.pringlebeaver.riverbed.item.custom.CustomSpawnEggItem;
@@ -36,11 +40,23 @@ public class ModItems {
 
     public static final RegistryObject<Item> COOKED_TROUT = ITEMS.register("cooked_trout", () -> new Item(new Item.Properties().food(ModFoods.COOKED_TROUT)));
 
-    public static final RegistryObject<Item> FISH_CHOWDER = ITEMS.register("fish_chowder", () -> new BowlFoodItem(new Item.Properties().food(ModFoods.FISH_CHOWDER).stacksTo(1)));
+    public static final RegistryObject<Item> FISH_CHOWDER = ITEMS.register("fish_chowder", () -> new BowlFoodItem(new Item.Properties().food(ModFoods.FISH_CHOWDER).stacksTo(getSoupStackSize())){
+        @Override
+        public void appendHoverText(@NotNull ItemStack pStack, @Nullable Level pLevel, @NotNull List<Component> pTooltipComponents, @NotNull TooltipFlag pIsAdvanced) {
+            PotionUtils.addPotionTooltip(List.of(ModFoods.chowderEffect), pTooltipComponents, 1.0F);
+        }
+    });
+
+
 
     // Drinks
 
-    public static final RegistryObject<Item> HYACINTH_MILK_BUCKET = ITEMS.register("hyacinth_milk_bucket", () -> new HyacinthMilkItem(new Item.Properties().craftRemainder(Items.BUCKET).stacksTo(1)));
+    public static final RegistryObject<Item> HYACINTH_MILK_BUCKET = ITEMS.register("hyacinth_milk_bucket", () -> new HyacinthMilkItem(new Item.Properties().craftRemainder(Items.BUCKET).stacksTo(1)){
+        @Override
+        public void appendHoverText(@NotNull ItemStack pStack, @Nullable Level pLevel, @NotNull List<Component> pTooltipComponents, @NotNull TooltipFlag pIsAdvanced) {
+            PotionUtils.addPotionTooltip(List.of(HyacinthMilkItem.hyacinthMilkEffect), pTooltipComponents, 1.0F);
+        }
+    });
 
     // Mob Buckets
    public static final RegistryObject<Item> TROUT_BUCKET = ITEMS.register("trout_bucket", () -> new CustomFishBucketItem(ModEntities.TROUT, () -> Fluids.WATER, () -> SoundEvents.BUCKET_EMPTY_FISH,(new Item.Properties().stacksTo(1) )));
@@ -753,5 +769,13 @@ public class ModItems {
     
     static Component getBasketTooltip(ItemStack stack) {
         return Component.translatable("tooltip.riverbed." + stack.getItem().toString()).withStyle(style -> style.withColor(ChatFormatting.GRAY));
+    }
+
+    static int getSoupStackSize() {
+        if(ModList.get().isLoaded("farmersdelight")){
+            return 16;
+        } else {
+            return 1;
+        }
     }
 }

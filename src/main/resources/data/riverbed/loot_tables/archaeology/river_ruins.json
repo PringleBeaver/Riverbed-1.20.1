@@ -42,27 +42,27 @@
         {
           "type": "minecraft:item",
           "name": "riverbed:solid_basket_fragment",
-          "weight": 2
+          "weight": 3
         },
         {
           "type": "minecraft:item",
           "name": "riverbed:zigzag_basket_fragment",
-          "weight": 2
+          "weight": 3
         },
         {
           "type": "minecraft:item",
           "name": "riverbed:dots_basket_fragment",
-          "weight": 2
+          "weight": 3
         },
         {
           "type": "minecraft:item",
           "name": "riverbed:double_stripe_basket_fragment",
-          "weight": 2
+          "weight": 3
         },
         {
           "type": "minecraft:item",
           "name": "riverbed:stripe_basket_fragment",
-          "weight": 1
+          "weight": 3
         },
         {
           "type": "minecraft:item",
@@ -72,12 +72,12 @@
         {
           "type": "minecraft:item",
           "name": "minecraft:bucket",
-          "weight": 3
+          "weight": 2
         },
         {
           "type": "minecraft:item",
           "name": "riverbed:algae",
-          "weight": 1
+          "weight": 2
         },
         {
           "type": "minecraft:item",
@@ -112,12 +112,12 @@
         {
           "type": "minecraft:item",
           "name": "minecraft:emerald",
-          "weight": 1
+          "weight": 2
         },
         {
           "type": "minecraft:item",
           "name": "minecraft:potato",
-          "weight": 2
+          "weight": 3
         },
         {
           "type": "minecraft:item",
@@ -127,7 +127,7 @@
         {
           "type": "minecraft:item",
           "name": "minecraft:coal",
-          "weight": 2
+          "weight": 3
         },
         {
           "type": "minecraft:item",

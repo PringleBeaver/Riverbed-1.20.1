@@ -11,6 +11,10 @@ import net.pringlebeaver.riverbed.effect.custom.ManateesTouchEffect;
 import org.jetbrains.annotations.NotNull;
 
 public class HyacinthMilkItem extends MilkBucketItem {
+
+    public static final MobEffectInstance hyacinthMilkEffect = new MobEffectInstance(ModEffects.MANATEES_TOUCH.get(), 6000, 0);
+
+
     public HyacinthMilkItem(Properties pProperties) {
         super(pProperties);
     }
@@ -18,7 +22,7 @@ public class HyacinthMilkItem extends MilkBucketItem {
     @Override
     public @NotNull ItemStack finishUsingItem(ItemStack pStack, Level pLevel, LivingEntity pEntityLiving) {
         if (!pLevel.isClientSide) {
-            pEntityLiving.addEffect(new MobEffectInstance(ModEffects.MANATEES_TOUCH.get(), 3600, 0), pEntityLiving);
+            pEntityLiving.addEffect(hyacinthMilkEffect, pEntityLiving);
         }
         return super.finishUsingItem(pStack, pLevel, pEntityLiving);
     }

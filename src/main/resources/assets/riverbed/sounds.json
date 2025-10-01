@@ -90,5 +90,13 @@
         "name": "riverbed:manatee/manatee_eat_success"
       }
     ]
+  },
+  "manatee_bloom_remove": {
+    "subtitles": "sounds.riverbed.manatee_bloom_remove",
+    "sounds": [
+      {
+        "name": "riverbed:manatee/manatee_bloom_remove"
+      }
+    ]
   }
 }

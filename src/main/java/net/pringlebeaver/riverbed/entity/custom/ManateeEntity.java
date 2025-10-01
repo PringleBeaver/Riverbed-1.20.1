@@ -141,6 +141,13 @@ public class ManateeEntity extends Animal implements IForgeShearable  {
             pPlayer.playSound(SoundEvents.COW_MILK, 1.0F, 1.0F);
             ItemStack milkResult;
             if (this.isBlooming()) {
+                if (!level().isClientSide) {
+                    level().playSound(this, this.blockPosition(), ModSounds.MANATEE_BLOOM_REMOVE.get(), this.getSoundSource(), 1.0F, 1.0F);
+                    spawnParticles(this.blockPosition(), this.level(),100, ModParticles.ALGAE_PARTICLES.get());
+                    spawnParticles(this.blockPosition(), this.level(), 50, ParticleTypes.EFFECT);
+
+                    this.setBlooming(false);
+                }
                 milkResult = ItemUtils.createFilledResult(itemstack, pPlayer, ModItems.HYACINTH_MILK_BUCKET.get().getDefaultInstance());
             } else {
                 milkResult = ItemUtils.createFilledResult(itemstack, pPlayer, Items.MILK_BUCKET.getDefaultInstance());
@@ -155,7 +162,7 @@ public class ManateeEntity extends Animal implements IForgeShearable  {
             if (successChance == 0) {
                 if (!level().isClientSide) {
                     level().playSound(this, this.blockPosition(), ModSounds.MANATEE_EAT_SUCCESS.get(), this.getSoundSource(), 1.0F, 1.0F);
-                    spawnParticles(this.blockPosition(), this.level(),150, ModParticles.ALGAE_PARTICLES.get());
+                    spawnParticles(this.blockPosition(), this.level(),100, ModParticles.ALGAE_PARTICLES.get());
                     spawnParticles(this.blockPosition(), this.level(), 50, ParticleTypes.EFFECT);
                     this.setBlooming(true);
                 }

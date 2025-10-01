@@ -21,7 +21,7 @@ public class GrassBasketItemRenderer extends BlockEntityWithoutLevelRenderer {
     }
 
     @Override
-    public void renderByItem(ItemStack stack, ItemDisplayContext displayContext, PoseStack poseStack, MultiBufferSource buffer, int packedLight, int packedOverlay) {
+    public void renderByItem(ItemStack stack, ItemDisplayContext pContext, PoseStack pPoseStack, MultiBufferSource pBuffer, int pPackedLight, int pPackedOverlay) {
         BlockEntityRenderDispatcher dispatcher = Minecraft.getInstance().getBlockEntityRenderDispatcher();
         GrassBasketBlockEntityRenderer renderer = (GrassBasketBlockEntityRenderer) dispatcher.getRenderer(this.dummyBasket);
 
@@ -31,7 +31,7 @@ public class GrassBasketItemRenderer extends BlockEntityWithoutLevelRenderer {
                 decorations = GrassBasketBlockEntity.Decorations.EMPTY;
             }
 
-            GrassBasketBlockEntityRenderer.renderInventory(poseStack, buffer, packedLight, packedOverlay, decorations, renderer);
+            GrassBasketBlockEntityRenderer.renderInventory(pPoseStack, pBuffer, pPackedLight, pPackedOverlay, decorations, renderer);
         }
     }
 }

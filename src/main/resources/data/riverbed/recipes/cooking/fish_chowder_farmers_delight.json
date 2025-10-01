@@ -1,0 +1,23 @@
+{
+  "type": "farmersdelight:cooking",
+  "container": {
+    "item": "minecraft:bowl"
+  },
+  "cookingtime": 200,
+  "experience": 1.0,
+  "ingredients": [
+    {
+      "item": "riverbed:trout"
+    },
+    {
+      "item": "riverbed:algae"
+    },
+    {
+      "item": "minecraft:baked_potato"
+    }
+  ],
+  "recipe_book_tab": "meals",
+  "result": {
+    "item": "riverbed:fish_chowder"
+  }
+}

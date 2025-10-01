@@ -12,13 +12,14 @@ import net.minecraftforge.fml.common.Mod;
 import net.pringlebeaver.riverbed.RiverbedMain;
 import net.pringlebeaver.riverbed.block.custom.GrassBasketBlock;
 import net.pringlebeaver.riverbed.block.entity.GrassBasketBlockEntity;
+import net.pringlebeaver.riverbed.util.ModTags;
 
 @Mod.EventBusSubscriber(modid = RiverbedMain.MOD_ID)
 public class ModCommonEvents {
 
     @SubscribeEvent
     public static void onBreak(BlockEvent.BreakEvent event) {
-        if (event.getState().getBlock() instanceof GrassBasketBlock && event.getPlayer().getMainHandItem().is(Items.SHEARS) && !event.getPlayer().isCreative()) {
+        if (event.getState().getBlock() instanceof GrassBasketBlock && event.getPlayer().getMainHandItem().is(ModTags.Items.BREAKS_GRASS_BASKET) && !event.getPlayer().isCreative()) {
 
             Level level = (Level) event.getLevel();
             BlockPos pos = event.getPos();
