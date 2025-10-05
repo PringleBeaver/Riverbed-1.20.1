@@ -18,7 +18,7 @@ public class ModEntities {
     public static final RegistryObject<EntityType<TroutEntity>> TROUT =
             ENTITY_TYPES.register("trout", () -> EntityType.Builder.of(TroutEntity::new, MobCategory.WATER_AMBIENT).sized(0.6f, 0.4f).build("trout"));
     public static final RegistryObject<EntityType<ManateeEntity>> MANATEE =
-            ENTITY_TYPES.register("manatee", () -> EntityType.Builder.of(ManateeEntity::new, MobCategory.WATER_CREATURE).sized(1.5f, 1.2f).build("manatee"));
+            ENTITY_TYPES.register("manatee", () -> EntityType.Builder.of(ManateeEntity::new, MobCategory.WATER_CREATURE).sized(1.5f, 0.9f).build("manatee"));
     public static void register(IEventBus eventBus) {
         ENTITY_TYPES.register(eventBus);
     }

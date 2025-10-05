@@ -155,7 +155,7 @@ public class ManateeEntity extends Animal implements IForgeShearable  {
             pPlayer.setItemInHand(pHand, milkResult);
             return InteractionResult.sidedSuccess(this.level().isClientSide);
             // Convert to Flowers
-        } else if (itemstack.is(ModBlocks.WATER_HYACINTH.get().asItem()) && isAlgae() && !isBlooming()) {
+        } else if (itemstack.is(ModBlocks.WATER_HYACINTH.get().asItem()) && !isBlooming() && !isBaby()) {
             itemstack.shrink(1);
             int successChance = this.random.nextInt(6);
 
@@ -165,6 +165,7 @@ public class ManateeEntity extends Animal implements IForgeShearable  {
                     spawnParticles(this.blockPosition(), this.level(),100, ModParticles.ALGAE_PARTICLES.get());
                     spawnParticles(this.blockPosition(), this.level(), 50, ParticleTypes.EFFECT);
                     this.setBlooming(true);
+                    this.setAlgae(true);
                 }
                 return InteractionResult.sidedSuccess(this.level().isClientSide);
 
@@ -240,6 +241,7 @@ public class ManateeEntity extends Animal implements IForgeShearable  {
     public SpawnGroupData finalizeSpawn(ServerLevelAccessor pLevel, DifficultyInstance pDifficulty, MobSpawnType pReason, @Nullable SpawnGroupData pSpawnData, @Nullable CompoundTag pDataTag) {
         this.setAirSupply(this.getMaxAirSupply());
         this.setXRot(0.0F);
+        this.setAlgaeGrowthTime(random.nextInt(8000));
         setBlooming(false);
         if (isBaby()) {
             setAlgae(false);

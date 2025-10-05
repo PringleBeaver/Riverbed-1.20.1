@@ -59,12 +59,18 @@ public record AddRiverFeatures(Holder<PlacedFeature> feature, GenerationStep.Dec
                 && !biome.is(BiomeTags.IS_BEACH);
     }
 
+    boolean hasNonriverAlgae(Holder<Biome> biome) {
+        return (biome.is(Tags.Biomes.IS_SWAMP)) && (!biome.is(Tags.Biomes.IS_SNOWY));
+    }
+
 
 
         public void modify(Holder<Biome> biome, Phase phase, ModifiableBiomeInfo.BiomeInfo.Builder builder)
         {
             if (phase == Phase.ADD) {
                 if ((hasTemperateRiver(biome) || hasSnowyRiver(biome) || hasHumidRiver(biome)) && Objects.equals(variant, "has_rocks")) {
+                    builder.getGenerationSettings().addFeature(step, feature);
+                } else if(hasNonriverAlgae(biome) && Objects.equals(variant, "has_nonriver_algae")) {
                     builder.getGenerationSettings().addFeature(step, feature);
                 } else {
                     if (hasTemperateRiver(biome) && Objects.equals(variant, "temperate")) {

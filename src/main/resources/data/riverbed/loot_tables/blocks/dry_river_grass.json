@@ -2,7 +2,22 @@
   "type": "minecraft:block",
   "pools": [
     {
-      "bonus_rolls": 0.0,
+      "bonus_rolls": 0,
+      "functions": [
+        {
+          "function": "minecraft:set_count",
+          "count": 2,
+          "conditions": [
+            {
+              "condition": "minecraft:block_state_property",
+              "block": "riverbed:dry_river_grass",
+              "properties": {
+                "dense": "true"
+              }
+            }
+          ]
+        }
+      ],
       "conditions": [
         {
           "condition": "minecraft:match_tool",
@@ -19,7 +34,7 @@
           "name": "riverbed:dry_river_grass"
         }
       ],
-      "rolls": 1.0
+      "rolls": 1
     }
   ]
 }

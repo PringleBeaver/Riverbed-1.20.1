@@ -33,7 +33,7 @@ public class ManateeRenderer extends MobRenderer<ManateeEntity, ManateeModel<Man
                 if (pEntity.isAlgae()) {
                     return ALGAE_LOCATION;
                 } else {
-                    if (pEntity.getAlgaeGrowthTime() > pEntity.getTotalGrowthTime() * 0.75) {
+                    if (pEntity.getAlgaeGrowthTime() > pEntity.getTotalGrowthTime() * 0.5) {
                         return MEDIUM_ALGAE_LOCATION;
                     } else {
                         return MANATEE_LOCATION;
