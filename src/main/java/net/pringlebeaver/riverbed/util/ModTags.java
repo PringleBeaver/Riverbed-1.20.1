@@ -19,6 +19,8 @@ public class ModTags {
 
     public static class Blocks {
         public static final TagKey<Block> RIVER_GRASS_PLACEABLE = tag("river_grass_placeable");
+        public static final TagKey<Block> MANATEE_CAN_EAT = tag("manatee_can_eat");
+
         private static TagKey<Block> tag(String name) {
             return BlockTags.create(new ResourceLocation(RiverbedMain.MOD_ID, name));
         }

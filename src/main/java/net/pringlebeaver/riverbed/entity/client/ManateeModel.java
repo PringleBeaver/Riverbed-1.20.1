@@ -12,8 +12,8 @@ import org.jetbrains.annotations.NotNull;
 
 public class ManateeModel<T extends ManateeEntity> extends HierarchicalModel<T> {
 	// This layer location should be baked with EntityRendererProvider.Context in the entity renderer and passed into this model's constructor
-
-
+	private float headXRot;
+	private float eatAnimationScale;
 	private final ModelPart left_flipper;
 	private final ModelPart right_flipper;
 	private final ModelPart body;
@@ -78,7 +78,12 @@ public class ManateeModel<T extends ManateeEntity> extends HierarchicalModel<T> 
 		return LayerDefinition.create(meshdefinition, 128, 128);
 	}
 
-
+	@Override
+	public void prepareMobModel(T pEntity, float pLimbSwing, float pLimbSwingAmount, float pPartialTick) {
+		super.prepareMobModel(pEntity, pLimbSwing, pLimbSwingAmount, pPartialTick);
+		// Here we use pPartialTick to get the smooth value and store it
+		this.eatAnimationScale = pEntity.getHeadEatAngleScale(pPartialTick);
+	}
 
 	@Override
 	public void setupAnim(T pEntity, float pLimbSwing, float pLimbSwingAmount, float pAgeInTicks, float pNetHeadYaw, float pHeadPitch) {
@@ -104,13 +109,20 @@ public class ManateeModel<T extends ManateeEntity> extends HierarchicalModel<T> 
 			head.yScale = 1.0F;
 			head.zScale = 1.0F;
 		}
+
 		this.body.xRot = pHeadPitch * ((float) Math.PI / 180F) / 2;
 		this.head.xRot = (pHeadPitch * ((float) Math.PI / 180F) / 4) + 0.35f;
 		this.head.yRot = pNetHeadYaw * ((float) Math.PI / 180F);
 
+		float eatAnimationScale = pEntity.getHeadEatAngleScale(pAgeInTicks);
+
+		this.head.xRot += this.eatAnimationScale * (15.0F * ((float)Math.PI / 180F));
+
+		this.head.y = -9.65F + (this.eatAnimationScale * 0.6F);
+
 		this.right_flipper.xRot = Mth.cos(pLimbSwing * 0.6662F + (float)Math.PI) * 2.0F * pLimbSwingAmount * 0.5F;
 		this.left_flipper.xRot = Mth.cos(pLimbSwing * 0.6662F) * 2.0F * pLimbSwingAmount * 0.5F;
-		if (pEntity.getDeltaMovement().horizontalDistanceSqr() > 1.0E-7D) {
+		if (pEntity.isInWater()) {
 			this.body.xRot += -0.05F - 0.05F * Mth.cos(pAgeInTicks * 0.15F);
 			this.tail.xRot = -0.1F * Mth.cos(pAgeInTicks * 0.15F);
 			this.tail_back.xRot = -0.2F * Mth.cos(pAgeInTicks * 0.15F);
