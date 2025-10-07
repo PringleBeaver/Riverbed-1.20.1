@@ -2,7 +2,6 @@ package net.pringlebeaver.riverbed.entity.client;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
-import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.resources.ResourceLocation;
@@ -10,9 +9,7 @@ import net.minecraft.util.Mth;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.pringlebeaver.riverbed.RiverbedMain;
-import net.pringlebeaver.riverbed.entity.custom.ManateeEntity;
 import net.pringlebeaver.riverbed.entity.custom.TroutEntity;
-import org.jetbrains.annotations.NotNull;
 
 @OnlyIn(Dist.CLIENT)
 public class TroutRenderer extends MobRenderer<TroutEntity, TroutModel<TroutEntity>> {

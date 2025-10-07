@@ -18,7 +18,9 @@ public class ModEventBusEvents {
 
     @SubscribeEvent
     public static void entitySpawnRestriction(SpawnPlacementRegisterEvent event) {
-        event.register(ModEntities.TROUT.get(), SpawnPlacements.Type.IN_WATER, Heightmap.Types.OCEAN_FLOOR, TroutEntity::canSpawn, SpawnPlacementRegisterEvent.Operation.REPLACE);
+        event.register(ModEntities.TROUT.get(), SpawnPlacements.Type.IN_WATER, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, TroutEntity::canSpawn, SpawnPlacementRegisterEvent.Operation.REPLACE);
+        event.register(ModEntities.MANATEE.get(), SpawnPlacements.Type.IN_WATER, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, ManateeEntity::canSpawn, SpawnPlacementRegisterEvent.Operation.REPLACE);
+
     }
     @SubscribeEvent
     public static void registerAttributes(EntityAttributeCreationEvent event) {

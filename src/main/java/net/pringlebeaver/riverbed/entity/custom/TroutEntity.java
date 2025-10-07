@@ -33,7 +33,6 @@ import net.pringlebeaver.riverbed.item.ModItems;
 import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nullable;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.function.IntFunction;
 

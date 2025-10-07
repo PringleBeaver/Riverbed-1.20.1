@@ -1,7 +1,6 @@
 package net.pringlebeaver.riverbed.event;
 
 import net.minecraft.core.BlockPos;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
@@ -19,6 +18,8 @@ public class ModCommonEvents {
 
     @SubscribeEvent
     public static void onBreak(BlockEvent.BreakEvent event) {
+
+        // Breaking for Grass Basket Fragment Drops
         if (event.getState().getBlock() instanceof GrassBasketBlock && event.getPlayer().getMainHandItem().is(ModTags.Items.BREAKS_GRASS_BASKET) && !event.getPlayer().isCreative()) {
 
             Level level = (Level) event.getLevel();

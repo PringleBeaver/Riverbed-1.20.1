@@ -13,6 +13,8 @@ public class ModForgeEventBusEvents {
 
     @SubscribeEvent
     public static void waterBreakSpeed(PlayerEvent.BreakSpeed event) {
+
+        // Manatees Touch Effect Stuff
         Player playerEntity = event.getEntity();
         if (playerEntity.isInWater() && playerEntity.hasEffect(ModEffects.MANATEES_TOUCH.get())) {
             if (!playerEntity.onGround() && playerEntity.isUnderWater()) {

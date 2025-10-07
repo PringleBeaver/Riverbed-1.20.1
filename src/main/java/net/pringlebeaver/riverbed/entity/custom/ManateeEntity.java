@@ -15,6 +15,7 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.FluidTags;
 import net.minecraft.util.Mth;
 
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -30,6 +31,7 @@ import net.minecraft.world.entity.ai.navigation.PathNavigation;
 import net.minecraft.world.entity.ai.navigation.WaterBoundPathNavigation;
 import net.minecraft.world.entity.animal.Animal;
 
+import net.minecraft.world.entity.animal.WaterAnimal;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 
@@ -39,12 +41,15 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.ServerLevelAccessor;
 
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 
 import net.minecraft.world.level.pathfinder.BlockPathTypes;
+import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.common.IForgeShearable;
 
@@ -98,19 +103,16 @@ public class ManateeEntity extends Animal implements IForgeShearable  {
     // Sounds
 
 
-    @org.jetbrains.annotations.Nullable
     @Override
     protected SoundEvent getAmbientSound() {
         return ModSounds.MANATEE_CHIRP.get();
     }
 
-    @org.jetbrains.annotations.Nullable
     @Override
     protected SoundEvent getHurtSound(DamageSource pDamageSource) {
         return ModSounds.MANATEE_HURT.get();
     }
 
-    @org.jetbrains.annotations.Nullable
     @Override
     protected SoundEvent getDeathSound() {
         return ModSounds.MANATEE_DEATH.get();
@@ -254,7 +256,7 @@ public class ManateeEntity extends Animal implements IForgeShearable  {
         this.setAirSupply(this.getMaxAirSupply());
         this.setXRot(0.0F);
         this.setAlgaeGrowthTime(random.nextInt(8000));
-        this.setHungryLevel(random.nextInt(2000));
+        this.setHungryLevel(random.nextInt(1000));
         setBlooming(false);
         if (isBaby()) {
             setAlgae(false);
@@ -355,14 +357,18 @@ public class ManateeEntity extends Animal implements IForgeShearable  {
         this.goalSelector.addGoal(4, new TemptGoal(this, 1.1D, Ingredient.of(Items.SEAGRASS), false));
 
         this.goalSelector.addGoal(5, new GrazeGoal(this));
-        this.goalSelector.addGoal(6, new RandomSwimmingGoal(this, 1.0D, 10));
-        this.goalSelector.addGoal(7, new RandomLookAroundGoal(this));
-        this.goalSelector.addGoal(8, new LookAtPlayerGoal(this, Player.class, 6.0F));
+        this.goalSelector.addGoal(6, new FollowParentGoal(this, 1.1D));
+
+        this.goalSelector.addGoal(7, new RandomSwimmingGoal(this, 1.0D, 10));
+        this.goalSelector.addGoal(8, new RandomLookAroundGoal(this));
+        this.goalSelector.addGoal(9, new LookAtPlayerGoal(this, Player.class, 6.0F));
     }
 
     protected PathNavigation createNavigation( Level pLevel) {
         return new WaterBoundPathNavigation(this, pLevel);
     }
+
+
 
     public void travel(Vec3 pTravelVector) {
         if (this.isEffectiveAi() && this.isInWater() && !this.onGround()) {
@@ -490,6 +496,31 @@ public class ManateeEntity extends Animal implements IForgeShearable  {
 
     }
 
+    public static boolean canSpawn(EntityType<ManateeEntity> entityType, LevelAccessor levelAccessor, MobSpawnType spawnType, BlockPos blockPos, RandomSource random) {
+        return checkManateeSpawnRules(entityType, levelAccessor, spawnType, blockPos, random);
+    }
+
+    public static boolean checkManateeSpawnRules(EntityType<? extends Animal> pAnimal, LevelAccessor pLevel, MobSpawnType pSpawnType, BlockPos pPos, RandomSource pRandom) {
+        int searchRange = 80;
+
+        int i = pLevel.getSeaLevel();
+        int j = i - 13;
+        boolean hasEnoughWater = pPos.getY() >= j && pPos.getY() <= i && pLevel.getFluidState(pPos.below()).is(FluidTags.WATER) && pLevel.getBlockState(pPos.above()).is(Blocks.WATER);
+
+        if (!hasEnoughWater) {
+            return false;
+        }
+
+        AABB nearbySearchArea = new AABB(pPos).inflate(searchRange);
+
+        return pLevel.getEntities((Entity) null, nearbySearchArea, (Entity entity) -> entity.getType() == pAnimal).size() < 5;
+    }
+
+    @Override
+    public boolean canRide(Entity pVehicle) {
+        return false;
+    }
+
     static class GrazeGoal extends Goal{
         private final ManateeEntity manatee;
         private final Level level;
@@ -575,7 +606,9 @@ public class ManateeEntity extends Animal implements IForgeShearable  {
 
                 } else {
                     this.eatingTime--;
-
+                }
+                if (this.eatingTime % 5 == 0) {
+                    this.manatee.playSound(ModSounds.MANATEE_EAT.get(), 1.3F, 1.0F);
                 }
                 this.manatee.spawnParticles(targetPos, level, 2, new BlockParticleOption(ParticleTypes.BLOCK, level.getBlockState(targetPos)));
                 this.manatee.getLookControl().setLookAt(targetPos.getX() + 0.5D, targetPos.getY() + 0.5D, targetPos.getZ() + 0.5D);
@@ -583,14 +616,22 @@ public class ManateeEntity extends Animal implements IForgeShearable  {
                 if (this.eatingTime == 0) {
                     if (!this.level.isClientSide()) {
                         if (level.getBlockState(targetPos).is(ModTags.Blocks.MANATEE_CAN_EAT)) {
-                            this.level.destroyBlock(targetPos, false);
-                            this.manatee.playSound(SoundEvents.GRASS_BREAK, 1.0F, 1.0F);
-                            this.manatee.setHungryLevel(manatee.random.nextInt(2000));
+                            this.eatSuccess();
                         }
 
                     }
                 }
             }
+        }
+
+        public void eatSuccess(){
+            if (this.manatee.isBaby()){
+                this.manatee.setAge(this.manatee.getAge() + 200);
+            }
+            this.manatee.playSound(ModSounds.MANATEE_EAT.get(), 1.0F, 1.0F);
+            this.manatee.setHungryLevel(manatee.random.nextInt(1000));
+            this.manatee.spawnParticles(targetPos, level, 25, new BlockParticleOption(ParticleTypes.BLOCK, level.getBlockState(targetPos)));
+
         }
 
         private final Predicate<BlockState> MANATEE_CAN_EAT = (pState) -> {

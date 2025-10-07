@@ -170,9 +170,6 @@ public class ModCreativeTabs {
                         pOutput.accept(ModItems.WHITE_DOUBLE_STRIPE_BASKET_FRAGMENT.get());
                         pOutput.accept(ModItems.WHITE_ZIGZAG_BASKET_FRAGMENT.get());
                         pOutput.accept(ModItems.WHITE_SOLID_BASKET_FRAGMENT.get());
-
-
-
                     })
                     .build());
 

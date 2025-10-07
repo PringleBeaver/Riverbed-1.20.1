@@ -265,12 +265,14 @@
 	"effect.riverbed.angling": "Angling",
 	"effect.riverbed.manatees_touch": "Manatee's Gift",
 
+	"sounds.riverbed.manatee_eat": "Manatee munches",
+  	"sounds.riverbed.manatee_chirp": "Manatee chirps",
+  	"sounds.riverbed.manatee_hurt": "Manatee hurts",
+  	"sounds.riverbed.manatee_death": "Manatee dies",
+  	"sounds.riverbed.manatee_eat_success": "Manatee blooms",
+  	"sounds.riverbed.manatee_bloom_remove": "Manatee sheared",
+
 
 	"advancements.riverbed.husbandry.triple_fish.title": "Oh Baby, a Triple!",
-	"advancements.riverbed.husbandry.triple_fish.description": "Catch 3 fish at once, using Fish Chowder",
-
-	"sounds.riverbed.manatee_chirp": "Manatee Chirps",
-	"sounds.manatee_eat_success": "Manatee Converts"
-
-
+	"advancements.riverbed.husbandry.triple_fish.description": "Catch 3 fish at once, using Fish Chowder"
 }

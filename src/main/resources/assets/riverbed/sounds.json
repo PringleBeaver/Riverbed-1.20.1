@@ -9,7 +9,7 @@
   },
 
   "manatee_eat": {
-    "subtitles": "sounds.riverbed.manatee_eat",
+    "subtitle": "sounds.riverbed.manatee_eat",
     "sounds": [
       {
         "name": "riverbed:manatee/manatee_eat"
@@ -30,7 +30,7 @@
   },
 
     "manatee_chirp": {
-    "subtitles": "sounds.riverbed.manatee_chirp",
+    "subtitle": "sounds.riverbed.manatee_chirp",
     "sounds": [
       {
         "name": "riverbed:manatee/manatee_chirp_1"
@@ -54,7 +54,7 @@
   },
 
   "manatee_hurt": {
-    "subtitles": "sounds.riverbed.manatee_hurt",
+    "subtitle": "sounds.riverbed.manatee_hurt",
     "sounds": [
       {
         "name": "riverbed:manatee/manatee_hurt_1"
@@ -69,7 +69,7 @@
   },
 
     "manatee_death": {
-    "subtitles": "sounds.riverbed.manatee_death",
+    "subtitle": "sounds.riverbed.manatee_death",
     "sounds": [
       {
         "name": "riverbed:manatee/manatee_death_1"
@@ -84,7 +84,7 @@
   },
 
   "manatee_eat_success": {
-    "subtitles": "sounds.riverbed.manatee_eat_success",
+    "subtitle": "sounds.riverbed.manatee_eat_success",
     "sounds": [
       {
         "name": "riverbed:manatee/manatee_eat_success"
@@ -92,7 +92,7 @@
     ]
   },
   "manatee_bloom_remove": {
-    "subtitles": "sounds.riverbed.manatee_bloom_remove",
+    "subtitle": "sounds.riverbed.manatee_bloom_remove",
     "sounds": [
       {
         "name": "riverbed:manatee/manatee_bloom_remove"
