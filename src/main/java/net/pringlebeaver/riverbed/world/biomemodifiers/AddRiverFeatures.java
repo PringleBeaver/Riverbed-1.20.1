@@ -10,6 +10,7 @@ import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.world.BiomeModifier;
 import net.minecraftforge.common.world.ModifiableBiomeInfo;
+import net.pringlebeaver.riverbed.world.biome.ModBiomes;
 
 import java.util.Objects;
 
@@ -34,7 +35,7 @@ public record AddRiverFeatures(Holder<PlacedFeature> feature, GenerationStep.Dec
 
     boolean hasAridRiver(Holder<Biome> biome) {
         return
-                ( biome.is(Tags.Biomes.IS_DRY_OVERWORLD)
+                ( biome.is(ModBiomes.ARID_RIVER) || biome.is(Tags.Biomes.IS_DRY_OVERWORLD)
                 || biome.is(BiomeTags.IS_SAVANNA) )
                 && biome.is(BiomeTags.IS_OVERWORLD)
                 && !biome.is(Tags.Biomes.IS_UNDERGROUND)
@@ -43,7 +44,7 @@ public record AddRiverFeatures(Holder<PlacedFeature> feature, GenerationStep.Dec
 
     boolean hasHumidRiver(Holder<Biome> biome) {
         return  (
-                biome.is(Tags.Biomes.IS_WET_OVERWORLD)
+                biome.is(ModBiomes.BLOOMING_RIVER) || biome.is(Tags.Biomes.IS_WET_OVERWORLD)
                 )
                 && biome.is(BiomeTags.IS_OVERWORLD)
                 && !biome.is(Tags.Biomes.IS_UNDERGROUND)

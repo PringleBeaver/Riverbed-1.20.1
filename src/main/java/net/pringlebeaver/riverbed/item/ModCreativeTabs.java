@@ -38,6 +38,8 @@ public class ModCreativeTabs {
                         pOutput.accept(ModBlocks.RIVER_STONE_TILE_SLAB.get());
                         pOutput.accept(ModBlocks.RIVER_STONE_TILE_WALL.get());
 
+                        pOutput.accept(ModBlocks.SANDY_RIVER_STONES.get());
+
                         pOutput.accept(ModBlocks.ALGAE_BLOCK.get());
 
                         pOutput.accept(ModBlocks.ALGAE.get());

@@ -35,7 +35,8 @@ public class ModBlocks {
     public static final RegistryObject<Block> RIVER_STONE_STAIRS = registerBlock("river_stone_stairs",
             () -> new StairBlock(() -> ModBlocks.RIVER_STONE_BRICKS.get().defaultBlockState(), BlockBehaviour.Properties.copy(Blocks.COBBLESTONE).sound(SoundType.TUFF)));
 
-
+    public static final RegistryObject<Block> SANDY_RIVER_STONES = registerBlock("sandy_river_stones",
+            () -> new Block(BlockBehaviour.Properties.copy(Blocks.COBBLESTONE).sound(SoundType.TUFF)));
 
     // River Bricks
     public static final RegistryObject<Block> RIVER_STONE_BRICKS = registerBlock("river_stone_bricks",

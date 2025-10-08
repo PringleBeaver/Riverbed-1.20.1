@@ -1,14 +1,11 @@
 package net.pringlebeaver.riverbed;
 
 import com.mojang.logging.LogUtils;
-import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.ComposterBlock;
 import net.minecraft.world.level.block.FlowerPotBlock;
 import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.client.event.EntityRenderersEvent;
-import net.minecraftforge.client.event.ModelEvent;
 import net.minecraftforge.client.event.RegisterColorHandlersEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
@@ -21,7 +18,6 @@ import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.pringlebeaver.riverbed.block.ModBlocks;
 import net.pringlebeaver.riverbed.block.entity.ModBlockEntities;
-import net.pringlebeaver.riverbed.block.entity.renderer.GrassBasketBlockEntityRenderer;
 import net.pringlebeaver.riverbed.effect.ModEffects;
 import net.pringlebeaver.riverbed.entity.ModEntities;
 import net.pringlebeaver.riverbed.entity.client.ManateeRenderer;
@@ -42,8 +38,13 @@ public class RiverbedMain
 {
     public static final String MOD_ID = "riverbed";
     private static final Logger LOGGER = LogUtils.getLogger();
+
+    public static boolean isLoadComplete = false;
+
+
     public RiverbedMain()
     {
+
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
         // Register Stuff
@@ -70,13 +71,6 @@ public class RiverbedMain
 
         ModRecipes.register(modEventBus);
 
-        //ModTerrablenderAPI.registerRegions();
-
-
-
-
-
-
         modEventBus.addListener(this::commonSetup);
 
         MinecraftForge.EVENT_BUS.register(this);
@@ -84,8 +78,14 @@ public class RiverbedMain
         modEventBus.addListener(this::addCreative);
     }
 
-    private void commonSetup(final FMLCommonSetupEvent event)
+
+    @SubscribeEvent
+    public void commonSetup(final FMLCommonSetupEvent event)
     {
+
+
+            isLoadComplete = true;
+
         event.enqueueWork(() -> {
             // Compostable
             ComposterBlock.COMPOSTABLES.put(ModBlocks.RIVER_GRASS.get().asItem(), 0.3f);
