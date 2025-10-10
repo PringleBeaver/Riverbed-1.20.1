@@ -141,8 +141,8 @@
       "minecraft:ore_lapis_buried",
       "minecraft:ore_copper",
       "minecraft:underwater_magma",
-      "minecraft:disk_clay",
-      "minecraft:disk_gravel"
+      "riverbed:arid_disk_gravel",
+      "riverbed:arid_disk_river_stone"
     ],
     [
       "minecraft:spring_water",
@@ -156,7 +156,13 @@
       "minecraft:brown_mushroom_normal",
       "minecraft:red_mushroom_normal",
       "minecraft:patch_sugar_cane",
-      "minecraft:patch_pumpkin"
+      "minecraft:patch_pumpkin",
+      "riverbed:arid_river_seagrass",
+      "riverbed:patch_dry_river_grass"
+    ],
+    [
+      "riverbed:river_log",
+      "riverbed:arid_river_boulder"
     ],
     [
       "minecraft:freeze_top_layer"

@@ -39,7 +39,12 @@ public record AddRiverFeatures(Holder<PlacedFeature> feature, GenerationStep.Dec
                 || biome.is(BiomeTags.IS_SAVANNA) )
                 && biome.is(BiomeTags.IS_OVERWORLD)
                 && !biome.is(Tags.Biomes.IS_UNDERGROUND)
+                && !biome.is(Tags.Biomes.IS_UNDERGROUND)
                 && !biome.is(BiomeTags.IS_BEACH);
+    }
+
+    boolean hasAridRiverGrass(Holder<Biome> biome) {
+        return hasAridRiver(biome) && !biome.is(BiomeTags.IS_BADLANDS);
     }
 
     boolean hasHumidRiver(Holder<Biome> biome) {
@@ -66,23 +71,22 @@ public record AddRiverFeatures(Holder<PlacedFeature> feature, GenerationStep.Dec
 
 
 
-        public void modify(Holder<Biome> biome, Phase phase, ModifiableBiomeInfo.BiomeInfo.Builder builder)
-        {
+        public void modify(Holder<Biome> biome, Phase phase, ModifiableBiomeInfo.BiomeInfo.Builder builder) {
             if (phase == Phase.ADD) {
-                if ((hasTemperateRiver(biome) || hasSnowyRiver(biome) || hasHumidRiver(biome)) && Objects.equals(variant, "has_rocks")) {
+                boolean addFeature = switch (variant) {
+                    case "has_rocks" -> hasTemperateRiver(biome) || hasSnowyRiver(biome) || hasHumidRiver(biome);
+                    case "temperate" -> hasTemperateRiver(biome);
+                    case "arid" -> hasAridRiver(biome);
+                    case "arid_grass" -> hasAridRiverGrass(biome);
+
+                    case "has_nonriver_algae" -> hasNonriverAlgae(biome);
+                    default -> false;
+                };
+
+                if (addFeature) {
                     builder.getGenerationSettings().addFeature(step, feature);
-                } else if(hasNonriverAlgae(biome) && Objects.equals(variant, "has_nonriver_algae")) {
-                    builder.getGenerationSettings().addFeature(step, feature);
-                } else {
-                    if (hasTemperateRiver(biome) && Objects.equals(variant, "temperate")) {
-                        builder.getGenerationSettings().addFeature(step, feature);
-                    } else if (hasAridRiver(biome) && Objects.equals(variant, "arid")) {
-                        builder.getGenerationSettings().addFeature(step, feature);
-                    }
                 }
-
             }
-
         }
 
         public Codec<? extends BiomeModifier> codec() {

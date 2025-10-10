@@ -5,6 +5,7 @@ import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.ComposterBlock;
 import net.minecraft.world.level.block.FlowerPotBlock;
+import net.minecraft.world.level.levelgen.SurfaceRules;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.RegisterColorHandlersEvent;
 import net.minecraftforge.common.MinecraftForge;
@@ -29,8 +30,10 @@ import net.pringlebeaver.riverbed.particle.ModParticles;
 import net.pringlebeaver.riverbed.recipes.ModRecipes;
 import net.pringlebeaver.riverbed.sound.ModSounds;
 import net.pringlebeaver.riverbed.world.ModFeatures;
+import net.pringlebeaver.riverbed.world.biome.surface.ModSurfaceRules;
 import net.pringlebeaver.riverbed.world.biomemodifiers.ModBiomeModifiers;
 import org.slf4j.Logger;
+import terrablender.api.SurfaceRuleManager;
 
 // The value here should match an entry in the META-INF/mods.toml file
 @Mod(RiverbedMain.MOD_ID)
@@ -83,8 +86,9 @@ public class RiverbedMain
     public void commonSetup(final FMLCommonSetupEvent event)
     {
 
-
             isLoadComplete = true;
+
+        SurfaceRuleManager.addSurfaceRules(SurfaceRuleManager.RuleCategory.OVERWORLD, MOD_ID, ModSurfaceRules.makeRules());
 
         event.enqueueWork(() -> {
             // Compostable

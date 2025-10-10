@@ -1,0 +1,54 @@
+{
+  "type": "minecraft:disk",
+  "config": {
+    "half_height": 2,
+    "radius": {
+      "type": "minecraft:uniform",
+      "value": {
+        "max_inclusive": 5,
+        "min_inclusive": 3
+      }
+    },
+    "state_provider": {
+      "fallback": {
+        "type": "minecraft:weighted_state_provider",
+        "entries": [
+          {
+            "weight": 1,
+            "data": {
+              "Name": "riverbed:river_stones"
+            }
+          },
+          {
+            "weight": 1,
+            "data": {
+              "Name": "riverbed:sandy_river_stones"
+            }
+          }
+        ]
+      },
+      "rules": []
+    },
+    "target": {
+      "type": "minecraft:all_of",
+      "blocks": [
+        "minecraft:sand"
+      ],
+      "predicates": [
+        {
+          "type": "minecraft:matching_fluids",
+          "offset": [
+            0,
+            1,
+            0
+          ],
+          "fluids": "minecraft:water"
+        },
+        {
+          "type": "minecraft:matching_blocks",
+          "blocks": "minecraft:sand"
+        }
+      ]
+    }
+  }
+}

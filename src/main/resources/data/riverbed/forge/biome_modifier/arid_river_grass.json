@@ -2,5 +2,5 @@
   "type": "riverbed:add_river_features",
   "feature": "riverbed:patch_dry_river_grass",
   "step": "vegetal_decoration",
-  "variant": "arid"
+  "variant": "arid_grass"
 }
