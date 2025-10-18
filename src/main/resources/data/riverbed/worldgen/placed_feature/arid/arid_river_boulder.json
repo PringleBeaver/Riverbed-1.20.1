@@ -1,33 +1,22 @@
 {
-  "feature": "riverbed:patch_dry_river_grass",
+  "feature": "riverbed:arid/arid_river_boulder",
   "placement": [
+    {
+      "type": "minecraft:rarity_filter",
+      "chance": 2
+    },
     {
       "type": "minecraft:count",
       "count": {
         "type": "minecraft:uniform",
         "value": {
           "min_inclusive": 0,
-          "max_inclusive": 6
+          "max_inclusive": 4
         }
       }
     },
     {
       "type": "minecraft:in_square"
-    },
-    {
-      "type": "minecraft:rarity_filter",
-      "chance": 4
-    },
-    {
-      "type": "minecraft:random_offset",
-      "xz_spread": {
-        "type": "minecraft:uniform",
-        "value": {
-          "min_inclusive": 1,
-          "max_inclusive": 3
-        }
-      },
-      "y_spread": 0
     },
     {
       "type": "minecraft:heightmap",
@@ -37,7 +26,9 @@
       "type": "minecraft:block_predicate_filter",
       "predicate": {
         "type": "minecraft:matching_fluids",
-        "fluids": "minecraft:water"
+        "fluids": [
+          "minecraft:water"
+        ]
       }
     },
     {

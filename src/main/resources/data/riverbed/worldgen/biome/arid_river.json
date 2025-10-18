@@ -1,7 +1,7 @@
 {
   "temperature": 0.95,
-  "downfall": 0.0,
-  "has_precipitation": true,
+  "downfall": 0.1,
+  "has_precipitation": false,
   "temperature_modifier": "none",
   "effects": {
     "sky_color": 8103167,
@@ -90,6 +90,14 @@
         "minCount": 4,
         "maxCount": 6
       }
+    ],
+    "water_ambient": [
+      {
+        "type": "riverbed:trout",
+        "maxCount": 3,
+        "minCount": 1,
+        "weight": 8
+      }
     ]
   },
   "spawn_costs": {},
@@ -141,8 +149,9 @@
       "minecraft:ore_lapis_buried",
       "minecraft:ore_copper",
       "minecraft:underwater_magma",
-      "riverbed:arid_disk_gravel",
-      "riverbed:arid_disk_river_stone"
+      "riverbed:arid/arid_disk_gravel",
+      "riverbed:arid/arid_disk_river_stone",
+      "riverbed:arid/arid_disk_clay"
     ],
     [
       "minecraft:spring_water",
@@ -150,19 +159,19 @@
     ],
     [
       "minecraft:glow_lichen",
-      "minecraft:trees_water",
-      "minecraft:flower_default",
+      "minecraft:trees_sparse_jungle",
       "minecraft:patch_grass_badlands",
       "minecraft:brown_mushroom_normal",
       "minecraft:red_mushroom_normal",
       "minecraft:patch_sugar_cane",
       "minecraft:patch_pumpkin",
-      "riverbed:arid_river_seagrass",
-      "riverbed:patch_dry_river_grass"
+      "riverbed:arid/arid_river_seagrass",
+      "riverbed:arid/arid_patch_dry_river_grass",
+      "riverbed:arid/arid_patch_river_bank_vegetation"
     ],
     [
       "riverbed:river_log",
-      "riverbed:arid_river_boulder"
+      "riverbed:arid/arid_river_boulder"
     ],
     [
       "minecraft:freeze_top_layer"

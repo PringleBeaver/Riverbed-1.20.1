@@ -30,6 +30,7 @@ import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.biome.Biomes;
 import net.pringlebeaver.riverbed.item.ModItems;
+import net.pringlebeaver.riverbed.world.biome.ModBiomes;
 import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nullable;
@@ -108,7 +109,8 @@ public class TroutEntity extends AbstractSchoolingFish {
         RAINBOW(0, "rainbow"),
         BROOK(1, "brook"),
         BULL(2, "bull"),
-        GOLDEN(3, "golden");
+        GOLDEN(3, "golden"),
+        BROWN(4, "brown");
 
 
         public static final Codec<TroutEntity.Variant> CODEC = StringRepresentable.fromEnum(TroutEntity.Variant::values);
@@ -139,6 +141,8 @@ public class TroutEntity extends AbstractSchoolingFish {
     public SpawnGroupData finalizeSpawn(ServerLevelAccessor pLevel, DifficultyInstance pDifficulty, MobSpawnType pReason, @Nullable SpawnGroupData pSpawnData, @Nullable CompoundTag pDataTag) {
         List<Variant> riverVariants = List.of(Variant.RAINBOW, Variant.RAINBOW, Variant.BROOK);
 
+        List<Variant> aridRiverVariants = List.of(Variant.RAINBOW, Variant.RAINBOW, Variant.BROWN);
+
         List<Variant> frozenRiverVariants = List.of(Variant.RAINBOW, Variant.RAINBOW, Variant.BULL);
 
         double goldenChance = 0.05;
@@ -150,14 +154,18 @@ public class TroutEntity extends AbstractSchoolingFish {
             return pSpawnData;
         } else {
             RandomSource RANDOM_SOURCE = pLevel.getRandom();
-            Holder<Biome> holder = pLevel.getBiome(this.blockPosition());
+            Holder<Biome> levelBiome = pLevel.getBiome(this.blockPosition());
             TroutEntity.Variant TROUT_VARIANT;
 
             if (random.nextDouble() < goldenChance) {
                 TROUT_VARIANT = Variant.GOLDEN;
             } else {
-                if (holder.is(Biomes.FROZEN_RIVER)) {
+
+
+                if (levelBiome.is(Biomes.FROZEN_RIVER)) {
                     TROUT_VARIANT = Util.getRandom(frozenRiverVariants, RANDOM_SOURCE);
+                } else if (levelBiome.is(ModBiomes.ARID_RIVER)) {
+                    TROUT_VARIANT = Util.getRandom(aridRiverVariants, RANDOM_SOURCE);
                 } else {
                     TROUT_VARIANT = Util.getRandom(riverVariants, RANDOM_SOURCE);
                 }

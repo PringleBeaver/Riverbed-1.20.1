@@ -1,5 +1,5 @@
 {
-  "feature": "riverbed:arid_disk_river_stone",
+  "feature": "riverbed:arid/arid_disk_river_stone",
   "placement": [
     {
       "type": "minecraft:count",

@@ -130,7 +130,7 @@ public class AlgaeBlock extends BushBlock implements SimpleWaterloggedBlock, IFo
     @Override
     public void animateTick(BlockState pState, Level pLevel, BlockPos pPos, RandomSource pRandom) {
         if (pState.getValue(WATERLOGGED)) {
-            if (pState.getValue(ALGAE).equals(3)) {
+            if (pState.getValue(ALGAE) >= 2 && pRandom.nextInt(20 - (pState.getValue(ALGAE) * 4) ) == 0) {
                 spawnAlgaeParticles(pPos, pLevel, pRandom);
             }
 

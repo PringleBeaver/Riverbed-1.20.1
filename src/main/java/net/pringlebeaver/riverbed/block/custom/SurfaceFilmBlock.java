@@ -58,16 +58,14 @@ public class SurfaceFilmBlock extends BushBlock implements BonemealableBlock {
 
     @Override
     public void animateTick(BlockState pState, Level pLevel, BlockPos pPos, RandomSource pRandom) {
-        if (pState.getValue(AGE).equals(2)) {
+        if (pState.getValue(AGE).equals(2) && pRandom.nextInt(24) == 0) {
             spawnAlgaeParticles(pPos, pLevel, pRandom);
         }
         super.animateTick(pState, pLevel, pPos, pRandom);
     }
 
     private void spawnAlgaeParticles(BlockPos blockpos, Level level, RandomSource randomSource) {
-        if (randomSource.nextInt(4) == 0) {
             level.addParticle(ModParticles.ALGAE_PARTICLES.get(), false, (blockpos.getX() + randomSource.nextDouble() * 1.5) - 0.25, blockpos.getY(),(blockpos.getZ() + randomSource.nextDouble() * 1.5) - 0.25, 0.0D, 0.0D, 0.0D);
-        }
     }
 
     @Nullable

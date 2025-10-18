@@ -1,5 +1,5 @@
 {
-  "feature": "riverbed:arid_disk_gravel",
+  "feature": "riverbed:arid/arid_disk_clay",
   "placement": [
     {
       "type": "minecraft:in_square"

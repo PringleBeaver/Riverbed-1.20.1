@@ -1,10 +1,6 @@
 {
-  "feature": "riverbed:patch_algae",
+  "feature": "riverbed:arid/arid_disk_gravel",
   "placement": [
-    {
-      "type": "minecraft:count",
-      "count": 1
-    },
     {
       "type": "minecraft:in_square"
     },

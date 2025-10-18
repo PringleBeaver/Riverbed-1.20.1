@@ -17,6 +17,7 @@ public class TroutRenderer extends MobRenderer<TroutEntity, TroutModel<TroutEnti
     private static final ResourceLocation BROOK = new ResourceLocation(RiverbedMain.MOD_ID, "textures/entity/trout/brook_trout.png");
     private static final ResourceLocation BULL = new ResourceLocation(RiverbedMain.MOD_ID, "textures/entity/trout/bull_trout.png");
     private static final ResourceLocation GOLDEN = new ResourceLocation(RiverbedMain.MOD_ID, "textures/entity/trout/golden_trout.png");
+    private static final ResourceLocation BROWN = new ResourceLocation(RiverbedMain.MOD_ID, "textures/entity/trout/brown_trout.png");
 
 
 
@@ -36,6 +37,9 @@ public class TroutRenderer extends MobRenderer<TroutEntity, TroutModel<TroutEnti
                 break;
             case BULL:
                 resourcelocation = BULL;
+                break;
+            case BROWN:
+                resourcelocation = BROWN;
                 break;
             case GOLDEN:
                 resourcelocation = GOLDEN;

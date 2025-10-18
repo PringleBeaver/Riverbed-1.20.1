@@ -290,10 +290,6 @@ public class ManateeEntity extends Animal implements IForgeShearable  {
         return TOTAL_GROWTH_TIME;
     }
 
-    @Override
-    public boolean isPersistenceRequired() {
-        return true;
-    }
 
     public void setMoistnessLevel(int pMoistnessLevel) {
         this.entityData.set(MOISTNESS_LEVEL, pMoistnessLevel);
@@ -364,7 +360,7 @@ public class ManateeEntity extends Animal implements IForgeShearable  {
         this.goalSelector.addGoal(9, new LookAtPlayerGoal(this, Player.class, 6.0F));
     }
 
-    protected PathNavigation createNavigation( Level pLevel) {
+    protected @NotNull PathNavigation createNavigation(Level pLevel) {
         return new WaterBoundPathNavigation(this, pLevel);
     }
 
@@ -399,8 +395,7 @@ public class ManateeEntity extends Animal implements IForgeShearable  {
 
 
     public static AttributeSupplier.Builder createAttributes() {
-        return Mob.createMobAttributes().add(Attributes.MAX_HEALTH, 16.0D).add(Attributes.MOVEMENT_SPEED, (double)0.5F);
-    }
+        return Mob.createMobAttributes().add(Attributes.MAX_HEALTH, 16.0D).add(Attributes.MOVEMENT_SPEED, (double)0.5F);    }
 
     @Override
     protected int increaseAirSupply(int pCurrentAir) {
@@ -501,19 +496,12 @@ public class ManateeEntity extends Animal implements IForgeShearable  {
     }
 
     public static boolean checkManateeSpawnRules(EntityType<? extends Animal> pAnimal, LevelAccessor pLevel, MobSpawnType pSpawnType, BlockPos pPos, RandomSource pRandom) {
-        int searchRange = 80;
 
         int i = pLevel.getSeaLevel();
         int j = i - 13;
         boolean hasEnoughWater = pPos.getY() >= j && pPos.getY() <= i && pLevel.getFluidState(pPos.below()).is(FluidTags.WATER) && pLevel.getBlockState(pPos.above()).is(Blocks.WATER);
 
-        if (!hasEnoughWater) {
-            return false;
-        }
-
-        AABB nearbySearchArea = new AABB(pPos).inflate(searchRange);
-
-        return pLevel.getEntities((Entity) null, nearbySearchArea, (Entity entity) -> entity.getType() == pAnimal).size() < 5;
+        return hasEnoughWater;
     }
 
     @Override

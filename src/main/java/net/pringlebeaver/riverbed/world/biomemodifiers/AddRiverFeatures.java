@@ -49,7 +49,7 @@ public record AddRiverFeatures(Holder<PlacedFeature> feature, GenerationStep.Dec
 
     boolean hasHumidRiver(Holder<Biome> biome) {
         return  (
-                biome.is(ModBiomes.BLOOMING_RIVER) || biome.is(Tags.Biomes.IS_WET_OVERWORLD)
+                biome.is(Tags.Biomes.IS_WET_OVERWORLD)
                 )
                 && biome.is(BiomeTags.IS_OVERWORLD)
                 && !biome.is(Tags.Biomes.IS_UNDERGROUND)
@@ -65,7 +65,7 @@ public record AddRiverFeatures(Holder<PlacedFeature> feature, GenerationStep.Dec
                 && !biome.is(BiomeTags.IS_BEACH);
     }
 
-    boolean hasNonriverAlgae(Holder<Biome> biome) {
+    boolean isSwamp(Holder<Biome> biome) {
         return (biome.is(Tags.Biomes.IS_SWAMP)) && (!biome.is(Tags.Biomes.IS_SNOWY));
     }
 
@@ -74,12 +74,12 @@ public record AddRiverFeatures(Holder<PlacedFeature> feature, GenerationStep.Dec
         public void modify(Holder<Biome> biome, Phase phase, ModifiableBiomeInfo.BiomeInfo.Builder builder) {
             if (phase == Phase.ADD) {
                 boolean addFeature = switch (variant) {
-                    case "has_rocks" -> hasTemperateRiver(biome) || hasSnowyRiver(biome) || hasHumidRiver(biome);
+                    case "has_rocks" -> ( hasTemperateRiver(biome) || hasSnowyRiver(biome) || hasHumidRiver(biome) ) && !isSwamp(biome);
                     case "temperate" -> hasTemperateRiver(biome);
                     case "arid" -> hasAridRiver(biome);
                     case "arid_grass" -> hasAridRiverGrass(biome);
 
-                    case "has_nonriver_algae" -> hasNonriverAlgae(biome);
+                    case "is_swamp" -> isSwamp(biome);
                     default -> false;
                 };
 

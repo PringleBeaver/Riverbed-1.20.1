@@ -31,7 +31,7 @@ public class ModBiomeBuilder {
             {null, null, null, null, null},
             {Biomes.RIVER, Biomes.RIVER, Biomes.RIVER, ModBiomes.COLD_RIVER, ModBiomes.COLD_RIVER},
             {Biomes.RIVER, Biomes.RIVER, Biomes.RIVER, Biomes.RIVER, Biomes.RIVER},
-            {ModBiomes.ARID_RIVER, ModBiomes.ARID_RIVER, Biomes.RIVER, ModBiomes.BLOOMING_RIVER, ModBiomes.BLOOMING_RIVER},
+            {ModBiomes.ARID_RIVER, ModBiomes.ARID_RIVER, Biomes.RIVER, ModBiomes.HUMID_RIVER, ModBiomes.HUMID_RIVER},
             {ModBiomes.ARID_RIVER, ModBiomes.ARID_RIVER, ModBiomes.ARID_RIVER, ModBiomes.ARID_RIVER, ModBiomes.ARID_RIVER}
     };
 

@@ -20,7 +20,7 @@ import net.pringlebeaver.riverbed.RiverbedMain;
 
 public class ModBiomes {
 
-  public static final ResourceKey<Biome> BLOOMING_RIVER = register("blooming_river");
+  public static final ResourceKey<Biome> HUMID_RIVER = register("humid_river");
 
   public static final ResourceKey<Biome> ARID_RIVER = register("arid_river");
 
